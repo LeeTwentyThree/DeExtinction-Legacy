@@ -1,4 +1,4 @@
-﻿using DeExtinctionMod.Asset_Classes;
+﻿using DeExtinctionMod.AssetClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,53 +10,48 @@ namespace DeExtinctionMod.Prefabs.Eggs
 {
     public class JasperThalassaceanEggPrefab : CreatureEggAsset
     {
-        public override Vector2int SizeInInventory => new Vector2int(2, 2);
+        public JasperThalassaceanEggPrefab(string classId, string friendlyName, string description, GameObject model, TechType hatchingCreature, Texture2D spriteTexture, float hatchingTime) : base(classId, friendlyName, description, model, hatchingCreature, spriteTexture, hatchingTime)
+        {
+        }
+
+        public override Vector2int SizeInInventory => new Vector2int(3, 3);
 
         public override List<LootDistributionData.BiomeData> BiomesToSpawnIn => new List<LootDistributionData.BiomeData>()
         {
             new LootDistributionData.BiomeData()
             {
-                biome = BiomeType.LostRiverCorridor_Open_CreatureOnly,
+                biome = BiomeType.LostRiverCorridor_LakeFloor,
                 count = 1,
-                probability = 5f
+                probability = 10f
             },
             new LootDistributionData.BiomeData()
             {
-                biome = BiomeType.LostRiverJunction_Open_CreatureOnly,
+                biome = BiomeType.LostRiverJunction_LakeFloor,
                 count = 1,
-                probability = 5f
+                probability = 10f
             },
             new LootDistributionData.BiomeData()
             {
-                biome = BiomeType.BonesField_Skeleton_Open_CreatureOnly,
+                biome = BiomeType.BonesField_Lake_Floor,
                 count = 1,
-                probability = 5f
+                probability = 10f
             },
             new LootDistributionData.BiomeData()
             {
-                biome = BiomeType.BonesField_LakePit_Open_CreatureOnly,
+                biome = BiomeType.BonesField_Cave_Ground,
                 count = 1,
-                probability = 5f
+                probability = 10f
             },
             new LootDistributionData.BiomeData()
             {
-                biome = BiomeType.GhostTree_Open_Big_CreatureOnly,
+                biome = BiomeType.Canyon_Lake_Floor,
                 count = 1,
-                probability = 5f
-            },
-            new LootDistributionData.BiomeData()
-            {
-                biome = BiomeType.Canyon_Open_CreatureOnly,
-                count = 1,
-                probability = 5f
+                probability = 10f
             }
         };
 
-        public JasperThalassaceanEggPrefab(string classId, string friendlyName, string description, GameObject model, TechType hatchingCreature, Texture2D spriteTexture) : base(classId, friendlyName, description, model, hatchingCreature, spriteTexture)
-        {
-
-        }
-
         public override float GetMaxHealth => 60f;
+
+        public override bool AcidImmune => true;
     }
 }

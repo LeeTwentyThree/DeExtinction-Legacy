@@ -10,32 +10,17 @@ using UnityEngine;
 
 namespace DeExtinctionMod
 {
-    [HarmonyPatch(typeof(LargeWorldStreamer), "Initialize")]
-    public static class LargeWorldStreamer_Initialize_Patch
+    [HarmonyPatch(typeof(SwimInSchool), "IsValidLeader")]
+    public static class SwimInSchool_IsValidLeader_Patch
     {
         [HarmonyPostfix()]
-        public static void Postfix()
+        public static void Postfix(ref bool __result, SwimInSchool __instance, IEcoTarget target)
         {
-            /*bool newSave = !Directory.Exists(SaveUtils.GetCurrentSaveDataDir());
-            string saveDataPath = Path.Combine(SaveUtils.GetCurrentSaveDataDir(), "deextinction.json");
-            if (!File.Exists(saveDataPath))
+            if(__instance.gameObject == target.GetGameObject())
             {
-                FileStream fs = File.Create(saveDataPath);
-                using(StreamWriter sw = new StreamWriter(fs))
-                {
-                    sw.Write(JsonUtility.ToJson(new SaveData()));
-                }
-                fs.Dispose();
+                ErrorMessage.AddMessage("trying to follow self");
+                __result = false;
             }
-            string json = File.ReadAllText(saveDataPath);
-            SaveData saveData = JsonUtility.FromJson<SaveData>(json);
-            if (newSave || !saveData.GargantuanHasSpawned)
-            {
-                GameObject prefab = CraftData.GetPrefabForTechType(QPatch.gargantuanPrefab.TechType);
-                GameObject.Instantiate(prefab, new Vector3(1250f, -120f, 600f), Quaternion.identity);
-                GameObject.Instantiate(prefab, new Vector3(-880f, -200f, -1260f), Quaternion.identity);
-            }
-            File.WriteAllText(saveDataPath, JsonUtility.ToJson(new SaveData(true)));*/
         }
     }
 }

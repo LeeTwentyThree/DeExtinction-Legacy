@@ -100,6 +100,7 @@
     <Compile Include="Helpers.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="Mono\Gargantuan\TrackLastTarget.cs" />
+    <Compile Include="Mono\GrandGlider.cs" />
     <Compile Include="Mono\RoarAbility.cs" />
     <Compile Include="Mono\DiveAction.cs" />
     <Compile Include="Mono\Gargantuan\MeleeAttack_New.cs" />
@@ -114,12 +115,13 @@
     <Compile Include="Mono\VaryingSwimSpeeds.cs" />
     <Compile Include="Mono\VoidTerrainGenerator.cs" />
     <Compile Include="Patches.cs" />
+    <Compile Include="Prefabs\Creatures\GrandGliderPrefab.cs" />
     <Compile Include="Prefabs\Eggs\JasperThalassaceanEggPrefab.cs" />
     <Compile Include="Prefabs\Eggs\StellarThalassaceanEggPrefab.cs" />
-    <Compile Include="Prefabs\GargantuanLeviathanPrefab.cs" />
-    <Compile Include="Prefabs\JasperThalassaceanPrefab.cs" />
-    <Compile Include="Prefabs\StellarThalassaceanPrefab.cs" />
-    <Compile Include="Prefabs\ThalassaceanPrefab.cs" />
+    <Compile Include="Prefabs\Creatures\GargantuanLeviathanPrefab.cs" />
+    <Compile Include="Prefabs\Creatures\JasperThalassaceanPrefab.cs" />
+    <Compile Include="Prefabs\Creatures\StellarThalassaceanPrefab.cs" />
+    <Compile Include="Prefabs\Creatures\ThalassaceanPrefab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

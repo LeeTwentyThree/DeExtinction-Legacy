@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UWE;
+using HarmonyLib;
 
-namespace DeExtinctionMod.Asset_Classes
+namespace DeExtinctionMod.AssetClasses
 {
     public class CreatureEggAsset : Spawnable
     {
@@ -19,12 +20,14 @@ namespace DeExtinctionMod.Asset_Classes
         private Atlas.Sprite sprite;
         Texture2D spriteTexture;
         static LiveMixinData eggLiveMixinData;
+        float hatchingTime;
 
-        public CreatureEggAsset(string classId, string friendlyName, string description, GameObject model, TechType hatchingCreature, Texture2D spriteTexture) : base(classId, friendlyName, description)
+        public CreatureEggAsset(string classId, string friendlyName, string description, GameObject model, TechType hatchingCreature, Texture2D spriteTexture, float hatchingTime) : base(classId, friendlyName, description)
         {
             this.model = model;
             this.hatchingCreature = hatchingCreature;
             this.spriteTexture = spriteTexture;
+            this.hatchingTime = hatchingTime;
         }
 
         public override WorldEntityInfo EntityInfo => new WorldEntityInfo()
@@ -47,6 +50,10 @@ namespace DeExtinctionMod.Asset_Classes
                 eggLiveMixinData.knifeable = true;
             }
             base.Patch();
+            if (AcidImmune)
+            {
+                Helpers.MakeAcidImmune(TechType);
+            }
         }
 
         public override GameObject GetGameObject()
@@ -82,6 +89,7 @@ namespace DeExtinctionMod.Asset_Classes
                 egg.animator = prefab.GetComponentInChildren<Animator>();
                 egg.hatchingCreature = hatchingCreature;
                 egg.overrideEggType = TechType;
+                egg.daysBeforeHatching = hatchingTime;
 
                 EntityTag entityTag = prefab.AddComponent<EntityTag>();
                 entityTag.slotType = EntitySlot.Type.Small;
@@ -93,6 +101,14 @@ namespace DeExtinctionMod.Asset_Classes
         protected override Atlas.Sprite GetItemSprite()
         {
             return sprite;
+        }
+
+        public virtual bool AcidImmune
+        {
+            get
+            {
+                return false;
+            }
         }
 
         public virtual float GetMaxHealth

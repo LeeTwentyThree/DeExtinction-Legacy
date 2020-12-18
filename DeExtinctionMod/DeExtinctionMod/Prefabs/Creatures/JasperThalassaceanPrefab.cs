@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UWE;
 
-namespace DeExtinctionMod.Prefabs
+namespace DeExtinctionMod.Prefabs.Creatures
 {
     public class JasperThalassaceanPrefab : ThalassaceanPrefab
     {
@@ -69,5 +69,7 @@ namespace DeExtinctionMod.Prefabs
             localScale = Vector3.one,
             slotType = EntitySlot.Type.Creature
         };
+
+        public override bool AcidImmune => true;
     }
 }

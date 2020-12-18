@@ -14,7 +14,7 @@ using SMLHelper.V2.Handlers;
 using UWE;
 using DeExtinctionMod.Mono.Gargantuan;
 
-namespace DeExtinctionMod.Prefabs
+namespace DeExtinctionMod.Prefabs.Creatures
 {
     public class GargantuanLeviathanPrefab : CreatureAsset
     {
@@ -62,7 +62,7 @@ namespace DeExtinctionMod.Prefabs
 
         public override string GetEncyTitle => "Gargantuan Leviathan";
 
-        public override string GetEncyDesc => "Thought to be extinct, this leviathan-class specimen appears to have recently migrated to this location from another location on this planet.\n\n1. Size:\nAt a length of nearly 900 meters, the Gargantuan leviathan is the largest known living creature on Planet 4546B. Already seeming biologically impossible, this specimen appears to not be fully developed.\n\n2. Modular body\nMany systems are working together to keep this creature alive. A repeating body structure implies this creature may actually be a series of organisms living in symbiosis, each capable of sustaining itself by passive means including photosynthesis and filter feeding. If one segment dies, the creature still lives on. Each body segment contains many bioluminescent orbs that disorientate prey as the creature coils around its food.\n\n3. Tentacles:\nThese massive tentacles have been observed to help the creature suffocate large prey, including Reaper Leviathans. They may also play a role in finding a mate.\n\n4. Hunting\nThis creature remains stealthy until it has found a target, and scares the target to put them in shock. It wields very powerful jaws, capable of rendering large creatures unconcious with one bite. The wide throat is capable of swallowing many large creatures whole. \n\nAssessment: Avoid at all costs.";
+        public override string GetEncyDesc => "Thought to be extinct, this leviathan-class specimen appears to have recently migrated to this location from another environment on this planet.\n\n1. Size:\nAt a length of nearly 900 meters, the Gargantuan Leviathan is the largest known living creature on Planet 4546B. Already seeming biologically impossible, this specimen appears to not be fully developed.\n\n2. Modular body:\nMany systems are working together to keep this creature alive. A repeating body structure implies this creature may actually be a series of organisms living in symbiosis, each capable of sustaining itself by passive means such as photosynthesis. If one segment dies, the creature still lives on. Each body segment contains many bioluminescent orbs that disorientate prey as the creature coils around its food.\n\n3. Tentacles:\nThese massive tentacles have been observed to help the creature suffocate large prey, including Reaper Leviathans, for easy consumption. They also play a role in impressing mates.\n\n4. Hunting:\nThis creature remains stealthy until it has found a target, and will go to any extent to put the target to put it into shock. It wields very powerful jaws, capable of rendering large creatures unconcious with one bite. The wide throat is capable of swallowing many large creatures whole.\n\nAssessment: Avoid at all costs.";
 
         public override WorldEntityInfo EntityInfo => new WorldEntityInfo()
         {

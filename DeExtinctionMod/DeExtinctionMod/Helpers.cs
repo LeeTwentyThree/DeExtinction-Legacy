@@ -68,6 +68,12 @@ namespace DeExtinctionMod
             bLod.farThreshold = far;
             return bLod;
         }
+        public static void MakeAcidImmune(TechType techType)
+        {
+            List<TechType> acidImmuneList = new List<TechType>(DamageSystem.acidImmune);
+            acidImmuneList.Add(techType);
+            DamageSystem.acidImmune = acidImmuneList.ToArray();
+        }
         public static AnimationCurve Curve_Trail()
         {
             return new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.25f), new Keyframe(1f, 0.75f) });
@@ -91,6 +97,15 @@ namespace DeExtinctionMod
         {
             var prop = type.GetField(name, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
             return (OutputT)prop.GetValue(target);
+        }
+        public static OutputT GetPrivateStaticField<OutputT>(Type type, string name)
+        {
+            var prop = type.GetField(name, BindingFlags.NonPublic | BindingFlags.Static);
+            return (OutputT)prop.GetValue(null);
+        }
+        public static void PatchBehaviorType(TechType techType, BehaviourType behaviourType)
+        {
+            GetPrivateStaticField<Dictionary<TechType, BehaviourType>>(typeof(BehaviourData), "behaviourTypeList").Add(techType, behaviourType);
         }
         public static AggressiveWhenSeeTarget MakeAggressiveTo(GameObject obj, float maxRange, EcoTargetType ecoTarget, float hungerThreshold, float aggressionSpeed)
         {

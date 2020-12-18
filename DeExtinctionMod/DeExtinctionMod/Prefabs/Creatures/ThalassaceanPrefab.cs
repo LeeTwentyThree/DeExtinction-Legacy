@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace DeExtinctionMod.Prefabs
+namespace DeExtinctionMod.Prefabs.Creatures
 {
     public class ThalassaceanPrefab : CreatureAsset
     {
@@ -16,7 +16,7 @@ namespace DeExtinctionMod.Prefabs
 
         }
 
-        public override Vector2int SizeInInventory => new Vector2int(2, 2);
+        public override Vector2int SizeInInventory => new Vector2int(4, 4);
 
         public override LargeWorldEntity.CellLevel CellLevel => LargeWorldEntity.CellLevel.Medium;
 
@@ -38,9 +38,11 @@ namespace DeExtinctionMod.Prefabs
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(1f, false, 5f);
 
-        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 2f, 10f, "ThalassaceanRoar", string.Empty, 0.51f, 10f, 25f);
+        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 2f, 10f, "ThalassaceanRoar", string.Empty, 0.51f, 20f, 35f);
 
-        public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 1f), new Keyframe(1f, 2.5f) });
+        public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.5f), new Keyframe(1f, 1f) });
+
+        public override float BioReactorCharge => 600f;
 
         public override GameObject GetGameObject()
         {

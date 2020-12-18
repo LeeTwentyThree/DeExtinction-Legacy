@@ -13,7 +13,10 @@ using SMLHelper.V2.Handlers;
 using HarmonyLib;
 using SMLHelper.V2.Utility;
 using DeExtinctionMod.Prefabs.Eggs;
-using DeExtinctionMod.Asset_Classes;
+using DeExtinctionMod.Prefabs.Creatures;
+using DeExtinctionMod.AssetClasses;
+using SMLHelper.V2.Assets;
+using UWE;
 
 namespace DeExtinctionMod
 {
@@ -25,9 +28,10 @@ namespace DeExtinctionMod
         public static GargantuanLeviathanPrefab gargantuanPrefab;
         public static StellarThalassaceanPrefab stellarThalassaceanPrefab;
         public static JasperThalassaceanPrefab jasperThalassaceanPrefab;
+        public static GrandGliderPrefab grandGliderPrefab;
+
         public static StellarThalassaceanEggPrefab stellarEgg;
         public static JasperThalassaceanEggPrefab jasperEgg;
-        public static CreatureEggAsset reaperEgg;
 
         public static ModAudio modAudio;
 
@@ -57,22 +61,45 @@ namespace DeExtinctionMod
         public static void Patch()
         {
             LoadAssetBundle();
-            gargantuanPrefab = new GargantuanLeviathanPrefab("gargantuanleviathan", "Gargantuan Leviathan", "An ancient creature thought to be extinct", assetBundle.LoadAsset<GameObject>("GargantuanPrefab"), null);
+            gargantuanPrefab = new GargantuanLeviathanPrefab("GargantuanLeviathan", "Gargantuan Leviathan", "An ancient creature thought to be extinct", assetBundle.LoadAsset<GameObject>("GargantuanPrefab"), null);
             gargantuanPrefab.Patch();
-            stellarThalassaceanPrefab = new StellarThalassaceanPrefab("stellarthalassacean", "Stellar Thalassacean", "A large, friendly filter feeder.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Stellar_Item"));
+
+            stellarThalassaceanPrefab = new StellarThalassaceanPrefab("StellarThalassacean", "Stellar Thalassacean", "Large filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Stellar_Item"));
             stellarThalassaceanPrefab.Patch();
-            jasperThalassaceanPrefab = new JasperThalassaceanPrefab("jasperthalassacean", "Jasper Thalassacean", "A large, friendly filter feeder. A deep-water relative of the Stellar Thalassacean.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
+
+            jasperThalassaceanPrefab = new JasperThalassaceanPrefab("JasperThalassacean", "Jasper Thalassacean", "Large cave-dwelling filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
             jasperThalassaceanPrefab.Patch();
 
-            stellarEgg = new StellarThalassaceanEggPrefab("stellarthalassaceanegg", "Stellar Thalassacean Egg", "Stellar Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanEggPrefab"), stellarThalassaceanPrefab.TechType, assetBundle.LoadAsset<Texture2D>("StellarThalassaceanEgg_Icon"));
+            grandGliderPrefab = new GrandGliderPrefab("GrandGlider", "Grand Glider", "Medium sized prey animal, raised in containment.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), null);
+            grandGliderPrefab.Patch();
+
+            stellarEgg = new StellarThalassaceanEggPrefab("StellarThalassaceanEgg", "Stellar Thalassacean Egg", "Stellar Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanEggPrefab"), stellarThalassaceanPrefab.TechType, assetBundle.LoadAsset<Texture2D>("StellarThalassaceanEgg_Icon"), 2f);
             stellarEgg.Patch();
 
-            jasperEgg = new JasperThalassaceanEggPrefab("jasperthalassaceanegg", "Jasper Thalassacean Egg", "Jasper Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanEggPrefab"), jasperThalassaceanPrefab.TechType, assetBundle.LoadAsset<Texture2D>("JasperThalassaceanEgg_Icon"));
+            jasperEgg = new JasperThalassaceanEggPrefab("JasperThalassaceanEgg", "Jasper Thalassacean Egg", "Jasper Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanEggPrefab"), jasperThalassaceanPrefab.TechType, assetBundle.LoadAsset<Texture2D>("JasperThalassaceanEgg_Icon"), 2f);
             jasperEgg.Patch();
 
-            reaperEgg = new CreatureEggAsset("reaperegg", "Reaper Leviathan Egg", "Reaper Leviathans hatch from these.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanEggPrefab"), TechType.ReaperLeviathan, null);
-            WaterParkCreature.waterParkCreatureParameters.Add(TechType.ReaperLeviathan, new WaterParkCreatureParameters(0.05f, 0.15f, 0.3f, 3f, false)); ;
-            reaperEgg.Patch();
+
+            WorldEntityInfo bloomInfo = new WorldEntityInfo()
+            {
+                cellLevel = LargeWorldEntity.CellLevel.Medium,
+                classId = "bloom",
+                slotType = EntitySlot.Type.Creature,
+                techType = TechType.Bloom
+            };
+            WorldEntityDatabaseHandler.AddCustomInfo("bloom", bloomInfo);
+            LootDistributionHandler.AddLootDistributionData("bloom", new LootDistributionData.SrcData()
+            {
+                distribution = new List<LootDistributionData.BiomeData>()
+                {
+                    new LootDistributionData.BiomeData()
+                    {
+                        biome = BiomeType.DeepGrandReef_Ceiling,
+                        count = 1,
+                        probability = 1f
+                    }
+                }
+            }, bloomInfo);
 
             modAudio = new ModAudio();
             modAudio.Init();

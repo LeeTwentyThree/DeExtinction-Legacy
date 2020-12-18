@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UWE;
 
-namespace DeExtinctionMod.Prefabs
+namespace DeExtinctionMod.Prefabs.Creatures
 {
     public class StellarThalassaceanPrefab : ThalassaceanPrefab
     {
@@ -33,7 +33,7 @@ namespace DeExtinctionMod.Prefabs
             {
                 biome = BiomeType.GrandReef_OpenDeep_CreatureOnly,
                 count = 1,
-                probability = 0.05f
+                probability = 0.09f
             },
             new LootDistributionData.BiomeData()
             {

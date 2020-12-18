@@ -218,6 +218,11 @@ namespace DeExtinctionMod.AssetClasses
         {
             base.Patch();
             WaterParkCreature.waterParkCreatureParameters.Add(TechType, WaterParkParameters);
+            BioReactorHandler.SetBioReactorCharge(TechType, BioReactorCharge);
+            if (AcidImmune)
+            {
+                DamageSystem.acidImmune.AddItem(TechType);
+            }
             if (ScannableSettings.scannable)
             {
                 PDAEncyclopediaHandler.AddCustomEntry(new PDAEncyclopedia.EntryData()
@@ -271,6 +276,13 @@ namespace DeExtinctionMod.AssetClasses
             trail.yawMultiplier = decreasing;
         }
 
+        public virtual bool AcidImmune
+        {
+            get
+            {
+                return false;
+            }
+        }
         public abstract LargeWorldEntity.CellLevel CellLevel
         {
             get;
@@ -435,6 +447,14 @@ namespace DeExtinctionMod.AssetClasses
             get
             {
                 return new AvoidObstaclesData(0f, false, 0f);
+            }
+        }
+
+        public virtual float BioReactorCharge
+        {
+            get
+            {
+                return 200f;
             }
         }
 
