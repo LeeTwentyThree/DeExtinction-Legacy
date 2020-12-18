@@ -31,9 +31,11 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.9f, true, 2f);
 
-        public override ScannableCreatureData ScannableSettings => new ScannableCreatureData(true, 4f, "Lifeforms/Fauna/LargeHerbivores", new string[] { "Lifeforms", "Fauna", "LargeHerbivores" }, null, null);
+        public override ScannableCreatureData ScannableSettings => new ScannableCreatureData(true, 4f, "Lifeforms/Fauna/LargeHerbivores", new string[] { "Lifeforms", "Fauna", "LargeHerbivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Stellar_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Stellar_Ency"));
 
         public override Vector2int SizeInInventory => new Vector2int(3, 3);
+
+        public override BehaviourType BehaviourType => BehaviourType.MediumFish;
 
         public override string GetEncyTitle => "Grand Glider";
 
@@ -52,10 +54,10 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
                 SwimInSchool swimInSchool = prefab.AddComponent<SwimInSchool>();
                 swimInSchool.priorityMultiplier = Helpers.Curve_Flat();
-                swimInSchool.evaluatePriority = 0.7f;
+                swimInSchool.evaluatePriority = 0.8f;
                 swimInSchool.swimInterval = 1f;
-                swimInSchool.swimVelocity = myVelocity * 1.2f;
-                swimInSchool.schoolSize = 4f;
+                swimInSchool.swimVelocity = myVelocity * 1.4f;
+                swimInSchool.schoolSize = 2f;
                 Helpers.SetPrivateField(typeof(SwimInSchool), swimInSchool, "percentFindLeaderRespond", 1f);
                 Helpers.SetPrivateField(typeof(SwimInSchool), swimInSchool, "chanceLoseLeader", 0f);
                 Helpers.SetPrivateField(typeof(SwimInSchool), swimInSchool, "kBreakDistance", 40f);
@@ -64,11 +66,6 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 CompletePrefab(components);
             }
             return prefab;
-        }
-
-        protected override void PostPatch()
-        {
-            Helpers.PatchBehaviorType(TechType, BehaviourType.MediumFish);
         }
 
         public override float BioReactorCharge => 400f;

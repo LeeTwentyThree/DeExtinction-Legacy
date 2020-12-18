@@ -18,7 +18,6 @@ namespace DeExtinctionMod
         {
             if(__instance.gameObject == target.GetGameObject())
             {
-                ErrorMessage.AddMessage("trying to follow self");
                 __result = false;
             }
         }

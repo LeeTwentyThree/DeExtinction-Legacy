@@ -42,6 +42,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.5f), new Keyframe(1f, 1f) });
 
+        public override BehaviourType BehaviourType => BehaviourType.Whale;
+
         public override float BioReactorCharge => 600f;
 
         public override GameObject GetGameObject()

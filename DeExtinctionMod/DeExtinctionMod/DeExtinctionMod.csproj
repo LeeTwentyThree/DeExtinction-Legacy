@@ -111,7 +111,6 @@
     <Compile Include="Mono\PassBelowPlayerAction.cs" />
     <Compile Include="Mono\RoarRandomAction.cs" />
     <Compile Include="Mono\Thalassacean.cs" />
-    <Compile Include="Mono\TrailManager_New.cs" />
     <Compile Include="Mono\VaryingSwimSpeeds.cs" />
     <Compile Include="Mono\VoidTerrainGenerator.cs" />
     <Compile Include="Patches.cs" />

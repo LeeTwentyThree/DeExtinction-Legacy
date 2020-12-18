@@ -48,17 +48,19 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 60f, 800f, "GargantuanRoar", "roar", 0f);
 
-        public override float TurnSpeed => 0.25f;
+        public override float TurnSpeed => 0.2f;
 
-        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(100f, 0f, 100f), 30f, 4f, 0.5f);
+        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(100f, 0f, 100f), 15f, 4f, 0.5f);
 
         public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(1f, 75f);
 
-        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.95f, 80f, 18f, 22f, 20f, 100f);
+        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.95f, 30f, 18f, 22f, 20f, 100f);
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(1f, false, 25f);
 
         public override ScannableCreatureData ScannableSettings => new ScannableCreatureData(true, 8f, "Lifeforms/Fauna/Leviathans", new string[] { "Lifeforms", "Fauna", "Leviathans" }, null, null);
+
+        public override BehaviourType BehaviourType => BehaviourType.Leviathan;
 
         public override string GetEncyTitle => "Gargantuan Leviathan";
 
@@ -99,15 +101,17 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 dealDamageOnImpact.speedMinimumForDamage = 3f;
                 dealDamageOnImpact.mirroredSelfDamage = false;
 
-                CreateTrail(prefab.SearchChild("spine"), components, 1f, -1f);
-                const float tentacleTrailSnapSpeed = 1f;
-                const float tentacleTrailMaxSegmentOffset = -1f;
-                /*CreateTrail(prefab.SearchChild("tentaclelowerl"), components, tentacleTrailSnapSpeed, tentacleTrailMaxSegmentOffset);
+                CreateTrail(prefab.SearchChild("spine"), components, 4f, -1f);
+                const float tentacleTrailSnapSpeed = 7f;
+                const float tentacleTrailMaxSegmentOffset = 15f;
+                CreateTrail(prefab.SearchChild("tentaclelowerl"), components, tentacleTrailSnapSpeed, tentacleTrailMaxSegmentOffset);
                 CreateTrail(prefab.SearchChild("tentaclelowerr"), components, tentacleTrailSnapSpeed, tentacleTrailMaxSegmentOffset);
-                CreateTrail(prefab.SearchChild("tentaclemidl"), components, tentacleTrailSnapSpeed, tentacleTrailMaxSegmentOffset);
-                CreateTrail(prefab.SearchChild("tentaclemidr"), components, tentacleTrailSnapSpeed, tentacleTrailMaxSegmentOffset);
+                //CreateTrail(prefab.SearchChild("tentaclemidl"), components, tentacleTrailSnapSpeed, tentacleTrailMaxSegmentOffset);
+                //CreateTrail(prefab.SearchChild("tentaclemidr"), components, tentacleTrailSnapSpeed, tentacleTrailMaxSegmentOffset);
                 CreateTrail(prefab.SearchChild("tentacleupperl"), components, tentacleTrailSnapSpeed, tentacleTrailMaxSegmentOffset);
-                CreateTrail(prefab.SearchChild("tentacleupperr"), components, tentacleTrailSnapSpeed, tentacleTrailMaxSegmentOffset);*/
+                CreateTrail(prefab.SearchChild("tentacleupperr"), components, tentacleTrailSnapSpeed, tentacleTrailMaxSegmentOffset);
+                CreateTrail(prefab.SearchChild("ChinTendrilL"), components, 7f, 3f, 1f);
+                CreateTrail(prefab.SearchChild("ChinTendrilR"), components, 7f, 3f, 1f);
 
                 prefab.SearchChild("Eye1").AddComponent<TrackLastTarget>().lastTarget = components.lastTarget;
                 prefab.SearchChild("Eye2").AddComponent<TrackLastTarget>().lastTarget = components.lastTarget;

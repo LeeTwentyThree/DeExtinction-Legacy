@@ -70,7 +70,7 @@ namespace DeExtinctionMod
             jasperThalassaceanPrefab = new JasperThalassaceanPrefab("JasperThalassacean", "Jasper Thalassacean", "Large cave-dwelling filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
             jasperThalassaceanPrefab.Patch();
 
-            grandGliderPrefab = new GrandGliderPrefab("GrandGlider", "Grand Glider", "Medium sized prey animal, raised in containment.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), null);
+            grandGliderPrefab = new GrandGliderPrefab("GrandGlider", "Grand Glider", "Medium sized prey animal, raised in containment.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
             grandGliderPrefab.Patch();
 
             stellarEgg = new StellarThalassaceanEggPrefab("StellarThalassaceanEgg", "Stellar Thalassacean Egg", "Stellar Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanEggPrefab"), stellarThalassaceanPrefab.TechType, assetBundle.LoadAsset<Texture2D>("StellarThalassaceanEgg_Icon"), 2f);
@@ -78,28 +78,6 @@ namespace DeExtinctionMod
 
             jasperEgg = new JasperThalassaceanEggPrefab("JasperThalassaceanEgg", "Jasper Thalassacean Egg", "Jasper Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanEggPrefab"), jasperThalassaceanPrefab.TechType, assetBundle.LoadAsset<Texture2D>("JasperThalassaceanEgg_Icon"), 2f);
             jasperEgg.Patch();
-
-
-            WorldEntityInfo bloomInfo = new WorldEntityInfo()
-            {
-                cellLevel = LargeWorldEntity.CellLevel.Medium,
-                classId = "bloom",
-                slotType = EntitySlot.Type.Creature,
-                techType = TechType.Bloom
-            };
-            WorldEntityDatabaseHandler.AddCustomInfo("bloom", bloomInfo);
-            LootDistributionHandler.AddLootDistributionData("bloom", new LootDistributionData.SrcData()
-            {
-                distribution = new List<LootDistributionData.BiomeData>()
-                {
-                    new LootDistributionData.BiomeData()
-                    {
-                        biome = BiomeType.DeepGrandReef_Ceiling,
-                        count = 1,
-                        probability = 1f
-                    }
-                }
-            }, bloomInfo);
 
             modAudio = new ModAudio();
             modAudio.Init();

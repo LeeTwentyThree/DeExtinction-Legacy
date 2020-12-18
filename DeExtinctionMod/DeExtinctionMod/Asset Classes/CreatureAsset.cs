@@ -54,7 +54,7 @@ namespace DeExtinctionMod.AssetClasses
         {
 
         }
-        public MeleeAttack_New AddMeleeAttack<CreatureType>(GameObject mouth, float biteInterval, float damage, string biteSoundPrefix, float consumeWholeHealthThreshold, bool regurgitateLater, CreatureComponents<CreatureType> components) where CreatureType: Creature
+        public MeleeAttack_New AddMeleeAttack<CreatureType>(GameObject mouth, float biteInterval, float damage, string biteSoundPrefix, float consumeWholeHealthThreshold, bool regurgitateLater, CreatureComponents<CreatureType> components) where CreatureType : Creature
         {
             OnTouch onTouch = mouth.EnsureComponent<OnTouch>();
             onTouch.gameObject.EnsureComponent<Rigidbody>().isKinematic = true;
@@ -167,7 +167,7 @@ namespace DeExtinctionMod.AssetClasses
             components.lastTarget.roar = roar;
             if (EnableAggression)
             {
-                if(AggressivenessToSmallVehicles.Aggression > 0f)
+                if (AggressivenessToSmallVehicles.Aggression > 0f)
                 {
                     AggressiveToPilotingVehicle atpv = prefab.AddComponent<AggressiveToPilotingVehicle>();
                     atpv.aggressionPerSecond = AggressivenessToSmallVehicles.Aggression;
@@ -175,7 +175,7 @@ namespace DeExtinctionMod.AssetClasses
                     atpv.creature = components.creature;
                     atpv.lastTarget = components.lastTarget;
                 }
-                if(AttackSettings.EvaluatePriority > 0f)
+                if (AttackSettings.EvaluatePriority > 0f)
                 {
                     AttackLastTarget actionAtkLastTarget = prefab.AddComponent<AttackLastTarget>();
                     actionAtkLastTarget.evaluatePriority = AttackSettings.EvaluatePriority;
@@ -219,6 +219,7 @@ namespace DeExtinctionMod.AssetClasses
             base.Patch();
             WaterParkCreature.waterParkCreatureParameters.Add(TechType, WaterParkParameters);
             BioReactorHandler.SetBioReactorCharge(TechType, BioReactorCharge);
+            Helpers.PatchBehaviorType(TechType, BehaviourType);
             if (AcidImmune)
             {
                 DamageSystem.acidImmune.AddItem(TechType);
@@ -245,9 +246,9 @@ namespace DeExtinctionMod.AssetClasses
             }
             PostPatch();
         }
-        protected void CreateTrail<CreatureType>(GameObject trailParent, CreatureComponents<CreatureType> components, float segmentSnapSpeed, float maxSegmentOffset = -1f) where CreatureType : Creature
+        protected void CreateTrail<CreatureType>(GameObject trailParent, CreatureComponents<CreatureType> components, float segmentSnapSpeed, float maxSegmentOffset = -1f, float multiplier = 1f) where CreatureType : Creature
         {
-            TrailManager_New trail = trailParent.AddComponent<TrailManager_New>();
+            TrailManager trail = trailParent.AddComponent<TrailManager>();
             trail.trails = trailParent.transform.GetChild(0).GetComponentsInChildren<Transform>();
             trail.rootTransform = prefab.transform;
             trail.rootSegment = trail.transform;
@@ -255,14 +256,14 @@ namespace DeExtinctionMod.AssetClasses
             trail.segmentSnapSpeed = segmentSnapSpeed;
             trail.maxSegmentOffset = maxSegmentOffset;
             trail.allowDisableOnScreen = false;
-            AnimationCurve decreasing = new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.25f), new Keyframe(1f, 0.75f) });
+            AnimationCurve decreasing = new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.25f * multiplier), new Keyframe(1f, 0.75f * multiplier) });
             trail.pitchMultiplier = decreasing;
             trail.rollMultiplier = decreasing;
             trail.yawMultiplier = decreasing;
         }
         protected void CreateTrail<CreatureType>(GameObject trailRoot, Transform[] trails, CreatureComponents<CreatureType> components, float segmentSnapSpeed, float maxSegmentOffset = -1f) where CreatureType : Creature
         {
-            TrailManager_New trail = trailRoot.AddComponent<TrailManager_New>();
+            TrailManager trail = trailRoot.AddComponent<TrailManager>();
             trail.trails = trails;
             trail.rootTransform = prefab.transform;
             trail.rootSegment = trail.transform;
@@ -282,6 +283,10 @@ namespace DeExtinctionMod.AssetClasses
             {
                 return false;
             }
+        }
+        public abstract BehaviourType BehaviourType
+        {
+            get;
         }
         public abstract LargeWorldEntity.CellLevel CellLevel
         {
