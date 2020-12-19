@@ -50,7 +50,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float TurnSpeed => 0.2f;
 
-        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(100f, 0f, 100f), 15f, 4f, 0.5f);
+        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(50f, 0f, 50f), 10f, 3f, 0.5f);
 
         public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(1f, 75f);
 
