@@ -33,7 +33,8 @@ namespace DeExtinctionMod.AssetClasses
 
         protected void SetupPrefab<CreatureType>(out CreatureComponents<CreatureType> creatureComponents) where CreatureType : Creature
         {
-            prefab = model;
+            prefab = GameObject.Instantiate(model);
+            prefab.SetActive(false);
             creatureActions = new List<CreatureAction>();
             creatureComponents = SetupNecessaryComponents<CreatureType>();
             Helpers.ApplySNShaders(prefab);
@@ -97,7 +98,7 @@ namespace DeExtinctionMod.AssetClasses
             components.entityTag.slotType = EntitySlot.Type.Creature;
 
             components.skyApplier = prefab.AddComponent<SkyApplier>();
-            components.skyApplier.renderers = prefab.GetComponentsInChildren<Renderer>();
+            components.skyApplier.renderers = prefab.GetComponentsInChildren<Renderer>(true);
 
             components.ecoTarget = prefab.AddComponent<EcoTarget>();
             components.ecoTarget.type = EcoTargetType;
@@ -211,6 +212,14 @@ namespace DeExtinctionMod.AssetClasses
                 components.infectedMixin = prefab.AddComponent<InfectedMixin>();
                 components.infectedMixin.renderers = prefab.GetComponentsInChildren<Renderer>();
             }
+            if (Pickupable)
+            {
+                components.pickupable = prefab.EnsureComponent<Pickupable>();
+            }
+            if (EatableSettings.CanBeEaten)
+            {
+                EatableSettings.MakeItemEatable(prefab);
+            }
 
             return components;
         }
@@ -276,7 +285,20 @@ namespace DeExtinctionMod.AssetClasses
             trail.rollMultiplier = decreasing;
             trail.yawMultiplier = decreasing;
         }
-
+        public virtual EatableData EatableSettings
+        {
+            get
+            {
+                return new EatableData();
+            }
+        }
+        public virtual bool Pickupable
+        {
+            get
+            {
+                return false;
+            }
+        }
         public virtual bool AcidImmune
         {
             get
@@ -588,6 +610,7 @@ namespace DeExtinctionMod.AssetClasses
             public SplineFollowing splineFollowing;
             public SwimRandom swimRandom;
             public InfectedMixin infectedMixin;
+            public Pickupable pickupable;
         }
         public struct ScannableCreatureData
         {

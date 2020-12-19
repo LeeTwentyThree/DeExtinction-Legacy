@@ -95,8 +95,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Asset Classes\CreatureAsset.cs" />
-    <Compile Include="Asset Classes\CreatureEggAsset.cs" />
+    <Compile Include="AssetClasses\CommonStructs.cs" />
+    <Compile Include="AssetClasses\CreatureAsset.cs" />
+    <Compile Include="AssetClasses\CreatureEggAsset.cs" />
+    <Compile Include="AssetClasses\EatableAsset.cs" />
     <Compile Include="Helpers.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="Mono\Gargantuan\TrackLastTarget.cs" />
