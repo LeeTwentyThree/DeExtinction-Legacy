@@ -60,10 +60,6 @@ namespace DeExtinctionMod
             swim.turnSpeed = turnSpeed;
             return swim;
         }
-        public static void CreateClipPool()
-        {
-
-        }
         public static BehaviourLOD EssentialComponent_BehaviourLOD(GameObject prefab, float near, float medium, float far)
         {
             BehaviourLOD bLod = prefab.AddComponent<BehaviourLOD>();
@@ -111,15 +107,15 @@ namespace DeExtinctionMod
         {
             GetPrivateStaticField<Dictionary<TechType, BehaviourType>>(typeof(BehaviourData), "behaviourTypeList").Add(techType, behaviourType);
         }
-        public static AggressiveWhenSeeTarget MakeAggressiveTo(GameObject obj, float maxRange, EcoTargetType ecoTarget, float hungerThreshold, float aggressionSpeed)
+        public static AggressiveWhenSeeTarget MakeAggressiveTo(GameObject creature, float maxRange, EcoTargetType ecoTarget, float hungerThreshold, float aggressionSpeed)
         {
-            AggressiveWhenSeeTarget aggressiveWhenSeeTarget = obj.AddComponent<AggressiveWhenSeeTarget>();
+            AggressiveWhenSeeTarget aggressiveWhenSeeTarget = creature.AddComponent<AggressiveWhenSeeTarget>();
             aggressiveWhenSeeTarget.maxRangeMultiplier = Helpers.Curve_Flat();
             aggressiveWhenSeeTarget.distanceAggressionMultiplier = Helpers.Curve_Flat();
             aggressiveWhenSeeTarget.maxRangeScalar = maxRange;
             aggressiveWhenSeeTarget.maxSearchRings = 3;
-            aggressiveWhenSeeTarget.lastScarePosition = obj.GetComponent<LastScarePosition>();
-            aggressiveWhenSeeTarget.lastTarget = obj.GetComponent<LastTarget>();
+            aggressiveWhenSeeTarget.lastScarePosition = creature.GetComponent<LastScarePosition>();
+            aggressiveWhenSeeTarget.lastTarget = creature.GetComponent<LastTarget>();
             aggressiveWhenSeeTarget.targetType = ecoTarget;
             aggressiveWhenSeeTarget.hungerThreshold = hungerThreshold;
             aggressiveWhenSeeTarget.aggressionPerSecond = aggressionSpeed;
