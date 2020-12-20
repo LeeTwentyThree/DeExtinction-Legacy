@@ -99,15 +99,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mod.cs" />
-    <Compile Include="Mono\Gargantuan\TrackLastTarget.cs" />
     <Compile Include="Mono\GrandGlider.cs" />
-    <Compile Include="Mono\DiveAction.cs" />
-    <Compile Include="Mono\Gargantuan\GargantuanLeviathan.cs" />
-    <Compile Include="Mono\Gargantuan\Photosynthesize.cs" />
     <Compile Include="Mono\PassBelowPlayerAction.cs" />
     <Compile Include="Mono\Thalassacean.cs" />
     <Compile Include="Mono\VaryingSwimSpeeds.cs" />
-    <Compile Include="Mono\VoidTerrainGenerator.cs" />
     <Compile Include="Patches.cs" />
     <Compile Include="Prefabs\Creatures\ClownPincherPrefab.cs" />
     <Compile Include="Prefabs\Creatures\ClownPincherRuby.cs" />
@@ -115,7 +110,6 @@
     <Compile Include="Prefabs\Eggs\JasperThalassaceanEggPrefab.cs" />
     <Compile Include="Prefabs\Eggs\GrandGliderEggPrefab.cs" />
     <Compile Include="Prefabs\Eggs\StellarThalassaceanEggPrefab.cs" />
-    <Compile Include="Prefabs\Creatures\GargantuanLeviathanPrefab.cs" />
     <Compile Include="Prefabs\Creatures\JasperThalassaceanPrefab.cs" />
     <Compile Include="Prefabs\Creatures\StellarThalassaceanPrefab.cs" />
     <Compile Include="Prefabs\Creatures\ThalassaceanPrefab.cs" />

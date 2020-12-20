@@ -25,7 +25,6 @@ namespace DeExtinctionMod
     {
         public static AssetBundle assetBundle;
 
-        public static GargantuanLeviathanPrefab gargantuanLeviathan;
         public static StellarThalassaceanPrefab stellarThalassacean;
         public static JasperThalassaceanPrefab jasperThalassacean;
         public static GrandGliderPrefab grandGlider;
@@ -35,39 +34,13 @@ namespace DeExtinctionMod
         public static JasperThalassaceanEggPrefab jasperEgg;
         public static GrandGliderEggPrefab grandGliderEgg;
 
-        public static ModAudio modAudio;
-
-        public static string ModFolderPath
-        {
-            get
-            {
-                return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            }
-        }
-        public static string AssetsPath
-        {
-            get
-            {
-                return Path.Combine(ModFolderPath, "Assets");
-            }
-        }
-        public static string AssetBundlePath
-        {
-            get
-            {
-                return Path.Combine(AssetsPath, "deextinctionassets");
-            }
-        }
-
         [QModPatch]
         public static void Patch()
         {
-            LoadAssetBundle();
+            assetBundle = ECCHelpers.LoadAssetBundleFromAssetsFolder(Assembly.GetExecutingAssembly(), "deextinctionassets");
+            ECCAudio.RegisterClips(assetBundle);
 
             #region Creatures
-
-            gargantuanLeviathan = new GargantuanLeviathanPrefab("GargantuanLeviathan", "Gargantuan Leviathan", "An ancient creature thought to be extinct", assetBundle.LoadAsset<GameObject>("GargantuanPrefab"), null);
-            gargantuanLeviathan.Patch();
 
             stellarThalassacean = new StellarThalassaceanPrefab("StellarThalassacean", "Stellar Thalassacean", "Large filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Stellar_Item"));
             stellarThalassacean.Patch();
@@ -98,22 +71,8 @@ namespace DeExtinctionMod
 
             #endregion
 
-            modAudio = new ModAudio();
-            modAudio.Init(assetBundle);
-
             Harmony harmony = new Harmony("Lee23.DeExtinctionMod");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
-
-        static void LoadAssetBundle()
-        {
-            assetBundle = AssetBundle.LoadFromFile(AssetBundlePath);
-        }
-    }
-
-    public class CreatureModReferences
-    {
-        public ModAudio modAudio;
-        public AssetBundle assetBundle;
     }
 }
