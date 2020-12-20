@@ -64,7 +64,7 @@ namespace DeExtinctionMod.AssetClasses
         {
 
         }
-        public MeleeAttack_New AddMeleeAttack<CreatureType>(GameObject mouth, float biteInterval, float damage, string biteSoundPrefix, float consumeWholeHealthThreshold, bool regurgitateLater, CreatureComponents<CreatureType> components) where CreatureType : Creature
+        public MeleeAttack_New AddMeleeAttack<CreatureType>(GameObject mouth, float biteInterval, float damage, string biteSoundPrefix, float consumeWholeHealthThreshold, bool regurgitateLater, CreatureComponents<CreatureType> components, ModAudio modAudio) where CreatureType : Creature
         {
             OnTouch onTouch = mouth.EnsureComponent<OnTouch>();
             onTouch.gameObject.EnsureComponent<Rigidbody>().isKinematic = true;
@@ -84,6 +84,7 @@ namespace DeExtinctionMod.AssetClasses
             meleeAttack.biteSoundPrefix = biteSoundPrefix;
             meleeAttack.consumeWholeHealthThreshold = consumeWholeHealthThreshold;
             meleeAttack.regurgitate = regurgitateLater;
+            meleeAttack.modAudio = modAudio;
             return meleeAttack;
         }
         /// <summary>
@@ -166,6 +167,7 @@ namespace DeExtinctionMod.AssetClasses
                 roar.clipPrefix = RoarAbilitySettings.AudioClipPrefix;
                 roar.createCurrent = RoarAbilitySettings.CreateCurrentOnRoar;
                 roar.currentStrength = RoarAbilitySettings.CurrentStrength;
+                roar.modAudio = RoarAbilitySettings.ModAudio;
 
                 if (RoarAbilitySettings.RoarActionPriority > 0f)
                 {
@@ -258,26 +260,7 @@ namespace DeExtinctionMod.AssetClasses
             {
                 DamageSystem.acidImmune.AddItem(TechType);
             }
-            if (ScannableSettings.scannable)
-            {
-                PDAEncyclopediaHandler.AddCustomEntry(new PDAEncyclopedia.EntryData()
-                {
-                    key = ClassID,
-                    nodes = ScannableSettings.encyNodes,
-                    path = ScannableSettings.encyPath,
-                    image = ScannableSettings.encyImage,
-                    popup = ScannableSettings.popup
-                });
-                PDAHandler.AddCustomScannerEntry(new PDAScanner.EntryData()
-                {
-                    key = TechType,
-                    encyclopedia = ClassID,
-                    scanTime = ScannableSettings.scanTime,
-                    isFragment = false
-                });
-                LanguageHandler.SetLanguageLine("Ency_" + ClassID, GetEncyTitle);
-                LanguageHandler.SetLanguageLine("EncyDesc_" + ClassID, GetEncyDesc);
-            }
+            ScannableSettings.AttemptPatch(this, GetEncyTitle, GetEncyDesc);
             PostPatch();
         }
         protected void CreateTrail<CreatureType>(GameObject trailParent, CreatureComponents<CreatureType> components, float segmentSnapSpeed, float maxSegmentOffset = -1f, float multiplier = 1f) where CreatureType : Creature
@@ -314,6 +297,7 @@ namespace DeExtinctionMod.AssetClasses
             method.Invoke(trail, new object[] { });
             trailRoot.gameObject.SetActive(true);
         }
+
         public virtual EatableData EatableSettings
         {
             get
@@ -352,6 +336,7 @@ namespace DeExtinctionMod.AssetClasses
             }
         }
 
+        #region Ency
         public virtual string GetEncyTitle
         {
             get
@@ -360,19 +345,28 @@ namespace DeExtinctionMod.AssetClasses
             }
         }
 
-        public virtual bool CanBeInfected
-        {
-            get
-            {
-                return true;
-            }
-        }
-
         public virtual string GetEncyDesc
         {
             get
             {
                 return "no description";
+            }
+        }
+
+        public virtual ScannableItemData ScannableSettings
+        {
+            get
+            {
+                return new ScannableItemData();
+            }
+        }
+        #endregion Ency
+
+        public virtual bool CanBeInfected
+        {
+            get
+            {
+                return true;
             }
         }
 
@@ -490,14 +484,6 @@ namespace DeExtinctionMod.AssetClasses
             }
         }
 
-        public virtual ScannableCreatureData ScannableSettings
-        {
-            get
-            {
-                return new ScannableCreatureData();
-            }
-        }
-
         public virtual AvoidObstaclesData AvoidObstaclesSettings
         {
             get
@@ -591,19 +577,24 @@ namespace DeExtinctionMod.AssetClasses
             /// </summary>
             public string AudioClipPrefix;
             public string AnimationName;
+            /// <summary>
+            /// The name of the Animator trigger parameter.
+            /// </summary>
+            public ModAudio ModAudio;
             public float MinTimeBetweenRoars;
             public float MaxTimeBetweenRoars;
             public float RoarActionPriority;
             public bool CreateCurrentOnRoar;
             public float CurrentStrength;
 
-            public RoarAbilityData(bool canRoar, float roarSoundFalloffStart, float roarSoundMaxDistance, string audioClipPrefix, string animationName, float roarActionPriority = 0.5f, float minTimeBetweenRoars = 4f, float maxTimeBetweenRoars = 8f)
+            public RoarAbilityData(bool canRoar, float roarSoundFalloffStart, float roarSoundMaxDistance, string audioClipPrefix, string animationName, ModAudio modAudio, float roarActionPriority = 0.5f, float minTimeBetweenRoars = 4f, float maxTimeBetweenRoars = 8f)
             {
                 CanRoar = canRoar;
                 MinRoarDistance = roarSoundFalloffStart;
                 MaxRoarDistance = roarSoundMaxDistance;
                 AudioClipPrefix = audioClipPrefix;
                 AnimationName = animationName;
+                ModAudio = modAudio;
                 MinTimeBetweenRoars = minTimeBetweenRoars;
                 MaxTimeBetweenRoars = maxTimeBetweenRoars;
                 RoarActionPriority = roarActionPriority;
@@ -611,13 +602,14 @@ namespace DeExtinctionMod.AssetClasses
                 CurrentStrength = 0f;
             }
 
-            public RoarAbilityData(bool canRoar, float roarSoundFalloffStart, float roarSoundMaxDistance, string audioClipPrefix, string animationName, bool createCurrent, float currentStrength, float roarActionPriority = 0.5f, float minTimeBetweenRoars = 4f, float maxTimeBetweenRoars = 8f)
+            public RoarAbilityData(bool canRoar, float roarSoundFalloffStart, float roarSoundMaxDistance, string audioClipPrefix, string animationName, ModAudio modAudio, bool createCurrent, float currentStrength, float roarActionPriority = 0.5f, float minTimeBetweenRoars = 4f, float maxTimeBetweenRoars = 8f)
             {
                 CanRoar = canRoar;
                 MinRoarDistance = roarSoundFalloffStart;
                 MaxRoarDistance = roarSoundMaxDistance;
                 AudioClipPrefix = audioClipPrefix;
                 AnimationName = animationName;
+                ModAudio = modAudio;
                 MinTimeBetweenRoars = minTimeBetweenRoars;
                 MaxTimeBetweenRoars = maxTimeBetweenRoars;
                 RoarActionPriority = roarActionPriority;
@@ -666,25 +658,6 @@ namespace DeExtinctionMod.AssetClasses
             public SwimRandom swimRandom;
             public InfectedMixin infectedMixin;
             public Pickupable pickupable;
-        }
-        public struct ScannableCreatureData
-        {
-            public bool scannable;
-            public float scanTime;
-            public string encyPath;
-            public string[] encyNodes;
-            public Sprite popup;
-            public Texture2D encyImage;
-
-            public ScannableCreatureData(bool scannable, float scanTime, string encyPath, string[] encyNodes, Sprite popup, Texture2D encyImage)
-            {
-                this.scannable = scannable;
-                this.scanTime = scanTime;
-                this.encyPath = encyPath;
-                this.encyNodes = encyNodes;
-                this.popup = popup;
-                this.encyImage = encyImage;
-            }
         }
         public struct SwimInSchoolData
         {

@@ -1,4 +1,5 @@
-﻿using DeExtinctionMod.Mono;
+﻿using DeExtinctionMod.AssetClasses;
+using DeExtinctionMod.Mono;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyDesc => "A large, docile filter feeder, nearly reaching leviathan class sizes. Creature inhabits an expansive cave system.\n\n1. Diet:\nFeeds on small planktonic organisms within the water column. Digestive system analysis shows the presence of brine matching in composition of that found in the surrounding cave system. The Jasper Thalassacean likely swallows this substance to aid in the digestion of more resilient plankton.\n\n2. Coloration:\nCreature has evolved a green and grey coloration, seemingly to help camouflage with surrounding flora and cavern walls.\n\nAssessment: Filter feeding organism commonly predated by other large creatures.";
 
-        public override ScannableCreatureData ScannableSettings => new ScannableCreatureData(true, 5f, "Lifeforms/Fauna/Carnivores", new string[] { "Lifeforms", "Fauna", "Carnivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Jasper_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Jasper_Ency"));
+        public override ScannableItemData ScannableSettings => new ScannableItemData(true, 5f, "Lifeforms/Fauna/Carnivores", new string[] { "Lifeforms", "Fauna", "Carnivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Jasper_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Jasper_Ency"));
 
         public JasperThalassaceanPrefab(string classId, string friendlyName, string description, GameObject model, Texture2D spriteTexture) : base(classId, friendlyName, description, model, spriteTexture)
         {

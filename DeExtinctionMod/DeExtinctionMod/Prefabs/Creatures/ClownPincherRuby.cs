@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using DeExtinctionMod.AssetClasses;
 
 namespace DeExtinctionMod.Prefabs.Creatures
 {
@@ -14,7 +15,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         }
 
-        public override ScannableCreatureData ScannableSettings => new ScannableCreatureData(true, 2f, "Lifeforms/Fauna/SmallHerbivores", new string[] { "Lifeforms", "Fauna", "SmallHerbivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Stellar_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Stellar_Ency"));
+        public override ScannableItemData ScannableSettings => new ScannableItemData(true, 2f, "Lifeforms/Fauna/SmallHerbivores", new string[] { "Lifeforms", "Fauna", "SmallHerbivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Stellar_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Stellar_Ency"));
 
         public override string GetEncyTitle => "Ruby Clown Pincher";
 

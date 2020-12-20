@@ -46,7 +46,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override bool EnableAggression => true;
 
-        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 60f, 800f, "GargantuanRoar", "roar", true, 50f, 0f);
+        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 60f, 800f, "GargantuanRoar", "roar", QPatch.modAudio, true, 50f, 0f);
 
         public override float TurnSpeed => 0.2f;
 
@@ -58,7 +58,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(1f, false, 25f);
 
-        public override ScannableCreatureData ScannableSettings => new ScannableCreatureData(true, 8f, "Lifeforms/Fauna/Leviathans", new string[] { "Lifeforms", "Fauna", "Leviathans" }, null, null);
+        public override ScannableItemData ScannableSettings => new ScannableItemData(true, 8f, "Lifeforms/Fauna/Leviathans", new string[] { "Lifeforms", "Fauna", "Leviathans" }, null, null);
 
         public override BehaviourType BehaviourType => BehaviourType.Leviathan;
 
@@ -68,12 +68,6 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override List<LootDistributionData.BiomeData> BiomesToSpawnIn => new List<LootDistributionData.BiomeData>()
         {
-            new LootDistributionData.BiomeData()
-            {
-                biome = BiomeType.KooshZone_OpenShallow_CreatureOnly,
-                count = 1,
-                probability = 0.001f
-            },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.Dunes_OpenShallow_CreatureOnly,
@@ -112,7 +106,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 prefab.SearchChild("Eye6").AddComponent<TrackLastTarget>().lastTarget = components.lastTarget;
 
                 GameObject mouth = prefab.SearchChild("Mouth");
-                AddMeleeAttack(mouth, 2.5f, 150f, "GargantuanBite", 800f, false, components);
+                AddMeleeAttack(mouth, 2.5f, 150f, "GargantuanBite", 800f, false, components, QPatch.modAudio);
 
                 #region CreatureActions
 

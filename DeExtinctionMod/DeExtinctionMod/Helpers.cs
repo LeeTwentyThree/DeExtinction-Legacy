@@ -13,7 +13,7 @@ namespace DeExtinctionMod
     {
         public static void ApplySNShaders(GameObject prefab)
         {
-            var renderers = prefab.GetComponentsInChildren<Renderer>();
+            var renderers = prefab.GetComponentsInChildren<Renderer>(true);
             var newShader = Shader.Find("MarmosetUBER");
             for (int i = 0; i < renderers.Length; i++)
             {
@@ -27,7 +27,7 @@ namespace DeExtinctionMod
                     {
                         material.SetTexture("_SpecTex", specularTexture);
                         material.SetFloat("_SpecInt", 2f);
-                        material.SetFloat("_Shininess", material.GetFloat("_Glossiness") * 2f);
+                        material.SetFloat("_Shininess", material.GetFloat("_Glossiness") * 5f);
                         material.EnableKeyword("MARMO_SPECMAP");
                         material.SetColor("_SpecColor", new Color(0.796875f, 0.796875f, 0.796875f, 0.796875f));
                         material.SetFloat("_Fresnel", 0f);
@@ -59,6 +59,10 @@ namespace DeExtinctionMod
             swim.splineFollowing = splineFollow;
             swim.turnSpeed = turnSpeed;
             return swim;
+        }
+        public static void CreateClipPool()
+        {
+
         }
         public static BehaviourLOD EssentialComponent_BehaviourLOD(GameObject prefab, float near, float medium, float far)
         {

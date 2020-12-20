@@ -25,14 +25,15 @@ namespace DeExtinctionMod
     {
         public static AssetBundle assetBundle;
 
-        public static GargantuanLeviathanPrefab gargantuanPrefab;
-        public static StellarThalassaceanPrefab stellarThalassaceanPrefab;
-        public static JasperThalassaceanPrefab jasperThalassaceanPrefab;
-        public static GrandGliderPrefab grandGliderPrefab;
+        public static GargantuanLeviathanPrefab gargantuanLeviathan;
+        public static StellarThalassaceanPrefab stellarThalassacean;
+        public static JasperThalassaceanPrefab jasperThalassacean;
+        public static GrandGliderPrefab grandGlider;
         public static ClownPincherRuby rubyClownPincher;
 
         public static StellarThalassaceanEggPrefab stellarEgg;
         public static JasperThalassaceanEggPrefab jasperEgg;
+        public static GrandGliderEggPrefab grandGliderEgg;
 
         public static ModAudio modAudio;
 
@@ -65,35 +66,40 @@ namespace DeExtinctionMod
 
             #region Creatures
 
-            gargantuanPrefab = new GargantuanLeviathanPrefab("GargantuanLeviathan", "Gargantuan Leviathan", "An ancient creature thought to be extinct", assetBundle.LoadAsset<GameObject>("GargantuanPrefab"), null);
-            gargantuanPrefab.Patch();
+            gargantuanLeviathan = new GargantuanLeviathanPrefab("GargantuanLeviathan", "Gargantuan Leviathan", "An ancient creature thought to be extinct", assetBundle.LoadAsset<GameObject>("GargantuanPrefab"), null);
+            gargantuanLeviathan.Patch();
 
-            stellarThalassaceanPrefab = new StellarThalassaceanPrefab("StellarThalassacean", "Stellar Thalassacean", "Large filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Stellar_Item"));
-            stellarThalassaceanPrefab.Patch();
+            stellarThalassacean = new StellarThalassaceanPrefab("StellarThalassacean", "Stellar Thalassacean", "Large filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Stellar_Item"));
+            stellarThalassacean.Patch();
 
-            jasperThalassaceanPrefab = new JasperThalassaceanPrefab("JasperThalassacean", "Jasper Thalassacean", "Large cave-dwelling filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
-            jasperThalassaceanPrefab.Patch();
+            jasperThalassacean = new JasperThalassaceanPrefab("JasperThalassacean", "Jasper Thalassacean", "Large cave-dwelling filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
+            jasperThalassacean.Patch();
 
-            grandGliderPrefab = new GrandGliderPrefab("GrandGlider", "Grand Glider", "Medium sized prey animal, raised in containment.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("GrandGlider_Item"));
-            grandGliderPrefab.Patch();
+            grandGlider = new GrandGliderPrefab("GrandGlider", "Grand Glider", "Medium sized prey animal, raised in containment.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("GrandGlider_Item"));
+            grandGlider.Patch();
 
-            /*rubyClownPincher = new ClownPincherRuby("RubyClownPincher", "Ruby Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
-            rubyClownPincher.Patch();*/
+            rubyClownPincher = new ClownPincherRuby("RubyClownPincher", "Ruby Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
+            rubyClownPincher.Patch();
 
             #endregion
 
             #region Eggs
 
-            stellarEgg = new StellarThalassaceanEggPrefab("StellarThalassaceanEgg", "Stellar Thalassacean Egg", "Stellar Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanEggPrefab"), stellarThalassaceanPrefab.TechType, assetBundle.LoadAsset<Texture2D>("StellarThalassaceanEgg_Icon"), 2f);
+            LanguageHandler.SetLanguageLine("EncyPath_Lifeforms/Fauna/Eggs", "Creature Eggs");
+
+            stellarEgg = new StellarThalassaceanEggPrefab("StellarThalassaceanEgg", "Stellar Thalassacean Egg", "Stellar Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanEggPrefab"), stellarThalassacean.TechType, assetBundle.LoadAsset<Texture2D>("StellarThalassaceanEgg_Icon"), 2f);
             stellarEgg.Patch();
 
-            jasperEgg = new JasperThalassaceanEggPrefab("JasperThalassaceanEgg", "Jasper Thalassacean Egg", "Jasper Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanEggPrefab"), jasperThalassaceanPrefab.TechType, assetBundle.LoadAsset<Texture2D>("JasperThalassaceanEgg_Icon"), 2f);
+            jasperEgg = new JasperThalassaceanEggPrefab("JasperThalassaceanEgg", "Jasper Thalassacean Egg", "Jasper Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanEggPrefab"), jasperThalassacean.TechType, assetBundle.LoadAsset<Texture2D>("JasperThalassaceanEgg_Icon"), 2f);
             jasperEgg.Patch();
+
+            grandGliderEgg = new GrandGliderEggPrefab("GrandGliderEgg", "Grand Glider Egg", "Grand Gliders hatch from these.", assetBundle.LoadAsset<GameObject>("GGEggPrefab"), grandGlider.TechType, assetBundle.LoadAsset<Texture2D>("GGEgg_Item"), 1f);
+            grandGliderEgg.Patch();
 
             #endregion
 
             modAudio = new ModAudio();
-            modAudio.Init();
+            modAudio.Init(assetBundle);
 
             Harmony harmony = new Harmony("Lee23.DeExtinctionMod");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
@@ -105,13 +111,9 @@ namespace DeExtinctionMod
         }
     }
 
-    public struct SaveData
+    public class CreatureModReferences
     {
-        public bool GargantuanHasSpawned;
-
-        public SaveData(bool gargantuanHasSpawned)
-        {
-            GargantuanHasSpawned = gargantuanHasSpawned;
-        }
+        public ModAudio modAudio;
+        public AssetBundle assetBundle;
     }
 }

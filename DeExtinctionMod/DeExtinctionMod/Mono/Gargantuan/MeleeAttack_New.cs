@@ -16,12 +16,13 @@ namespace DeExtinctionMod.Mono
         AudioSource source;
         public float consumeWholeHealthThreshold;
         public bool regurgitate;
+        public ModAudio modAudio;
 
         void Start()
         {
             onTouch.onTouch = new OnTouch.OnTouchEvent();
             onTouch.onTouch.AddListener(OnTouch);
-            clipPool = QPatch.modAudio.CreateClipPool(biteSoundPrefix);
+            clipPool = modAudio.CreateClipPool(biteSoundPrefix);
             source = gameObject.AddComponent<AudioSource>();
             source.maxDistance = 10f;
             source.spatialBlend = 1f;

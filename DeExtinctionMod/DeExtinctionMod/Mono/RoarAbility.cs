@@ -17,6 +17,7 @@ namespace DeExtinctionMod.Mono
         public string clipPrefix;
         public bool createCurrent;
         public float currentStrength;
+        public ModAudio modAudio;
 
         ModAudio.AudioClipPool clipPool;
 
@@ -27,7 +28,7 @@ namespace DeExtinctionMod.Mono
             source.maxDistance = maxRoarDistance;
             source.spatialBlend = 1f;
 
-            clipPool = QPatch.modAudio.CreateClipPool(clipPrefix);
+            clipPool = modAudio.CreateClipPool(clipPrefix);
 
             creature = GetComponent<Creature>();
         }

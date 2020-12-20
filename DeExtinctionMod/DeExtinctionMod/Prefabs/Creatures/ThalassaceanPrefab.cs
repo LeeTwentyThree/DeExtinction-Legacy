@@ -38,13 +38,13 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(1f, false, 5f);
 
-        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 2f, 10f, "ThalassaceanRoar", string.Empty, 0.51f, 20f, 35f);
+        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 2f, 10f, "ThalassaceanRoar", string.Empty, QPatch.modAudio, 0.51f, 20f, 35f);
 
         public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.8f), new Keyframe(1f, 1f) });
 
         public override BehaviourType BehaviourType => BehaviourType.Whale;
 
-        public override float BioReactorCharge => 600f;
+        public override float BioReactorCharge => 1600f;
 
         public override GameObject GetGameObject()
         {
@@ -64,7 +64,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 animateByVelocity.levelOfDetail = components.behaviourLOD;
                 animateByVelocity.rootGameObject = prefab;
 
-                AddMeleeAttack(prefab.SearchChild("Mouth"), 0.35f, 15f, "ThalassaceanBite", 35f, true, components);
+                AddMeleeAttack(prefab.SearchChild("Mouth"), 0.35f, 15f, "ThalassaceanBite", 35f, true, components, QPatch.modAudio);
                 CompletePrefab(components);
             }
             return prefab;

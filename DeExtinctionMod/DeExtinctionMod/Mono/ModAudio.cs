@@ -5,32 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace DeExtinctionMod.Mono
+namespace DeExtinctionMod
 {
     public class ModAudio
     {
         private AudioClip[] allClips;
-        public AudioClipPool roars;
 
-        public void Init()
+        public void Init(AssetBundle assetBundle)
         {
-            allClips = QPatch.assetBundle.LoadAllAssets<AudioClip>();
-            roars = CreateClipPool("Roar");
-        }
-
-        static AudioClip LoadSound(string soundName)
-        {
-            return QPatch.assetBundle.LoadAsset<AudioClip>(soundName);
-        }
-
-        private AudioClipPool CreateClipPool(string[] soundNames)
-        {
-            AudioClip[] clips = new AudioClip[soundNames.Length];
-            for(int i = 0; i < soundNames.Length; i++)
-            {
-                clips[i] = LoadSound(soundNames[i]);
-            }
-            return new AudioClipPool(clips);
+            allClips = assetBundle.LoadAllAssets<AudioClip>();
         }
 
         public AudioClipPool CreateClipPool(string startingLetters)
@@ -45,7 +28,6 @@ namespace DeExtinctionMod.Mono
             }
             return new AudioClipPool(clips.ToArray());
         }
-
 
         public class AudioClipPool
         {

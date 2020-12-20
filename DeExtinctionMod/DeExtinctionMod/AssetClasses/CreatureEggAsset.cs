@@ -54,6 +54,7 @@ namespace DeExtinctionMod.AssetClasses
             {
                 Helpers.MakeAcidImmune(TechType);
             }
+            ScannableSettings.AttemptPatch(this, GetEncyTitle, GetEncyDesc);
         }
 
         public override GameObject GetGameObject()
@@ -81,6 +82,7 @@ namespace DeExtinctionMod.AssetClasses
 
                 Rigidbody rb = prefab.EnsureComponent<Rigidbody>();
                 rb.mass = 10f;
+                rb.isKinematic = true;
 
                 WorldForces worldForces = prefab.EnsureComponent<WorldForces>();
                 worldForces.useRigidbody = rb;
@@ -116,6 +118,30 @@ namespace DeExtinctionMod.AssetClasses
             get
             {
                 return 20f;
+            }
+        }
+
+        public virtual string GetEncyTitle
+        {
+            get
+            {
+                return FriendlyName;
+            }
+        }
+
+        public virtual string GetEncyDesc
+        {
+            get
+            {
+                return string.Format("The egg of a {0}.", FriendlyName);
+            }
+        }
+
+        public virtual ScannableItemData ScannableSettings
+        {
+            get
+            {
+                return new ScannableItemData(true, 2f, "Lifeforms/Fauna/Eggs", new string[] { "Lifeforms", "Fauna", "Eggs" }, Sprite.Create(sprite.texture, new Rect(Vector2.zero, new Vector2(sprite.texture.width, sprite.texture.height)), new Vector2(0.5f, 0.5f)), null);
             }
         }
     }

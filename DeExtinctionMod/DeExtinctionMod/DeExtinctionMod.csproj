@@ -120,6 +120,7 @@
     <Compile Include="Prefabs\Creatures\ClownPincherRuby.cs" />
     <Compile Include="Prefabs\Creatures\GrandGliderPrefab.cs" />
     <Compile Include="Prefabs\Eggs\JasperThalassaceanEggPrefab.cs" />
+    <Compile Include="Prefabs\Eggs\GrandGliderEggPrefab.cs" />
     <Compile Include="Prefabs\Eggs\StellarThalassaceanEggPrefab.cs" />
     <Compile Include="Prefabs\Creatures\GargantuanLeviathanPrefab.cs" />
     <Compile Include="Prefabs\Creatures\JasperThalassaceanPrefab.cs" />
