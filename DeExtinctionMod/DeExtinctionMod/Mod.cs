@@ -29,6 +29,7 @@ namespace DeExtinctionMod
         public static StellarThalassaceanPrefab stellarThalassaceanPrefab;
         public static JasperThalassaceanPrefab jasperThalassaceanPrefab;
         public static GrandGliderPrefab grandGliderPrefab;
+        public static ClownPincherRuby rubyClownPincher;
 
         public static StellarThalassaceanEggPrefab stellarEgg;
         public static JasperThalassaceanEggPrefab jasperEgg;
@@ -61,6 +62,9 @@ namespace DeExtinctionMod
         public static void Patch()
         {
             LoadAssetBundle();
+
+            #region Creatures
+
             gargantuanPrefab = new GargantuanLeviathanPrefab("GargantuanLeviathan", "Gargantuan Leviathan", "An ancient creature thought to be extinct", assetBundle.LoadAsset<GameObject>("GargantuanPrefab"), null);
             gargantuanPrefab.Patch();
 
@@ -70,14 +74,23 @@ namespace DeExtinctionMod
             jasperThalassaceanPrefab = new JasperThalassaceanPrefab("JasperThalassacean", "Jasper Thalassacean", "Large cave-dwelling filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
             jasperThalassaceanPrefab.Patch();
 
-            grandGliderPrefab = new GrandGliderPrefab("GrandGlider", "Grand Glider", "Medium sized prey animal, raised in containment.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
+            grandGliderPrefab = new GrandGliderPrefab("GrandGlider", "Grand Glider", "Medium sized prey animal, raised in containment.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("GrandGlider_Item"));
             grandGliderPrefab.Patch();
+
+            /*rubyClownPincher = new ClownPincherRuby("RubyClownPincher", "Ruby Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
+            rubyClownPincher.Patch();*/
+
+            #endregion
+
+            #region Eggs
 
             stellarEgg = new StellarThalassaceanEggPrefab("StellarThalassaceanEgg", "Stellar Thalassacean Egg", "Stellar Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanEggPrefab"), stellarThalassaceanPrefab.TechType, assetBundle.LoadAsset<Texture2D>("StellarThalassaceanEgg_Icon"), 2f);
             stellarEgg.Patch();
 
             jasperEgg = new JasperThalassaceanEggPrefab("JasperThalassaceanEgg", "Jasper Thalassacean Egg", "Jasper Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanEggPrefab"), jasperThalassaceanPrefab.TechType, assetBundle.LoadAsset<Texture2D>("JasperThalassaceanEgg_Icon"), 2f);
             jasperEgg.Patch();
+
+            #endregion
 
             modAudio = new ModAudio();
             modAudio.Init();

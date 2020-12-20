@@ -15,6 +15,8 @@ namespace DeExtinctionMod.Mono
         public float maxRoarDistance = 50f;
         public string animationName;
         public string clipPrefix;
+        public bool createCurrent;
+        public float currentStrength;
 
         ModAudio.AudioClipPool clipPool;
 
@@ -35,6 +37,10 @@ namespace DeExtinctionMod.Mono
             creature.GetAnimator().SetTrigger(animationName);
             AudioClip clip = clipPool.GetRandomClip();
             source.PlayOneShot(clip);
+            if (createCurrent)
+            {
+                WorldForces.AddCurrent(source.transform.position, DayNightCycle.main.timePassed, 40f, transform.forward, currentStrength, 5f);
+            }
         }
     }
 }

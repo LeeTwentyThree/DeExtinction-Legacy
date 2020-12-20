@@ -11,6 +11,7 @@ using UnityEngine;
 using System.Reflection;
 using UnityEngine.UI;
 using HarmonyLib;
+using UWE;
 
 namespace DeExtinctionMod.AssetClasses
 {
@@ -51,6 +52,14 @@ namespace DeExtinctionMod.AssetClasses
         {
             return sprite;
         }
+        public override WorldEntityInfo EntityInfo => new WorldEntityInfo()
+        {
+            cellLevel = CellLevel,
+            classId = ClassID,
+            slotType = EntitySlot.Type.Creature,
+            techType = TechType,
+            localScale = Vector3.one
+        };
         protected virtual void PostPatch()
         {
 
@@ -155,6 +164,9 @@ namespace DeExtinctionMod.AssetClasses
                 roar.maxRoarDistance = RoarAbilitySettings.MaxRoarDistance;
                 roar.animationName = RoarAbilitySettings.AnimationName;
                 roar.clipPrefix = RoarAbilitySettings.AudioClipPrefix;
+                roar.createCurrent = RoarAbilitySettings.CreateCurrentOnRoar;
+                roar.currentStrength = RoarAbilitySettings.CurrentStrength;
+
                 if (RoarAbilitySettings.RoarActionPriority > 0f)
                 {
                     RoarRandomAction roarAction = prefab.AddComponent<RoarRandomAction>();
@@ -220,6 +232,19 @@ namespace DeExtinctionMod.AssetClasses
             {
                 EatableSettings.MakeItemEatable(prefab);
             }
+            if(SwimInSchoolSettings.EvaluatePriority > 0f)
+            {
+                SwimInSchool swimInSchool = prefab.AddComponent<SwimInSchool>();
+                swimInSchool.priorityMultiplier = Helpers.Curve_Flat();
+                swimInSchool.evaluatePriority = SwimInSchoolSettings.EvaluatePriority;
+                swimInSchool.swimInterval = SwimInSchoolSettings.SwimInterval;
+                swimInSchool.swimVelocity = SwimInSchoolSettings.SwimVelocity;
+                swimInSchool.schoolSize = SwimInSchoolSettings.SchoolSize;
+                Helpers.SetPrivateField(typeof(SwimInSchool), swimInSchool, "percentFindLeaderRespond", SwimInSchoolSettings.FindLeaderChance);
+                Helpers.SetPrivateField(typeof(SwimInSchool), swimInSchool, "chanceLoseLeader", SwimInSchoolSettings.LoseLeaderChance);
+                Helpers.SetPrivateField(typeof(SwimInSchool), swimInSchool, "kBreakDistance", SwimInSchoolSettings.BreakDistance);
+                creatureActions.Add(swimInSchool);
+            }
 
             return components;
         }
@@ -272,6 +297,7 @@ namespace DeExtinctionMod.AssetClasses
         }
         protected void CreateTrail<CreatureType>(GameObject trailRoot, Transform[] trails, CreatureComponents<CreatureType> components, float segmentSnapSpeed, float maxSegmentOffset = -1f) where CreatureType : Creature
         {
+            trailRoot.gameObject.SetActive(false);
             TrailManager trail = trailRoot.AddComponent<TrailManager>();
             trail.trails = trails;
             trail.rootTransform = prefab.transform;
@@ -284,6 +310,9 @@ namespace DeExtinctionMod.AssetClasses
             trail.pitchMultiplier = decreasing;
             trail.rollMultiplier = decreasing;
             trail.yawMultiplier = decreasing;
+            MethodInfo method = typeof(TrailManager).GetMethod("Initialize", BindingFlags.NonPublic | BindingFlags.Instance);
+            method.Invoke(trail, new object[] { });
+            trailRoot.gameObject.SetActive(true);
         }
         public virtual EatableData EatableSettings
         {
@@ -485,6 +514,14 @@ namespace DeExtinctionMod.AssetClasses
             }
         }
 
+        public virtual SwimInSchoolData SwimInSchoolSettings
+        {
+            get
+            {
+                return new SwimInSchoolData();
+            }
+        }
+
         public struct BehaviourLODLevelsStruct
         {
             public float VeryClose;
@@ -557,6 +594,8 @@ namespace DeExtinctionMod.AssetClasses
             public float MinTimeBetweenRoars;
             public float MaxTimeBetweenRoars;
             public float RoarActionPriority;
+            public bool CreateCurrentOnRoar;
+            public float CurrentStrength;
 
             public RoarAbilityData(bool canRoar, float roarSoundFalloffStart, float roarSoundMaxDistance, string audioClipPrefix, string animationName, float roarActionPriority = 0.5f, float minTimeBetweenRoars = 4f, float maxTimeBetweenRoars = 8f)
             {
@@ -568,6 +607,22 @@ namespace DeExtinctionMod.AssetClasses
                 MinTimeBetweenRoars = minTimeBetweenRoars;
                 MaxTimeBetweenRoars = maxTimeBetweenRoars;
                 RoarActionPriority = roarActionPriority;
+                CreateCurrentOnRoar = false;
+                CurrentStrength = 0f;
+            }
+
+            public RoarAbilityData(bool canRoar, float roarSoundFalloffStart, float roarSoundMaxDistance, string audioClipPrefix, string animationName, bool createCurrent, float currentStrength, float roarActionPriority = 0.5f, float minTimeBetweenRoars = 4f, float maxTimeBetweenRoars = 8f)
+            {
+                CanRoar = canRoar;
+                MinRoarDistance = roarSoundFalloffStart;
+                MaxRoarDistance = roarSoundMaxDistance;
+                AudioClipPrefix = audioClipPrefix;
+                AnimationName = animationName;
+                MinTimeBetweenRoars = minTimeBetweenRoars;
+                MaxTimeBetweenRoars = maxTimeBetweenRoars;
+                RoarActionPriority = roarActionPriority;
+                CreateCurrentOnRoar = createCurrent;
+                CurrentStrength = currentStrength;
             }
         }
 
@@ -629,6 +684,27 @@ namespace DeExtinctionMod.AssetClasses
                 this.encyNodes = encyNodes;
                 this.popup = popup;
                 this.encyImage = encyImage;
+            }
+        }
+        public struct SwimInSchoolData
+        {
+            public float EvaluatePriority;
+            public float SwimVelocity;
+            public float SwimInterval;
+            public float SchoolSize;
+            public float BreakDistance;
+            public float FindLeaderChance;
+            public float LoseLeaderChance;
+
+            public SwimInSchoolData(float evaluatePriority, float swimVelocity, float swimInterval, float schoolSize, float breakDistance, float findLeaderChance, float loseLeaderChance)
+            {
+                EvaluatePriority = evaluatePriority;
+                SwimVelocity = swimVelocity;
+                SwimInterval = swimInterval;
+                SchoolSize = schoolSize;
+                BreakDistance = breakDistance;
+                FindLeaderChance = findLeaderChance;
+                LoseLeaderChance = loseLeaderChance;
             }
         }
     }

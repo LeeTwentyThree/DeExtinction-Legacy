@@ -16,7 +16,7 @@ namespace DeExtinctionMod
         [HarmonyPostfix()]
         public static void Postfix(ref bool __result, SwimInSchool __instance, IEcoTarget target)
         {
-            if(__instance.gameObject == target.GetGameObject())
+            if (__instance.gameObject == target.GetGameObject())
             {
                 __result = false;
             }

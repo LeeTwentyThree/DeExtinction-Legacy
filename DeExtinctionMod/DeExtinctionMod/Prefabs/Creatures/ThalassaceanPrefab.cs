@@ -20,15 +20,15 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override LargeWorldEntity.CellLevel CellLevel => LargeWorldEntity.CellLevel.Medium;
 
-        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(20f, 0f, 20f), 2f, 2f, 0.5f);
+        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(30f, 0f, 30f), 0.5f, 5f, 0.5f);
 
         public override EcoTargetType EcoTargetType => EcoTargetType.Whale;
 
         public override TechType CreatureTraitsReference => TechType.SeaTreader;
 
-        public override float Mass => 100f;
+        public override float Mass => 150f;
 
-        public override float TurnSpeed => 0.25f;
+        public override float TurnSpeed => 0.1f;
 
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
         {
@@ -40,7 +40,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 2f, 10f, "ThalassaceanRoar", string.Empty, 0.51f, 20f, 35f);
 
-        public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.5f), new Keyframe(1f, 1f) });
+        public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.8f), new Keyframe(1f, 1f) });
 
         public override BehaviourType BehaviourType => BehaviourType.Whale;
 
@@ -52,15 +52,15 @@ namespace DeExtinctionMod.Prefabs.Creatures
             {
                 SetupPrefab(out CreatureComponents<Thalassacean> components);
 
-                CreateTrail(prefab.SearchChild("root"), new Transform[] { prefab.SearchChild("spine1").transform, prefab.SearchChild("spine2").transform, prefab.SearchChild("spine3").transform, prefab.SearchChild("spine4").transform }, components, 1f);
+                CreateTrail(prefab.SearchChild("root"), new Transform[] { prefab.SearchChild("spine1").transform, prefab.SearchChild("spine2").transform, prefab.SearchChild("spine3").transform, prefab.SearchChild("spine4").transform }, components, 0.2f);
 
                 var varySwimSpeeds = prefab.AddComponent<VaryingSwimSpeeds>();
-                varySwimSpeeds.maxIncrease = 3f;
+                varySwimSpeeds.maxIncrease = 2f;
                 varySwimSpeeds.variationRate = 0.2f;
 
                 AnimateByVelocity animateByVelocity = prefab.AddComponent<AnimateByVelocity>();
                 animateByVelocity.animator = components.creature.GetAnimator();
-                animateByVelocity.animationMoveMaxSpeed = 5f;
+                animateByVelocity.animationMoveMaxSpeed = 2.5f;
                 animateByVelocity.levelOfDetail = components.behaviourLOD;
                 animateByVelocity.rootGameObject = prefab;
 

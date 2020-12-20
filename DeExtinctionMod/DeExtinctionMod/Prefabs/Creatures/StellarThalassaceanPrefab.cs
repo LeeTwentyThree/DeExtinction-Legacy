@@ -60,14 +60,5 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 probability = 0.05f
             }
         };
-
-        public override WorldEntityInfo EntityInfo => new WorldEntityInfo()
-        {
-            cellLevel = LargeWorldEntity.CellLevel.Medium,
-            techType = TechType,
-            classId = ClassID,
-            localScale = Vector3.one,
-            slotType = EntitySlot.Type.Creature
-        };
     }
 }

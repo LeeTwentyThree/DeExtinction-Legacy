@@ -10,6 +10,9 @@ namespace DeExtinctionMod.Mono
 {
     public class GrandGlider : Creature
     {
-
+        public override void Start()
+        {
+            base.Start();
+        }
     }
 }
