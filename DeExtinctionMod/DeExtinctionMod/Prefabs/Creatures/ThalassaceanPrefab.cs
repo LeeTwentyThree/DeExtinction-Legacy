@@ -1,4 +1,4 @@
-﻿using DeExtinctionMod.AssetClasses;
+﻿using ECCLibrary;
 using DeExtinctionMod.Mono;
 using System;
 using System.Collections.Generic;

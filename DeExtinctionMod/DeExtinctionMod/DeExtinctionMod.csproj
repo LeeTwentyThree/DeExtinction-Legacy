@@ -40,6 +40,9 @@
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Subnautica\Subnautica_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
+    <Reference Include="ECCLibrary">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Subnautica\QMods\ECCLibrary\ECCLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="QModInstaller">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Subnautica\BepInEx\plugins\QModManager\QModInstaller.dll</HintPath>
     </Reference>
@@ -95,23 +98,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssetClasses\CommonStructs.cs" />
-    <Compile Include="AssetClasses\CreatureAsset.cs" />
-    <Compile Include="AssetClasses\CreatureEggAsset.cs" />
-    <Compile Include="AssetClasses\EatableAsset.cs" />
-    <Compile Include="Helpers.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="Mono\Gargantuan\TrackLastTarget.cs" />
     <Compile Include="Mono\GrandGlider.cs" />
-    <Compile Include="Mono\RoarAbility.cs" />
     <Compile Include="Mono\DiveAction.cs" />
-    <Compile Include="Mono\Gargantuan\MeleeAttack_New.cs" />
-    <Compile Include="Mono\LastTargetRoar.cs" />
     <Compile Include="Mono\Gargantuan\GargantuanLeviathan.cs" />
-    <Compile Include="Mono\ModAudio.cs" />
     <Compile Include="Mono\Gargantuan\Photosynthesize.cs" />
     <Compile Include="Mono\PassBelowPlayerAction.cs" />
-    <Compile Include="Mono\RoarRandomAction.cs" />
     <Compile Include="Mono\Thalassacean.cs" />
     <Compile Include="Mono\VaryingSwimSpeeds.cs" />
     <Compile Include="Mono\VoidTerrainGenerator.cs" />

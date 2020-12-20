@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using DeExtinctionMod.AssetClasses;
+using ECCLibrary;
 
 namespace DeExtinctionMod.Prefabs.Creatures
 {

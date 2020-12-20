@@ -9,7 +9,7 @@ using SMLHelper.V2.Utility;
 using UnityEngine;
 using DeExtinctionMod.Mono;
 using System.Reflection;
-using DeExtinctionMod.AssetClasses;
+using ECCLibrary;
 using SMLHelper.V2.Handlers;
 using UWE;
 using DeExtinctionMod.Mono.Gargantuan;
@@ -114,16 +114,14 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 actionAtkCyclops.swimVelocity = 25f;
                 actionAtkCyclops.aggressiveToNoise = new CreatureTrait(0f, 0.1f);
                 actionAtkCyclops.evaluatePriority = 0.9f;
-                actionAtkCyclops.priorityMultiplier = Helpers.Curve_Flat();
+                actionAtkCyclops.priorityMultiplier = ECCHelpers.Curve_Flat();
                 creatureActions.Add(actionAtkCyclops);
 
-                /*PassBelowPlayerAction actionPassBelowPlayer = prefab.AddComponent<PassBelowPlayerAction>();
-                creatureActions.Add(actionPassBelowPlayer);*/
 
-                Helpers.MakeAggressiveTo(prefab, 40f, EcoTargetType.Shark, 0f, 4f);
-                Helpers.MakeAggressiveTo(prefab, 125f, EcoTargetType.Leviathan, 0f, 1f);
-                Helpers.MakeAggressiveTo(prefab, 50f, EcoTargetType.SubDecoy, 0f, 1f);
-                Helpers.MakeAggressiveTo(prefab, 50f, EcoTargetType.Whale, 0.1f, 1f);
+                MakeAggressiveTo(40f, 4, EcoTargetType.Shark, 0f, 4f);
+                MakeAggressiveTo(125f, 4, EcoTargetType.Leviathan, 0f, 1f);
+                MakeAggressiveTo(50f, 4, EcoTargetType.SubDecoy, 0f, 1f);
+                MakeAggressiveTo(50f, 4, EcoTargetType.Whale, 0.1f, 1f);
 
                 DiveAction actionDive = prefab.AddComponent<DiveAction>();
                 creatureActions.Add(actionDive);

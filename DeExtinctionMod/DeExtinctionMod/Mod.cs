@@ -14,7 +14,7 @@ using HarmonyLib;
 using SMLHelper.V2.Utility;
 using DeExtinctionMod.Prefabs.Eggs;
 using DeExtinctionMod.Prefabs.Creatures;
-using DeExtinctionMod.AssetClasses;
+using ECCLibrary;
 using SMLHelper.V2.Assets;
 using UWE;
 
