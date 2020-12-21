@@ -15,7 +15,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         }
 
-        public override ScannableItemData ScannableSettings => new ScannableItemData(true, 2f, "Lifeforms/Fauna/SmallHerbivores", new string[] { "Lifeforms", "Fauna", "SmallHerbivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Stellar_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Stellar_Ency"));
+        public override ScannableItemData ScannableSettings => new ScannableItemData(true, 2f, "Lifeforms/Fauna/SmallHerbivores", new string[] { "Lifeforms", "Fauna", "SmallHerbivores" }, QPatch.assetBundle.LoadAsset<Sprite>("RCP_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("RCP_Ency"));
 
         public override string GetEncyTitle => "Ruby Clown Pincher";
 

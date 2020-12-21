@@ -48,6 +48,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.025f, 0.25f, 0.5f, 1f, false);
 
+        public override float MaxVelocityForSpeedParameter => kMyVelocity * 2f;
+
         public override GameObject GetGameObject()
         {
             if (prefab == null)

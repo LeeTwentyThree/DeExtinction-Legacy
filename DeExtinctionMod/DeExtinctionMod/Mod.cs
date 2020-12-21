@@ -30,6 +30,9 @@ namespace DeExtinctionMod
         public static GrandGliderPrefab grandGlider;
         public static ClownPincherRuby rubyClownPincher;
 
+        public static EatableAsset rcpCooked;
+        public static EatableAsset rcpCured;
+
         public static StellarThalassaceanEggPrefab stellarEgg;
         public static JasperThalassaceanEggPrefab jasperEgg;
         public static GrandGliderEggPrefab grandGliderEgg;
@@ -51,7 +54,7 @@ namespace DeExtinctionMod
             grandGlider = new GrandGliderPrefab("GrandGlider", "Grand Glider", "Medium sized prey animal, raised in containment.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("GrandGlider_Item"));
             grandGlider.Patch();
 
-            rubyClownPincher = new ClownPincherRuby("RubyClownPincher", "Ruby Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
+            rubyClownPincher = new ClownPincherRuby("RubyClownPincher", "Ruby Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), assetBundle.LoadAsset<Texture2D>("RCP_Item"));
             rubyClownPincher.Patch();
 
             #endregion
@@ -71,7 +74,15 @@ namespace DeExtinctionMod
 
             #endregion
 
-            Harmony harmony = new Harmony("Lee23.DeExtinctionMod");
+            #region Edibles
+            rcpCooked = new EatableAsset("CookedRubyClownPincher", "Cooked Ruby Clown Pincher", "1,219 Scoville Heat Unit meal.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("RCP_Cooked"));
+            rcpCooked.Patch();
+            rcpCured = new EatableAsset("CuredRubyClownPincher", "Cured Ruby Clown Pincher", "Tastes like igneous. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 41f, -2f, true), false, assetBundle.LoadAsset<Texture2D>("RCP_Cured"));
+            rcpCured.Patch();
+
+            #endregion
+
+            Harmony harmony = new Harmony("SpaceCatCreations.DeExtinctionMod");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
     }

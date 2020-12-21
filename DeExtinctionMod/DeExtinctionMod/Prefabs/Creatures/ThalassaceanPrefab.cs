@@ -46,6 +46,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float BioReactorCharge => 1600f;
 
+        public override float MaxVelocityForSpeedParameter => 2.5f;
+
         public override GameObject GetGameObject()
         {
             if(prefab == null)
@@ -57,12 +59,6 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 var varySwimSpeeds = prefab.AddComponent<VaryingSwimSpeeds>();
                 varySwimSpeeds.maxIncrease = 2f;
                 varySwimSpeeds.variationRate = 0.2f;
-
-                AnimateByVelocity animateByVelocity = prefab.AddComponent<AnimateByVelocity>();
-                animateByVelocity.animator = components.creature.GetAnimator();
-                animateByVelocity.animationMoveMaxSpeed = 2.5f;
-                animateByVelocity.levelOfDetail = components.behaviourLOD;
-                animateByVelocity.rootGameObject = prefab;
 
                 AddMeleeAttack(prefab.SearchChild("Mouth"), 0.35f, 15f, "ThalassaceanBite", 35f, true, components);
                 CompletePrefab(components);

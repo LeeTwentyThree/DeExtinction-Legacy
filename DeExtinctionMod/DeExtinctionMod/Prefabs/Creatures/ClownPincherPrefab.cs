@@ -1,4 +1,5 @@
-﻿using ECCLibrary;
+﻿using DeExtinctionMod.Mono;
+using ECCLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,18 +34,18 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override SwimInSchoolData SwimInSchoolSettings => new SwimInSchoolData(0.6f, 3f, 1f, 2f, 20f, 0.5f, 0.1f);
 
+        public override float MaxVelocityForSpeedParameter => 4f;
+
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
         {
             liveMixinData.maxHealth = 30f;
-            liveMixinData.explodeOnDestroy = true;
-            liveMixinData.destroyOnDeath = true;
         }
 
         public override GameObject GetGameObject()
         {
             if (prefab == null)
             {
-                SetupPrefab(out CreatureComponents<Creature> components);
+                SetupPrefab(out CreatureComponents<ClownPincherBehaviour> components);
 
                 CompletePrefab(components);
             }
