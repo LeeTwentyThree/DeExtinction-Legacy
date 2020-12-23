@@ -50,15 +50,9 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float MaxVelocityForSpeedParameter => kMyVelocity * 2f;
 
-        public override GameObject GetGameObject()
+        public override void AddCustomBehaviour(CreatureComponents components)
         {
-            if (prefab == null)
-            {
-                SetupPrefab(out CreatureComponents<GrandGlider> components);
-                CreateTrail(prefab.SearchChild("Spine1"), new Transform[] { prefab.SearchChild("Spine2").transform, prefab.SearchChild("Spine3").transform, prefab.SearchChild("Spine4").transform, prefab.SearchChild("Spine5").transform, prefab.SearchChild("Spine6").transform, prefab.SearchChild("Spine7").transform, prefab.SearchChild("Spine8").transform, prefab.SearchChild("Spine9").transform }, components, 0.5f);
-                CompletePrefab(components);
-            }
-            return prefab;
+            CreateTrail(prefab.SearchChild("Spine1"), new Transform[] { prefab.SearchChild("Spine2").transform, prefab.SearchChild("Spine3").transform, prefab.SearchChild("Spine4").transform, prefab.SearchChild("Spine5").transform, prefab.SearchChild("Spine6").transform, prefab.SearchChild("Spine7").transform, prefab.SearchChild("Spine8").transform, prefab.SearchChild("Spine9").transform }, components, 0.5f);
         }
 
         public override float BioReactorCharge => 830f;

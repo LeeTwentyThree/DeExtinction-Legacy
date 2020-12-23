@@ -15,31 +15,29 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         }
 
-        public override ScannableItemData ScannableSettings => new ScannableItemData(true, 2f, "Lifeforms/Fauna/SmallHerbivores", new string[] { "Lifeforms", "Fauna", "SmallHerbivores" }, QPatch.assetBundle.LoadAsset<Sprite>("RCP_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("RCP_Ency"));
+        public override ScannableItemData ScannableSettings => new ScannableItemData(true, 2f, "Lifeforms/Fauna/Scavengers", new string[] { "Lifeforms", "Fauna", "Scavengers" }, QPatch.assetBundle.LoadAsset<Sprite>("RCP_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("RCP_Ency"));
 
-        public override string GetEncyTitle => "Ruby Clown Pincher";
-
-        public override string GetEncyDesc => "A small colorful herbivore found within a volatile cave system.\n\nColoration:\nColoration appears to mimic the surrounding rock, with white stripes to break up the pattern.\n\nBehavior:\nA social species, the Ruby Clown Pincher can be found forming lose shoals while foraging.\n\nSpecimen shows high genetic diversity suggesting many extant, closely related species that frequently mate.\n\nAssessment: Edible";
+        public override string GetEncyDesc => "A small colorful scavenger found within a volatile cave system.\n\nColoration:\nColoration appears to mimic the surrounding rock, with white stripes to break up the pattern.\n\nBehavior:\nA social species, the Ruby Clown Pincher can be found forming lose shoals while foraging.\n\nSpecimen shows high genetic diversity suggesting many extant, closely related species that frequently mate.\n\nAssessment: Edible";
 
         public override List<LootDistributionData.BiomeData> BiomesToSpawnIn => new List<LootDistributionData.BiomeData>()
         {
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.InactiveLavaZone_Chamber_Open_CreatureOnly,
-                probability = 0.1f,
-                count = 2
+                probability = 0.2f,
+                count = 4
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.InactiveLavaZone_LavaPit_Open_CreatureOnly,
-                probability = 0.1f,
-                count = 2
+                probability = 0.2f,
+                count = 4
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.ActiveLavaZone_Chamber_Open_CreatureOnly,
-                probability = 0.1f,
-                count = 2
+                probability = 0.2f,
+                count = 4
             }
         };
     }

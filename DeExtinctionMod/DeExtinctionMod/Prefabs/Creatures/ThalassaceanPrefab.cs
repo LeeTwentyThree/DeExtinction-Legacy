@@ -48,22 +48,15 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float MaxVelocityForSpeedParameter => 2.5f;
 
-        public override GameObject GetGameObject()
+        public override void AddCustomBehaviour(CreatureComponents components)
         {
-            if(prefab == null)
-            {
-                SetupPrefab(out CreatureComponents<Thalassacean> components);
+            CreateTrail(prefab.SearchChild("root"), new Transform[] { prefab.SearchChild("spine1").transform, prefab.SearchChild("spine2").transform, prefab.SearchChild("spine3").transform, prefab.SearchChild("spine4").transform }, components, 0.2f);
 
-                CreateTrail(prefab.SearchChild("root"), new Transform[] { prefab.SearchChild("spine1").transform, prefab.SearchChild("spine2").transform, prefab.SearchChild("spine3").transform, prefab.SearchChild("spine4").transform }, components, 0.2f);
+            var varySwimSpeeds = prefab.AddComponent<VaryingSwimSpeeds>();
+            varySwimSpeeds.maxIncrease = 2f;
+            varySwimSpeeds.variationRate = 0.2f;
 
-                var varySwimSpeeds = prefab.AddComponent<VaryingSwimSpeeds>();
-                varySwimSpeeds.maxIncrease = 2f;
-                varySwimSpeeds.variationRate = 0.2f;
-
-                AddMeleeAttack(prefab.SearchChild("Mouth"), 0.35f, 15f, "ThalassaceanBite", 35f, true, components);
-                CompletePrefab(components);
-            }
-            return prefab;
+            AddMeleeAttack(prefab.SearchChild("Mouth"), 0.35f, 15f, "ThalassaceanBite", 35f, true, components);
         }
 
         public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.02f, 0.3f, 0.5f, 1.25f, false);

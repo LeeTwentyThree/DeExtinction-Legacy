@@ -29,6 +29,7 @@ namespace DeExtinctionMod
         public static JasperThalassaceanPrefab jasperThalassacean;
         public static GrandGliderPrefab grandGlider;
         public static ClownPincherRuby rubyClownPincher;
+        public static ClownPincherSapphire sapphireClownPincher;
 
         public static EatableAsset rcpCooked;
         public static EatableAsset rcpCured;
@@ -37,11 +38,18 @@ namespace DeExtinctionMod
         public static JasperThalassaceanEggPrefab jasperEgg;
         public static GrandGliderEggPrefab grandGliderEgg;
 
+        public static EcoTargetType clownPincherSpecialEdible;
+
         [QModPatch]
         public static void Patch()
         {
             assetBundle = ECCHelpers.LoadAssetBundleFromAssetsFolder(Assembly.GetExecutingAssembly(), "deextinctionassets");
             ECCAudio.RegisterClips(assetBundle);
+
+            clownPincherSpecialEdible = (EcoTargetType)531513; //Just a random value. Please don't copy this! It will cause incompatibility. Thanks.
+
+            CraftData.GetPrefabForTechType(TechType.SeaTreaderPoop).AddComponent<EcoTarget>().type = clownPincherSpecialEdible;
+            CraftData.GetPrefabForTechType(TechType.Creepvine).AddComponent<EcoTarget>().type = clownPincherSpecialEdible;
 
             #region Creatures
 
@@ -56,6 +64,9 @@ namespace DeExtinctionMod
 
             rubyClownPincher = new ClownPincherRuby("RubyClownPincher", "Ruby Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), assetBundle.LoadAsset<Texture2D>("RCP_Item"));
             rubyClownPincher.Patch();
+
+            sapphireClownPincher = new ClownPincherSapphire("SapphireClownPincher", "Sapphire Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), assetBundle.LoadAsset<Texture2D>("SCP_Item"));
+            sapphireClownPincher.Patch();
 
             #endregion
 
@@ -77,7 +88,7 @@ namespace DeExtinctionMod
             #region Edibles
             rcpCooked = new EatableAsset("CookedRubyClownPincher", "Cooked Ruby Clown Pincher", "1,219 Scoville Heat Unit meal.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("RCP_Cooked"));
             rcpCooked.Patch();
-            rcpCured = new EatableAsset("CuredRubyClownPincher", "Cured Ruby Clown Pincher", "Tastes like igneous. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 41f, -2f, true), false, assetBundle.LoadAsset<Texture2D>("RCP_Cured"));
+            rcpCured = new EatableAsset("CuredRubyClownPincher", "Cured Ruby Clown Pincher", "Tastes like igneous. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("RCP_Cured"));
             rcpCured.Patch();
 
             #endregion

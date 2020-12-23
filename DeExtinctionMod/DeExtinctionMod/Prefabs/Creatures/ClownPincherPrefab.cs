@@ -1,6 +1,5 @@
 ﻿using DeExtinctionMod.Mono;
 using ECCLibrary;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,22 +33,46 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override SwimInSchoolData SwimInSchoolSettings => new SwimInSchoolData(0.6f, 3f, 1f, 2f, 20f, 0.5f, 0.1f);
 
+        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.65f, true, 1f);
+            
         public override float MaxVelocityForSpeedParameter => 4f;
+
+        public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.25f), new Keyframe(1f, 1f) });
+
+        public override float Mass => 15f;
+
+        public override string GetEncyTitle => FriendlyName;
+
+        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 1f, 6f, "ClownPincherIdle", null, 0.65f, 3f, 10f);
+
+        public override HeldFishData ViewModelSettings => new HeldFishData(TechType.Peeper, "WorldModel", "ViewModel");
 
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
         {
             liveMixinData.maxHealth = 30f;
         }
 
-        public override GameObject GetGameObject()
+        public override void AddCustomBehaviour(CreatureComponents components)
         {
-            if (prefab == null)
-            {
-                SetupPrefab(out CreatureComponents<ClownPincherBehaviour> components);
+            var clownPincherBehaviour = prefab.AddComponent<ClownPincherBehaviour>();
 
-                CompletePrefab(components);
-            }
-            return prefab;
+            var scavengeBehaviour = prefab.AddComponent<ClownPincherScavengeBehaviour>();
+            scavengeBehaviour.clownPincher = clownPincherBehaviour;
+            scavengeBehaviour.swimVelocity = 3f;
+            scavengeBehaviour.evaluatePriority = 0.8f;
+
+            var fleeFromPredators = prefab.AddComponent<SwimAwayFromPredators>();
+            fleeFromPredators.fleeSpeed = 4f;
+            fleeFromPredators.maxReactDistance = 5f;
+            fleeFromPredators.actionLength = 3f;
+            fleeFromPredators.evaluatePriority = 0.7f;
+
+            var nibble = prefab.SearchChild("Mouth").AddComponent<ClownPincherNibble>();
+            nibble.creature = components.creature;
+            nibble.clownPincher = clownPincherBehaviour;
+            nibble.liveMixin = components.liveMixin;
+
+            components.creature.Hunger = new CreatureTrait(0f, -0.01f);
         }
     }
 }
