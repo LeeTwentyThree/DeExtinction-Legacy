@@ -14,12 +14,21 @@ namespace DeExtinctionMod.Mono
         public ClownPincherScavengeBehaviour scavengeBehaviour;
         public SwimBehaviour swimBehaviour;
 
+        public bool Sleeping
+        {
+            get
+            {
+                return creature.GetLastAction() is SleepAtNight;
+            }
+        }
         public void Start()
         {
             animateByVelocity = GetComponent<AnimateByVelocity>();
             creature = GetComponent<Creature>();
             nibble = GetComponentInChildren<ClownPincherNibble>();
+            nibble.creature = creature;
             creature.initialHunger = new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0f), new Keyframe(1f, 1f) });
+            creature.Hunger.Value = Random.value;
             scavengeBehaviour = GetComponent<ClownPincherScavengeBehaviour>();
             swimBehaviour = GetComponent<SwimBehaviour>();
         }

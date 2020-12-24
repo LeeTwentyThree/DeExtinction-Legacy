@@ -17,6 +17,7 @@ using DeExtinctionMod.Prefabs.Creatures;
 using ECCLibrary;
 using SMLHelper.V2.Assets;
 using UWE;
+using ECCLibrary.Internal;
 
 namespace DeExtinctionMod
 {
@@ -30,9 +31,16 @@ namespace DeExtinctionMod
         public static GrandGliderPrefab grandGlider;
         public static ClownPincherRuby rubyClownPincher;
         public static ClownPincherSapphire sapphireClownPincher;
+        public static ClownPincherEmerald emeraldClownPincher;
 
         public static EatableAsset rcpCooked;
         public static EatableAsset rcpCured;
+
+        public static EatableAsset scpCooked;
+        public static EatableAsset scpCured;
+
+        public static EatableAsset ecpCooked;
+        public static EatableAsset ecpCured;
 
         public static StellarThalassaceanEggPrefab stellarEgg;
         public static JasperThalassaceanEggPrefab jasperEgg;
@@ -48,8 +56,8 @@ namespace DeExtinctionMod
 
             clownPincherSpecialEdible = (EcoTargetType)531513; //Just a random value. Please don't copy this! It will cause incompatibility. Thanks.
 
-            CraftData.GetPrefabForTechType(TechType.SeaTreaderPoop).AddComponent<EcoTarget>().type = clownPincherSpecialEdible;
-            CraftData.GetPrefabForTechType(TechType.Creepvine).AddComponent<EcoTarget>().type = clownPincherSpecialEdible;
+            MakeItemClownPincherEdible("WorldEntities/Natural/SeaTreaderPoop");
+            MakeItemClownPincherEdible("WorldEntities/Natural/CreepvineSeedCluster");
 
             #region Creatures
 
@@ -67,6 +75,9 @@ namespace DeExtinctionMod
 
             sapphireClownPincher = new ClownPincherSapphire("SapphireClownPincher", "Sapphire Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), assetBundle.LoadAsset<Texture2D>("SCP_Item"));
             sapphireClownPincher.Patch();
+
+            emeraldClownPincher = new ClownPincherEmerald("EmeraldClownPincher", "Emerald Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), assetBundle.LoadAsset<Texture2D>("ECP_Item"));
+            emeraldClownPincher.Patch();
 
             #endregion
 
@@ -91,10 +102,36 @@ namespace DeExtinctionMod
             rcpCured = new EatableAsset("CuredRubyClownPincher", "Cured Ruby Clown Pincher", "Tastes like igneous. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("RCP_Cured"));
             rcpCured.Patch();
 
+            scpCooked = new EatableAsset("CookedSapphireClownPincher", "Cooked Sapphire Clown Pincher", "The slime enhances flavor.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), sapphireClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("SCP_Cooked"));
+            scpCooked.Patch();
+            scpCured = new EatableAsset("CuredSapphireClownPincher", "Cured Sapphire Clown Pincher", "Tastes like milk. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), sapphireClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("SCP_Cured"));
+            scpCured.Patch();
+
+            ecpCooked = new EatableAsset("CookedEmeraldClownPincher", "Cooked Emerald Clown Pincher", "Pre-sautéed.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), emeraldClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("ECP_Cooked"));
+            ecpCooked.Patch();
+            ecpCured = new EatableAsset("CuredEmeraldClownPincher", "Cured Emerald Clown Pincher", "Tastes like lettuce. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), emeraldClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("ECP_Cured"));
+            ecpCured.Patch();
+
             #endregion
 
             Harmony harmony = new Harmony("SpaceCatCreations.DeExtinctionMod");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
+        }
+
+        static void MakeItemClownPincherEdible(string path)
+        {
+            GameObject obj = Resources.Load<GameObject>(path);
+            if (obj == null)
+            {
+                Debug.Log("DE EXTINCTION: No prefab found at path " + path);
+                return;
+            }
+            Debug.Log("DE EXTINCTION: Added item to clown pincher edible list");
+            obj.AddComponent<EcoTarget>().type = clownPincherSpecialEdible;
+            foreach(Component comp in obj.GetComponents<Component>())
+            {
+                Debug.Log("DE EXTINCTION: " + comp.GetType().ToString());
+            }
         }
     }
 }

@@ -11,10 +11,11 @@ namespace DeExtinctionMod.Mono
 	{
 		void Awake()
 		{
-			rb = GetComponent<Rigidbody>();
+			rb = GetComponentInParent<Rigidbody>();
 			eatingSound = gameObject.AddComponent<AudioSource>();
 			eatingSound.volume = ECCHelpers.GetECCVolume();
 			eatingSound.clip = QPatch.assetBundle.LoadAsset<AudioClip>("ClownPincherEating");
+			eatingSound.spatialBlend = 1f;
 		}
 
 		public bool TouchingFood
@@ -39,9 +40,9 @@ namespace DeExtinctionMod.Mono
 			GameObject nibbleGameObject = collider.gameObject;
 			if (liveMixin.IsAlive() && !frozen)
 			{
-				timeLastNibble = Time.time;
-				EcoTarget ecoTarget = nibbleGameObject.GetComponent<EcoTarget>();
-				LiveMixin lm = nibbleGameObject.GetComponent<LiveMixin>();
+				timeStartNibbling = Time.time;
+				EcoTarget ecoTarget = nibbleGameObject.GetComponentInParent<EcoTarget>();
+				LiveMixin lm = nibbleGameObject.GetComponentInParent<LiveMixin>();
 				bool isDead = (lm != null && !lm.IsAlive()) || (ecoTarget != null && ecoTarget.type == EcoTargetType.DeadMeat);
 
 				bool isSpecialConsumable = ecoTarget != null && ecoTarget.type == QPatch.clownPincherSpecialEdible;
@@ -70,21 +71,33 @@ namespace DeExtinctionMod.Mono
 			if (!frozen && nibbling && objectEating != null && Time.time > timeNextNibble)
 			{
 				timeNextNibble = Time.time + kNibbleInterval;
-				clownPincher.PlayEatAnimation();
-				creature.Hunger.Add(-nibbleHungerDecrement);
-				rb.AddForce(-rb.velocity * 0.75f, ForceMode.VelocityChange);
-				clownPincher.swimBehaviour.LookAt(objectEating.transform);
+				NibbleOnce();
 			}
-			if (nibbling && clownPincher.creature.Hunger.Value < 0.1f)
+			if (nibbling && clownPincher.creature.Hunger.Value < 0.1f || !TouchingFood)
 			{
 				StopNibbling();
 			}
+		}
+
+		public void NibbleOnce()
+		{
+			if (clownPincher.Sleeping || !clownPincher.creature.liveMixin.IsAlive()) return;
+			clownPincher.PlayEatAnimation();
+			creature.Hunger.Add(-nibbleHungerDecrement);
+			rb.AddForce(-rb.velocity * 0.75f, ForceMode.VelocityChange);
+			rb.AddTorque(-rb.angularVelocity * 0.75f, ForceMode.VelocityChange);
 		}
 
 		public void StartNibbling()
 		{
 			nibbling = true;
 			eatingSound.Play();
+			clownPincher.swimBehaviour.LookAt(objectEating.transform);
+			Rigidbody otherRigidbody = objectEating.GetComponentInParent<Rigidbody>();
+			if(otherRigidbody != null)
+			{
+				otherRigidbody.isKinematic = true;
+			}
 		}
 		public void StopNibbling()
 		{
@@ -116,8 +129,6 @@ namespace DeExtinctionMod.Mono
 
 		protected bool frozen;
 
-		public float timeLastNibble;
-
 		private Rigidbody rb;
 
 		float timeNextNibble = 0f;
@@ -126,6 +137,8 @@ namespace DeExtinctionMod.Mono
 		public GameObject objectEating;
 
 		AudioSource eatingSound;
+
+		float timeStartNibbling;
 
 		bool nibbling;
 	}

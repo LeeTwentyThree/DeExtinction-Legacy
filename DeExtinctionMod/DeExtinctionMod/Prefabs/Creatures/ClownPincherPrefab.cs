@@ -43,7 +43,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyTitle => FriendlyName;
 
-        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 1f, 6f, "ClownPincherIdle", null, 0.65f, 3f, 10f);
+        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 0.1f, 4f, "ClownPincherIdle", null, 0.65f, 9f, 18f);
 
         public override HeldFishData ViewModelSettings => new HeldFishData(TechType.Peeper, "WorldModel", "ViewModel");
 
@@ -71,6 +71,11 @@ namespace DeExtinctionMod.Prefabs.Creatures
             nibble.creature = components.creature;
             nibble.clownPincher = clownPincherBehaviour;
             nibble.liveMixin = components.liveMixin;
+
+            prefab.AddComponent<SleepAtNight>().evaluatePriority = 0.9f;
+
+            GameObject worldModel = prefab.SearchChild("WorldModel");
+            CreateTrail(worldModel.SearchChild("Spine1", ECCStringComparison.StartsWith), new Transform[] { worldModel.SearchChild("Spine2", ECCStringComparison.StartsWith).transform, worldModel.SearchChild("Spine3", ECCStringComparison.StartsWith).transform, worldModel.SearchChild("Spine4", ECCStringComparison.StartsWith).transform }, components, 1.5f);
 
             components.creature.Hunger = new CreatureTrait(0f, -0.01f);
         }

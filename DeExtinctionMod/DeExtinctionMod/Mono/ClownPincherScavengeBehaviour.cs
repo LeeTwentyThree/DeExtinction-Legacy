@@ -10,9 +10,17 @@ namespace DeExtinctionMod.Mono
     public class ClownPincherScavengeBehaviour : CreatureAction
     {
         public ClownPincherBehaviour clownPincher;
-
+        EcoRegion.TargetFilter targetFilter;
+        void Start()
+        {
+            targetFilter = new EcoRegion.TargetFilter(IsValidTarget);
+        }
         public override float Evaluate(Creature creature)
         {
+            if (creature.GetLastAction() == this && Time.time > timeStarted + 20f)
+            {
+                return 0f;
+            }
             if (clownPincher.nibble.CurrentlyEating)
             {
                 return evaluatePriority;
@@ -23,11 +31,16 @@ namespace DeExtinctionMod.Mono
                 {
                     return evaluatePriority;
                 }
+                else
+                {
+                    clownPincher.nibble.NibbleOnce();
+                }
             }
             return 0f;
         }
         public override void StartPerform(Creature creature)
         {
+            timeStarted = Time.time;
             if (TrySearchForFood(out IEcoTarget ecoTarget))
             {
                 SetCurrentTarget(ecoTarget);
@@ -38,7 +51,7 @@ namespace DeExtinctionMod.Mono
             if (Time.time > timeSearchAgain)
             {
                 timeSearchAgain = Time.time + kFoodSearchInterval;
-                if(currentTarget.GetGameObject() == null)
+                if(currentTarget == null || currentTarget.GetGameObject() == null)
                 {
                     if(TrySearchForFood(out IEcoTarget result))
                     {
@@ -66,16 +79,21 @@ namespace DeExtinctionMod.Mono
                 swimBehaviour.SwimTo(currentTarget.GetPosition(), swimVelocity);
             }
         }
+        private bool IsValidTarget(IEcoTarget target)
+        {
+            if (target == null || target.GetGameObject() == null) return false;
+            return Vector3.Distance(transform.position, target.GetPosition()) < 20f;
+        }
         bool TrySearchForFood(out IEcoTarget result)
         {
             result = null;
-            IEcoTarget specialEdible = EcoRegionManager.main.FindNearestTarget(QPatch.clownPincherSpecialEdible, transform.position, null, 2);
+            IEcoTarget specialEdible = EcoRegionManager.main.FindNearestTarget(QPatch.clownPincherSpecialEdible, transform.position, targetFilter, 1);
             if (specialEdible != null && specialEdible.GetGameObject() != null)
             {
                 result = specialEdible;
                 return true;
             }
-            IEcoTarget deadMeat = EcoRegionManager.main.FindNearestTarget(EcoTargetType.DeadMeat, transform.position, null, 2);
+            IEcoTarget deadMeat = EcoRegionManager.main.FindNearestTarget(EcoTargetType.DeadMeat, transform.position, targetFilter, 1);
             if(deadMeat != null && deadMeat.GetGameObject() != null)
             {
                 result = deadMeat;
@@ -87,6 +105,8 @@ namespace DeExtinctionMod.Mono
         public float swimVelocity;
 
         float timeSearchAgain;
+
+        float timeStarted;
 
         const float kFoodSearchInterval = 2f;
 
