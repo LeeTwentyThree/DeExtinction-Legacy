@@ -150,12 +150,7 @@ namespace DeExtinctionMod
                 Debug.Log("DE EXTINCTION: No prefab found at path " + path);
                 return;
             }
-            Debug.Log("DE EXTINCTION: Added item to clown pincher edible list");
             obj.AddComponent<EcoTarget>().type = clownPincherSpecialEdible;
-            foreach(Component comp in obj.GetComponents<Component>())
-            {
-                Debug.Log("DE EXTINCTION: " + comp.GetType().ToString());
-            }
         }
     }
 }

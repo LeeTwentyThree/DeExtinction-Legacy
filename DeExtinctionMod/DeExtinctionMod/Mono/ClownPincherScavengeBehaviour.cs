@@ -89,9 +89,9 @@ namespace DeExtinctionMod.Mono
         }
         private bool IsValidTarget(IEcoTarget target)
         {
-            if (Random.value > 0.25f) return false;
+            if (Random.value > 0.75f) return false;
             if (target == null || target.GetGameObject() == null) return false;
-            return Vector3.Distance(transform.position, target.GetPosition()) < 20f;
+            return Vector3.Distance(transform.position, target.GetPosition()) < 35f;
         }
         bool TrySearchForFood(out IEcoTarget result)
         {

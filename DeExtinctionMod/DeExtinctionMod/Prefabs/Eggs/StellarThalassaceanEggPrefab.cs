@@ -22,19 +22,19 @@ namespace DeExtinctionMod.Prefabs.Eggs
             {
                 biome = BiomeType.GrandReef_CaveFloor,
                 count = 1,
-                probability = 10f
+                probability = 2f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.KooshZone_CaveFloor,
                 count = 1,
-                probability = 6f
+                probability = 2f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.Dunes_CaveFloor,
                 count = 1,
-                probability = 5f
+                probability = 2f
             }
         };
 

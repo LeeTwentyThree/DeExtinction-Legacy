@@ -23,13 +23,13 @@ namespace DeExtinctionMod.Prefabs.Eggs
             {
                 biome = BiomeType.GrandReef_CaveFloor,
                 count = 1,
-                probability = 10f
+                probability = 0.5f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.Mountains_CaveFloor,
                 count = 1,
-                probability = 7f
+                probability = 3f
             },
             new LootDistributionData.BiomeData()
             {
@@ -41,19 +41,19 @@ namespace DeExtinctionMod.Prefabs.Eggs
             {
                 biome = BiomeType.CragField_Ground,
                 count = 1,
-                probability = 2f
+                probability = 0.5f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.CragField_Rock,
                 count = 1,
-                probability = 2f
+                probability = 0.5f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.CragField_Sand,
                 count = 1,
-                probability = 2f
+                probability = 0.5f
             }
         };
 

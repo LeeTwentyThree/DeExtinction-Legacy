@@ -44,9 +44,9 @@ namespace DeExtinctionMod.Prefabs.Creatures
             liveMixinData.maxHealth = 90f;
         }
 
-        public override SwimInSchoolData SwimInSchoolSettings => new SwimInSchoolData(0.8f, kMyVelocity * 2f, 1.5f, 2f, 30f, 1f, 0f);
+        public override SwimInSchoolData SwimInSchoolSettings => new SwimInSchoolData(0.8f, kMyVelocity * 2f, 1.5f, 2f, 50f, 1f, 0f);
 
-        public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.025f, 0.25f, 0.5f, 1f, false);
+        public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.025f, 0.15f, 0.5f, 1f, false);
 
         public override float MaxVelocityForSpeedParameter => kMyVelocity * 2f;
 
@@ -75,13 +75,13 @@ namespace DeExtinctionMod.Prefabs.Creatures
             {
                 biome = BiomeType.Mountains_OpenDeep_CreatureOnly,
                 count = 12,
-                probability = 0.02f
+                probability = 0.01f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.Mountains_OpenShallow_CreatureOnly,
                 count = 12,
-                probability = 0.02f
+                probability = 0.01f
             },
             new LootDistributionData.BiomeData()
             {

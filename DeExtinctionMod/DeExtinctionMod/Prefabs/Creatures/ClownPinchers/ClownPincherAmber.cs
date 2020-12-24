@@ -29,7 +29,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             },
             new LootDistributionData.BiomeData()
             {
-                biome = BiomeType.MushroomForest_Grass,
+                biome = BiomeType.MushroomForest_Sand,
                 probability = 0.4f,
                 count = 4
             },
@@ -47,19 +47,31 @@ namespace DeExtinctionMod.Prefabs.Creatures
             },
             new LootDistributionData.BiomeData()
             {
-                biome = BiomeType.SparseReef_OpenDeep_CreatureOnly,
-                probability = 0.2f,
+                biome = BiomeType.UnderwaterIslands_IslandTop,
+                probability = 0.15f,
                 count = 4
             },
             new LootDistributionData.BiomeData()
             {
-                biome = BiomeType.SparseReef_OpenShallow_CreatureOnly,
+                biome = BiomeType.SparseReef_OpenDeep_CreatureOnly,
                 probability = 0.1f,
                 count = 4
             },
             new LootDistributionData.BiomeData()
             {
+                biome = BiomeType.SparseReef_OpenShallow_CreatureOnly,
+                probability = 0.05f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
                 biome = BiomeType.SparseReef_Spike,
+                probability = 0.2f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_Coral,
                 probability = 0.2f,
                 count = 4
             }

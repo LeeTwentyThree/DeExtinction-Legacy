@@ -43,9 +43,11 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyTitle => FriendlyName;
 
-        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 0.1f, 4f, "ClownPincherIdle", null, 0.65f, 9f, 18f);
+        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 0.1f, 4f, "ClownPincherIdle", null, 0.65f, 15f, 35f);
 
         public override HeldFishData ViewModelSettings => new HeldFishData(TechType.Peeper, "WorldModel", "ViewModel");
+
+        public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.01f, 0.8f, 0.9f, 1f, true);
 
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
         {
@@ -66,7 +68,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             fleeFromPredators.fleeSpeed = 4f;
             fleeFromPredators.maxReactDistance = 5f;
             fleeFromPredators.actionLength = 3f;
-            fleeFromPredators.evaluatePriority = 0.7f;
+            fleeFromPredators.evaluatePriority = 0.89f;
 
             var nibble = prefab.SearchChild("Mouth").AddComponent<ClownPincherNibble>();
             nibble.creature = components.creature;
@@ -76,7 +78,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             prefab.AddComponent<SleepAtNight>().evaluatePriority = 0.9f;
 
             GameObject worldModel = prefab.SearchChild("WorldModel");
-            CreateTrail(worldModel.SearchChild("Spine1", ECCStringComparison.StartsWith), new Transform[] { worldModel.SearchChild("Spine2", ECCStringComparison.StartsWith).transform, worldModel.SearchChild("Spine3", ECCStringComparison.StartsWith).transform, worldModel.SearchChild("Spine4", ECCStringComparison.StartsWith).transform }, components, 1.5f);
+            CreateTrail(worldModel.SearchChild("Spine2", ECCStringComparison.StartsWith), new Transform[] {worldModel.SearchChild("Spine3", ECCStringComparison.StartsWith).transform, worldModel.SearchChild("Spine4", ECCStringComparison.StartsWith).transform }, components, 0.75f);
 
             components.creature.Hunger = new CreatureTrait(0f, -0.01f);
         }

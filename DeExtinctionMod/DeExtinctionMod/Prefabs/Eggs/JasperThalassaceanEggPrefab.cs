@@ -22,31 +22,31 @@ namespace DeExtinctionMod.Prefabs.Eggs
             {
                 biome = BiomeType.LostRiverCorridor_LakeFloor,
                 count = 1,
-                probability = 10f
+                probability = 1f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.LostRiverJunction_LakeFloor,
                 count = 1,
-                probability = 10f
+                probability = 1f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.BonesField_Lake_Floor,
                 count = 1,
-                probability = 10f
+                probability = 1f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.BonesField_Cave_Ground,
                 count = 1,
-                probability = 10f
+                probability = 1f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.Canyon_Lake_Floor,
                 count = 1,
-                probability = 10f
+                probability = 1f
             }
         };
 
