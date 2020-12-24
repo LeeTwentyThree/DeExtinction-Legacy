@@ -32,6 +32,8 @@ namespace DeExtinctionMod
         public static ClownPincherRuby rubyClownPincher;
         public static ClownPincherSapphire sapphireClownPincher;
         public static ClownPincherEmerald emeraldClownPincher;
+        public static ClownPincherAmber amberClownPincher;
+        public static ClownPincherCitrine citrineClownPincher;
 
         public static EatableAsset rcpCooked;
         public static EatableAsset rcpCured;
@@ -41,6 +43,12 @@ namespace DeExtinctionMod
 
         public static EatableAsset ecpCooked;
         public static EatableAsset ecpCured;
+
+        public static EatableAsset acpCooked;
+        public static EatableAsset acpCured;
+
+        public static EatableAsset ccpCooked;
+        public static EatableAsset ccpCured;
 
         public static StellarThalassaceanEggPrefab stellarEgg;
         public static JasperThalassaceanEggPrefab jasperEgg;
@@ -57,7 +65,7 @@ namespace DeExtinctionMod
             clownPincherSpecialEdible = (EcoTargetType)531513; //Just a random value. Please don't copy this! It will cause incompatibility. Thanks.
 
             MakeItemClownPincherEdible("WorldEntities/Natural/SeaTreaderPoop");
-            MakeItemClownPincherEdible("WorldEntities/Natural/CreepvineSeedCluster");
+            MakeItemClownPincherEdible("WorldEntities/Eggs/StalkerEgg");
 
             #region Creatures
 
@@ -78,6 +86,12 @@ namespace DeExtinctionMod
 
             emeraldClownPincher = new ClownPincherEmerald("EmeraldClownPincher", "Emerald Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), assetBundle.LoadAsset<Texture2D>("ECP_Item"));
             emeraldClownPincher.Patch();
+
+            amberClownPincher = new ClownPincherAmber("AmberClownPincher", "Amber Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), assetBundle.LoadAsset<Texture2D>("ACP_Item"));
+            amberClownPincher.Patch();
+
+            citrineClownPincher = new ClownPincherCitrine("CitrineClownPincher", "Citrine Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), assetBundle.LoadAsset<Texture2D>("CCP_Item"));
+            citrineClownPincher.Patch();
 
             #endregion
 
@@ -111,6 +125,16 @@ namespace DeExtinctionMod
             ecpCooked.Patch();
             ecpCured = new EatableAsset("CuredEmeraldClownPincher", "Cured Emerald Clown Pincher", "Tastes like lettuce. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), emeraldClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("ECP_Cured"));
             ecpCured.Patch();
+
+            acpCooked = new EatableAsset("CookedAmberClownPincher", "Cooked Amber Clown Pincher", "Not the worst tasting thing on the planet.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), amberClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("ACP_Cooked"));
+            acpCooked.Patch();
+            acpCured = new EatableAsset("CuredAmberClownPincher", "Cured Amber Clown Pincher", "Tastes like radish. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), amberClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("ACP_Cured"));
+            acpCured.Patch();
+
+            ccpCooked = new EatableAsset("CookedCitrineClownPincher", "Cooked Citrine Clown Pincher", "The secret is in the claws.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("CCP_Cooked"));
+            ccpCooked.Patch();
+            ccpCured = new EatableAsset("CuredCitrineClownPincher", "Cured Citrine Clown Pincher", "Tastes like potatoes. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("CCP_Cured"));
+            ccpCured.Patch();
 
             #endregion
 

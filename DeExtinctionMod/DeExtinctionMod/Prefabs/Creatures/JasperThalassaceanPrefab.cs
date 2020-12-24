@@ -15,6 +15,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public JasperThalassaceanPrefab(string classId, string friendlyName, string description, GameObject model, Texture2D spriteTexture) : base(classId, friendlyName, description, model, spriteTexture)
         {
+            
         }
 
         public override List<LootDistributionData.BiomeData> BiomesToSpawnIn => new List<LootDistributionData.BiomeData>()

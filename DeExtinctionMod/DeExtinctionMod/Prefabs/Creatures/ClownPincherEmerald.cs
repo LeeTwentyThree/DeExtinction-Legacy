@@ -17,38 +17,44 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override ScannableItemData ScannableSettings => new ScannableItemData(true, 2f, "Lifeforms/Fauna/Scavengers", new string[] { "Lifeforms", "Fauna", "Scavengers" }, QPatch.assetBundle.LoadAsset<Sprite>("ECP_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("ECP_Ency"));
 
-        public override string GetEncyDesc => "A small colorful scavemger found amongst large plantlife.\n\nColoration:\nColoration appears to mimic the surrounding flora, with white stripes to break up the pattern.\n\nBehavior:\nA social species, the Emerald Clown Pincher can be found forming loose shoals while foraging on seed clusters and deceased creatures.\n\nSpecimen shows high genetic diversity suggesting many extant, closely related species that frequently mate.\n\nAssessment: Edible";
+        public override string GetEncyDesc => "A small colorful scavenger found amongst large plantlife.\n\nColoration:\nColoration appears to mimic the surrounding flora, with white stripes to break up the pattern.\n\nBehavior:\nA social species, the Emerald Clown Pincher can be found forming loose shoals while foraging on seed clusters and deceased creatures.\n\nSpecimen shows high genetic diversity suggesting many extant, closely related species that frequently mate.\n\nAssessment: Edible";
 
         public override List<LootDistributionData.BiomeData> BiomesToSpawnIn => new List<LootDistributionData.BiomeData>()
         {
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.SparseReef_OpenDeep_CreatureOnly,
-                probability = 0.15f,
+                probability = 0.2f,
                 count = 4
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.SparseReef_OpenShallow_CreatureOnly,
-                probability = 0.09f,
+                probability = 0.1f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_Spike,
+                probability = 0.2f,
                 count = 4
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.Kelp_DenseVine,
-                probability = 1f,
+                probability = 0.5f,
                 count = 4
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.Kelp_Sand,
-                probability = 1f,
+                probability = 0.5f,
                 count = 4
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.Kelp_GrassSparse,
-                probability = 1f,
+                probability = 0.5f,
                 count = 4
             }
         };

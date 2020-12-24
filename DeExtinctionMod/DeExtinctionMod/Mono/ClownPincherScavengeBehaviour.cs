@@ -10,6 +10,7 @@ namespace DeExtinctionMod.Mono
     public class ClownPincherScavengeBehaviour : CreatureAction
     {
         public ClownPincherBehaviour clownPincher;
+        public float priorityWhileScavenging;
         EcoRegion.TargetFilter targetFilter;
         void Start()
         {
@@ -19,11 +20,18 @@ namespace DeExtinctionMod.Mono
         {
             if (creature.GetLastAction() == this && Time.time > timeStarted + 20f)
             {
-                return 0f;
+                if(Time.time > timeStarted + 20f)
+                {                
+                    return 0f;
+                }
+                else
+                {
+                    return priorityWhileScavenging;
+                }
             }
             if (clownPincher.nibble.CurrentlyEating)
             {
-                return evaluatePriority;
+                return priorityWhileScavenging;
             }
             if (creature.Hunger.Value >= 0.9f)
             {
@@ -81,6 +89,7 @@ namespace DeExtinctionMod.Mono
         }
         private bool IsValidTarget(IEcoTarget target)
         {
+            if (Random.value > 0.25f) return false;
             if (target == null || target.GetGameObject() == null) return false;
             return Vector3.Distance(transform.position, target.GetPosition()) < 20f;
         }

@@ -33,7 +33,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override SwimInSchoolData SwimInSchoolSettings => new SwimInSchoolData(0.6f, 3f, 1f, 2f, 20f, 0.5f, 0.1f);
 
-        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.65f, true, 1f);
+        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.85f, true, 0.5f);
             
         public override float MaxVelocityForSpeedParameter => 4f;
 
@@ -60,6 +60,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             scavengeBehaviour.clownPincher = clownPincherBehaviour;
             scavengeBehaviour.swimVelocity = 3f;
             scavengeBehaviour.evaluatePriority = 0.8f;
+            scavengeBehaviour.priorityWhileScavenging = 0.8f;
 
             var fleeFromPredators = prefab.AddComponent<SwimAwayFromPredators>();
             fleeFromPredators.fleeSpeed = 4f;

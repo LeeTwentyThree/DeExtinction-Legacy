@@ -42,7 +42,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             {
                 biome = BiomeType.Dunes_OpenShallow_CreatureOnly,
                 count = 4,
-                probability = 0.06f
+                probability = 0.1f
             },
             new LootDistributionData.BiomeData()
             {

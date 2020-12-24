@@ -108,8 +108,10 @@
     <Compile Include="Mono\SwimAwayFromPredators.cs" />
     <Compile Include="Mono\VaryingSwimSpeeds.cs" />
     <Compile Include="Patches.cs" />
+    <Compile Include="Prefabs\Creatures\ClownPincherCitrine.cs" />
     <Compile Include="Prefabs\Creatures\ClownPincherPrefab.cs" />
     <Compile Include="Prefabs\Creatures\ClownPincherEmerald.cs" />
+    <Compile Include="Prefabs\Creatures\ClownPincherAmber.cs" />
     <Compile Include="Prefabs\Creatures\ClownPincherRuby.cs" />
     <Compile Include="Prefabs\Creatures\ClownPincherSapphire.cs" />
     <Compile Include="Prefabs\Creatures\GrandGliderPrefab.cs" />
