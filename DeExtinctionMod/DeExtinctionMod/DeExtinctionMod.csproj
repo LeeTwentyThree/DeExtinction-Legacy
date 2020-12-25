@@ -106,8 +106,8 @@
     <Compile Include="Mono\ReactToPredatorAction.cs" />
     <Compile Include="Mono\SleepAtNight.cs" />
     <Compile Include="Mono\SwimAwayFromPredators.cs" />
-    <Compile Include="Mono\VaryingSwimSpeeds.cs" />
     <Compile Include="Patches.cs" />
+    <Compile Include="Prefabs\Creatures\AxetailPrefab.cs" />
     <Compile Include="Prefabs\Creatures\ClownPinchers\ClownPincherCitrine.cs" />
     <Compile Include="Prefabs\Creatures\ClownPincherPrefab.cs" />
     <Compile Include="Prefabs\Creatures\ClownPinchers\ClownPincherEmerald.cs" />

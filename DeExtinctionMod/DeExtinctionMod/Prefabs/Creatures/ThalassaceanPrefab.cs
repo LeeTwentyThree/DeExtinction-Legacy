@@ -36,7 +36,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             liveMixinData.knifeable = true;
         }
 
-        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(1f, false, 5f);
+        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.8f, false, 5f);
 
         public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 2f, 10f, "ThalassaceanRoar", string.Empty, 0.51f, 20f, 35f);
 
@@ -46,15 +46,24 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float BioReactorCharge => 1600f;
 
-        public override float MaxVelocityForSpeedParameter => 2.5f;
+        public override float MaxVelocityForSpeedParameter => 6f;
 
         public override void AddCustomBehaviour(CreatureComponents components)
         {
             CreateTrail(prefab.SearchChild("root"), new Transform[] { prefab.SearchChild("spine1").transform, prefab.SearchChild("spine2").transform, prefab.SearchChild("spine3").transform, prefab.SearchChild("spine4").transform }, components, 0.2f);
 
-            var varySwimSpeeds = prefab.AddComponent<VaryingSwimSpeeds>();
-            varySwimSpeeds.maxIncrease = 2f;
-            varySwimSpeeds.variationRate = 0.2f;
+            var fleeOnDamage = prefab.AddComponent<FleeOnDamage>();
+            fleeOnDamage.breakLeash = true;
+            fleeOnDamage.swimVelocity = 6f;
+            fleeOnDamage.damageThreshold = 40f;
+            fleeOnDamage.evaluatePriority = 0.9f;
+
+            var fleeFromPredators = prefab.AddComponent<SwimAwayFromPredators>();
+            fleeFromPredators.actionLength = 6f;
+            fleeFromPredators.swimVelocity = 6f;
+            fleeFromPredators.maxReactDistance = 35f;
+            fleeFromPredators.evaluatePriority = 0.9f;
+            fleeFromPredators.targetType = EcoTargetType.Leviathan;
 
             AddMeleeAttack(prefab.SearchChild("Mouth"), 0.35f, 15f, "ThalassaceanBite", 35f, true, components);
         }

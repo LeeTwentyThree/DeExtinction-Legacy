@@ -49,6 +49,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.01f, 0.8f, 0.9f, 1f, true);
 
+        public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.79f, 15f);
+
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
         {
             liveMixinData.maxHealth = 30f;
@@ -65,7 +67,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             scavengeBehaviour.priorityWhileScavenging = 0.8f;
 
             var fleeFromPredators = prefab.AddComponent<SwimAwayFromPredators>();
-            fleeFromPredators.fleeSpeed = 4f;
+            fleeFromPredators.swimVelocity = 4f;
             fleeFromPredators.maxReactDistance = 5f;
             fleeFromPredators.actionLength = 3f;
             fleeFromPredators.evaluatePriority = 0.89f;
@@ -78,7 +80,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             prefab.AddComponent<SleepAtNight>().evaluatePriority = 0.9f;
 
             GameObject worldModel = prefab.SearchChild("WorldModel");
-            CreateTrail(worldModel.SearchChild("Spine2", ECCStringComparison.StartsWith), new Transform[] {worldModel.SearchChild("Spine3", ECCStringComparison.StartsWith).transform, worldModel.SearchChild("Spine4", ECCStringComparison.StartsWith).transform }, components, 0.75f);
+            CreateTrail(worldModel.SearchChild("Spine3", ECCStringComparison.StartsWith), new Transform[] {worldModel.SearchChild("Spine4", ECCStringComparison.StartsWith).transform }, components, 1f);
 
             components.creature.Hunger = new CreatureTrait(0f, -0.01f);
         }

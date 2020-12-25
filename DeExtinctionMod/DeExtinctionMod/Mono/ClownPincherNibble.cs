@@ -16,6 +16,7 @@ namespace DeExtinctionMod.Mono
 			eatingSound.volume = ECCHelpers.GetECCVolume();
 			eatingSound.clip = QPatch.assetBundle.LoadAsset<AudioClip>("ClownPincherEating");
 			eatingSound.spatialBlend = 1f;
+			eatingSound.maxDistance = 10f;
 		}
 
 		public bool TouchingFood

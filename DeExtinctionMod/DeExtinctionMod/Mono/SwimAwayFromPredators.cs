@@ -9,12 +9,12 @@ namespace DeExtinctionMod.Mono
 {
     public class SwimAwayFromPredators : ReactToPredatorAction
     {
-        public float fleeSpeed;
+        public float swimVelocity;
 
         public override void Perform(Creature creature, float deltaTime)
         {
             Vector3 targetDirection = (transform.position - lastScare.lastScarePosition).normalized;
-            swimBehaviour.SwimTo(transform.position + (targetDirection * fleeSpeed * 5f), fleeSpeed);
+            swimBehaviour.SwimTo(transform.position + (targetDirection * swimVelocity * 5f), swimVelocity);
         }
     }
 }

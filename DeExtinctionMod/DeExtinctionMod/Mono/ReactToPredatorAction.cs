@@ -15,6 +15,7 @@ namespace DeExtinctionMod.Mono
         }
 
         public float maxReactDistance;
+        public EcoTargetType targetType = EcoTargetType.Shark;
         public float actionLength;
 
         protected LastScarePosition lastScare;
@@ -30,16 +31,10 @@ namespace DeExtinctionMod.Mono
             }
             else
             {
-                float distanceMultipier = 1f;
-                IEcoTarget closestTarget = EcoRegionManager.main.FindNearestTarget(EcoTargetType.Shark, transform.position, null, 1);
-                if(closestTarget == null || closestTarget.GetGameObject() == null)
-                {
-                    closestTarget = EcoRegionManager.main.FindNearestTarget(EcoTargetType.Leviathan, transform.position, null, 2);
-                    distanceMultipier = 2f;
-                }
+                IEcoTarget closestTarget = EcoRegionManager.main.FindNearestTarget(targetType, transform.position, null, 1);
                 if(closestTarget != null && closestTarget.GetGameObject() != null)
                 {
-                    if (Vector3.Distance(closestTarget.GetPosition(), transform.position) < maxReactDistance * distanceMultipier)
+                    if (Vector3.Distance(closestTarget.GetPosition(), transform.position) < maxReactDistance)
                     {
                         performingAction = true;
                         timeStopAction = Time.time + actionLength;

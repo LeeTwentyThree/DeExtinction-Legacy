@@ -34,6 +34,7 @@ namespace DeExtinctionMod
         public static ClownPincherEmerald emeraldClownPincher;
         public static ClownPincherAmber amberClownPincher;
         public static ClownPincherCitrine citrineClownPincher;
+        public static AxetailPrefab axetail;
 
         public static EatableAsset rcpCooked;
         public static EatableAsset rcpCured;
@@ -49,6 +50,9 @@ namespace DeExtinctionMod
 
         public static EatableAsset ccpCooked;
         public static EatableAsset ccpCured;
+
+        public static EatableAsset axetailCooked;
+        public static EatableAsset axetailCured;
 
         public static StellarThalassaceanEggPrefab stellarEgg;
         public static JasperThalassaceanEggPrefab jasperEgg;
@@ -78,6 +82,7 @@ namespace DeExtinctionMod
             grandGlider = new GrandGliderPrefab("GrandGlider", "Grand Glider", "Medium sized prey animal, raised in containment.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("GrandGlider_Item"));
             grandGlider.Patch();
 
+            #region ClownPinchers
             rubyClownPincher = new ClownPincherRuby("RubyClownPincher", "Ruby Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), assetBundle.LoadAsset<Texture2D>("RCP_Item"));
             rubyClownPincher.Patch();
 
@@ -92,6 +97,10 @@ namespace DeExtinctionMod
 
             citrineClownPincher = new ClownPincherCitrine("CitrineClownPincher", "Citrine Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), assetBundle.LoadAsset<Texture2D>("CCP_Item"));
             citrineClownPincher.Patch();
+            #endregion
+
+            axetail = new AxetailPrefab("Axetail", "Axetail", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), assetBundle.LoadAsset<Texture2D>("Axetail_Item"));
+            axetail.Patch();
 
             #endregion
 
@@ -135,6 +144,11 @@ namespace DeExtinctionMod
             ccpCooked.Patch();
             ccpCured = new EatableAsset("CuredCitrineClownPincher", "Cured Citrine Clown Pincher", "Tastes like potatoes. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("CCP_Cured"));
             ccpCured.Patch();
+
+            axetailCooked = new EatableAsset("CookedAxetail", "Cooked Axetail", "A sharp taste. Hydrating.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, 18f, true), false, assetBundle.LoadAsset<Texture2D>("Axetail_Cooked"));
+            axetailCooked.Patch();
+            axetailCured = new EatableAsset("CuredAxetail", "Cooked Axetail", "Eat around the pointy bits. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Axetail_Cured"));
+            axetailCured.Patch();
 
             #endregion
 
