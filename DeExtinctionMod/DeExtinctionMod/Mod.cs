@@ -35,6 +35,7 @@ namespace DeExtinctionMod
         public static ClownPincherAmber amberClownPincher;
         public static ClownPincherCitrine citrineClownPincher;
         public static AxetailPrefab axetail;
+        public static GulperPrefab gulper;
 
         public static EatableAsset rcpCooked;
         public static EatableAsset rcpCured;
@@ -81,6 +82,9 @@ namespace DeExtinctionMod
 
             grandGlider = new GrandGliderPrefab("GrandGlider", "Grand Glider", "Medium sized prey animal, raised in containment.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("GrandGlider_Item"));
             grandGlider.Patch();
+
+            gulper = new GulperPrefab("GulperLeviathan", "Gulper Leviathan", "Leviathan-class predator with a huge mouth.", assetBundle.LoadAsset<GameObject>("Gulper_Prefab"), null);
+            gulper.Patch();
 
             #region ClownPinchers
             rubyClownPincher = new ClownPincherRuby("RubyClownPincher", "Ruby Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), assetBundle.LoadAsset<Texture2D>("RCP_Item"));

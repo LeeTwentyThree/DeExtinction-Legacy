@@ -102,6 +102,8 @@
     <Compile Include="Mono\ClownPincher.cs" />
     <Compile Include="Mono\ClownPincherNibble.cs" />
     <Compile Include="Mono\ClownPincherScavengeBehaviour.cs" />
+    <Compile Include="Mono\GulperBehaviour.cs" />
+    <Compile Include="Mono\GulperMeleeAttack.cs" />
     <Compile Include="Mono\PassBelowPlayerAction.cs" />
     <Compile Include="Mono\ReactToPredatorAction.cs" />
     <Compile Include="Mono\SleepAtNight.cs" />
@@ -115,6 +117,7 @@
     <Compile Include="Prefabs\Creatures\ClownPinchers\ClownPincherRuby.cs" />
     <Compile Include="Prefabs\Creatures\ClownPinchers\ClownPincherSapphire.cs" />
     <Compile Include="Prefabs\Creatures\GrandGliderPrefab.cs" />
+    <Compile Include="Prefabs\Creatures\GulperPrefab.cs" />
     <Compile Include="Prefabs\Eggs\JasperThalassaceanEggPrefab.cs" />
     <Compile Include="Prefabs\Eggs\GrandGliderEggPrefab.cs" />
     <Compile Include="Prefabs\Eggs\StellarThalassaceanEggPrefab.cs" />

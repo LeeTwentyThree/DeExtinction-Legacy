@@ -51,7 +51,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             fleeOnDamage.evaluatePriority = 0.5f;
             fleeOnDamage.swimVelocity = 7f;
 
-            CreateTrail(prefab.SearchChild("Spine1", ECCStringComparison.Contains), new Transform[] { prefab.SearchChild("Spine2", ECCStringComparison.Contains).transform, prefab.SearchChild("Spine3", ECCStringComparison.Contains).transform , prefab.SearchChild("Spine4", ECCStringComparison.Contains).transform , prefab.SearchChild("Spine5", ECCStringComparison.Contains).transform , prefab.SearchChild("Spine6", ECCStringComparison.Contains).transform }, components, 0.25f);
+            CreateTrail(prefab.SearchChild("Spine1", ECCStringComparison.Contains), new Transform[] { prefab.SearchChild("Spine2", ECCStringComparison.Contains).transform, prefab.SearchChild("Spine3", ECCStringComparison.Contains).transform , prefab.SearchChild("Spine4", ECCStringComparison.Contains).transform , prefab.SearchChild("Spine5", ECCStringComparison.Contains).transform , prefab.SearchChild("Spine6", ECCStringComparison.Contains).transform }, components, 0.5f, 0.5f);
         }
 
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
@@ -68,31 +68,31 @@ namespace DeExtinctionMod.Prefabs.Creatures
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.GrandReef_OpenDeep_CreatureOnly,
-                probability = 0.25f,
+                probability = 0.4f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.KooshZone_OpenDeep_CreatureOnly,
-                probability = 0.3f,
+                probability = 0.4f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.KooshZone_Grass,
-                probability = 0.3f,
+                probability = 0.4f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.SeaTreaderPath_OpenDeep_CreatureOnly,
-                probability = 0.3f,
+                probability = 0.4f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.SeaTreaderPath_Path,
-                probability = 0.3f,
+                probability = 0.4f,
                 count = 1
             },
         };

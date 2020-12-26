@@ -1,0 +1,192 @@
+﻿using ECCLibrary;
+using FMOD;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace DeExtinctionMod.Mono
+{
+    public class GulperBehaviour : MonoBehaviour, IOnTakeDamage
+    {
+        private Vehicle heldVehicle;
+        private VehicleType heldVehicleType;
+        private float timeVehicleGrabbed;
+        private float timeVehicleReleased;
+        private Quaternion vehicleInitialRotation;
+        private Vector3 vehicleInitialPosition;
+        private AudioSource seamothGrabSound;
+        private AudioSource exosuitGrabSound;
+        private Transform subHoldPoint;
+        private Transform exoHoldPoint;
+        float damagePerSecond = 21f;
+
+        public Creature creature;
+
+        void Start()
+        {
+            creature = GetComponent<Creature>();
+            seamothGrabSound = AddVehicleGrabSound("GulperSeamoth");
+            exosuitGrabSound = AddVehicleGrabSound("GulperExosuit");
+            subHoldPoint = gameObject.SearchChild("SubHoldPoint").transform;
+            exoHoldPoint = gameObject.SearchChild("ExoHoldPoint").transform;
+        }
+
+        Transform GetHoldPoint()
+        {
+            if(heldVehicleType == VehicleType.Exosuit)
+            {
+                return exoHoldPoint;
+            }
+            else
+            {
+                return subHoldPoint;
+            }
+        }
+        private AudioSource AddVehicleGrabSound(string soundName)
+        {
+            var source = gameObject.AddComponent<AudioSource>();
+            source.volume = ECCHelpers.GetECCVolume() * 0.75f;
+            source.clip = ECCAudio.CreateClipPool(soundName).GetRandomClip();
+            return source;
+        }
+
+        public bool IsHoldingVehicle()
+        {
+            return heldVehicleType != VehicleType.None;
+        }
+        /// <summary>
+        /// Holding Seamoth or Seatruck.
+        /// </summary>
+        /// <returns></returns>
+        public bool IsHoldingGenericSub()
+        {
+            return heldVehicleType == VehicleType.GenericSub;
+        }
+        public bool IsHoldingExosuit()
+        {
+            return heldVehicleType == VehicleType.Exosuit;
+        }
+        private enum VehicleType
+        {
+            None,
+            Exosuit,
+            GenericSub
+        }
+        public void GrabGenericSub(Vehicle vehicle)
+        {
+            GrabVehicle(vehicle, VehicleType.GenericSub);
+        }
+        public void GrabExosuit(Vehicle exosuit)
+        {
+            GrabVehicle(exosuit, VehicleType.Exosuit);
+        }
+        public bool GetCanGrabVehicle()
+        {
+            return timeVehicleReleased + 5f < Time.time && !IsHoldingVehicle();
+        }
+        private void GrabVehicle(Vehicle vehicle, VehicleType vehicleType)
+        {
+            vehicle.GetComponent<Rigidbody>().isKinematic = true;
+            vehicle.collisionModel.SetActive(false);
+            heldVehicle = vehicle;
+            heldVehicleType = vehicleType;
+            heldVehicleType = vehicleType;
+            if (heldVehicleType == VehicleType.Exosuit)
+            {
+                SafeAnimator.SetBool(vehicle.mainAnimator, "reaper_attack", true);
+                Exosuit component = vehicle.GetComponent<Exosuit>();
+                if (component != null)
+                {
+                    component.cinematicMode = true;
+                }
+            }
+            timeVehicleGrabbed = Time.time;
+            vehicleInitialRotation = vehicle.transform.rotation;
+            vehicleInitialPosition = vehicle.transform.position;
+            if(heldVehicleType == VehicleType.GenericSub)
+            {
+                seamothGrabSound.Play();
+            }
+            else if(heldVehicleType == VehicleType.Exosuit)
+            {
+                exosuitGrabSound.Play();
+            }
+            InvokeRepeating("DamageVehicle", 1f, 1f);
+            Invoke("ReleaseVehicle", 5f + UnityEngine.Random.value);
+            if (Player.main.GetVehicle() == heldVehicle)
+            {
+                MainCameraControl.main.ShakeCamera(4f, 5f, MainCameraControl.ShakeMode.BuildUp, 1.2f);
+            }
+        }
+        private void DamageVehicle()
+        {
+            if (heldVehicle != null)
+            {
+                heldVehicle.liveMixin.TakeDamage(damagePerSecond, default, DamageType.Normal, null);
+            }
+        }
+        public void ReleaseVehicle()
+        {
+            if (heldVehicle != null)
+            {
+                if (heldVehicleType == VehicleType.Exosuit)
+                {
+                    SafeAnimator.SetBool(heldVehicle.mainAnimator, "reaper_attack", false);
+                    Exosuit component = heldVehicle.GetComponent<Exosuit>();
+                    if (component != null)
+                    {
+                        component.cinematicMode = false;
+                    }
+                }
+                heldVehicle.GetComponent<Rigidbody>().isKinematic = false;
+                heldVehicle.collisionModel.SetActive(true);
+                heldVehicle = null;
+                timeVehicleReleased = Time.time;
+            }
+            heldVehicleType = VehicleType.None;
+            CancelInvoke("DamageVehicle");
+            seamothGrabSound.Stop();
+            exosuitGrabSound.Stop();
+            MainCameraControl.main.ShakeCamera(0f, 0f);
+        }
+        public void Update()
+        {
+            if (heldVehicleType != VehicleType.None && heldVehicle == null)
+            {
+                ReleaseVehicle();
+            }
+            SafeAnimator.SetBool(creature.GetAnimator(), "sub_attack", IsHoldingGenericSub());
+            SafeAnimator.SetBool(creature.GetAnimator(), "exo_attack", IsHoldingExosuit());
+            if (heldVehicle != null)
+            {
+                Transform holdPoint = GetHoldPoint();
+                float num = Mathf.Clamp01(Time.time - timeVehicleGrabbed);
+                if (num >= 1f)
+                {
+                    heldVehicle.transform.position = holdPoint.position;
+                    heldVehicle.transform.rotation = holdPoint.transform.rotation;
+                    return;
+                }
+                heldVehicle.transform.position = (holdPoint.position - this.vehicleInitialPosition) * num + this.vehicleInitialPosition;
+                heldVehicle.transform.rotation = Quaternion.Lerp(this.vehicleInitialRotation, holdPoint.rotation, num);
+            }
+        }
+        public void OnTakeDamage(DamageInfo damageInfo)
+        {
+            if ((damageInfo.type == DamageType.Electrical || damageInfo.type == DamageType.Poison) && heldVehicle != null)
+            {
+                ReleaseVehicle();
+            }
+        }
+        void OnDisable()
+        {
+            if (heldVehicle != null)
+            {
+                ReleaseVehicle();
+            }
+        }
+    }
+}
