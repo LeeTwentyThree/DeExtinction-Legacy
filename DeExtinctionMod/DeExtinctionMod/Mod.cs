@@ -64,6 +64,7 @@ namespace DeExtinctionMod
         [QModPatch]
         public static void Patch()
         {
+            ErrorMessage.AddMessage("Hello world!");
             assetBundle = ECCHelpers.LoadAssetBundleFromAssetsFolder(Assembly.GetExecutingAssembly(), "deextinctionassets");
             ECCAudio.RegisterClips(assetBundle);
 
@@ -149,7 +150,7 @@ namespace DeExtinctionMod
             ccpCured = new EatableAsset("CuredCitrineClownPincher", "Cured Citrine Clown Pincher", "Tastes like potatoes. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("CCP_Cured"));
             ccpCured.Patch();
 
-            axetailCooked = new EatableAsset("CookedAxetail", "Cooked Axetail", "A sharp taste. Hydrating.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, 18f, true), false, assetBundle.LoadAsset<Texture2D>("Axetail_Cooked"));
+            axetailCooked = new EatableAsset("CookedAxetail", "Cooked Axetail", "A sharp taste. Hydrating.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, 13f, true), false, assetBundle.LoadAsset<Texture2D>("Axetail_Cooked"));
             axetailCooked.Patch();
             axetailCured = new EatableAsset("CuredAxetail", "Cooked Axetail", "Eat around the pointy bits. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Axetail_Cured"));
             axetailCured.Patch();

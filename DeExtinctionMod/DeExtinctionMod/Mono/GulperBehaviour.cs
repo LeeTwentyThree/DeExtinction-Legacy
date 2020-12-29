@@ -1,4 +1,5 @@
 ﻿using ECCLibrary;
+using ECCLibrary.Internal;
 using FMOD;
 using System;
 using System.Collections.Generic;
@@ -17,21 +18,23 @@ namespace DeExtinctionMod.Mono
         private float timeVehicleReleased;
         private Quaternion vehicleInitialRotation;
         private Vector3 vehicleInitialPosition;
-        private AudioSource seamothGrabSound;
-        private AudioSource exosuitGrabSound;
+        private AudioSource vehicleGrabSound;
         private Transform subHoldPoint;
         private Transform exoHoldPoint;
-        float damagePerSecond = 21f;
+        float damagePerSecond = 17f;
+        private ECCAudio.AudioClipPool seamothSounds;
+        private ECCAudio.AudioClipPool exosuitSounds;
 
         public Creature creature;
 
         void Start()
         {
             creature = GetComponent<Creature>();
-            seamothGrabSound = AddVehicleGrabSound("GulperSeamoth");
-            exosuitGrabSound = AddVehicleGrabSound("GulperExosuit");
+            vehicleGrabSound = AddVehicleGrabSound();
             subHoldPoint = gameObject.SearchChild("SubHoldPoint").transform;
             exoHoldPoint = gameObject.SearchChild("ExoHoldPoint").transform;
+            seamothSounds = ECCAudio.CreateClipPool("GulperSeamoth");
+            exosuitSounds = ECCAudio.CreateClipPool("GulperExosuit");
         }
 
         Transform GetHoldPoint()
@@ -45,11 +48,13 @@ namespace DeExtinctionMod.Mono
                 return subHoldPoint;
             }
         }
-        private AudioSource AddVehicleGrabSound(string soundName)
+        private AudioSource AddVehicleGrabSound()
         {
             var source = gameObject.AddComponent<AudioSource>();
             source.volume = ECCHelpers.GetECCVolume() * 0.75f;
-            source.clip = ECCAudio.CreateClipPool(soundName).GetRandomClip();
+            source.minDistance = 5f;
+            source.maxDistance = 20f;
+            source.spatialBlend = 1f;
             return source;
         }
 
@@ -108,14 +113,19 @@ namespace DeExtinctionMod.Mono
             vehicleInitialPosition = vehicle.transform.position;
             if(heldVehicleType == VehicleType.GenericSub)
             {
-                seamothGrabSound.Play();
+                vehicleGrabSound.clip = seamothSounds.GetRandomClip();
             }
             else if(heldVehicleType == VehicleType.Exosuit)
             {
-                exosuitGrabSound.Play();
+                vehicleGrabSound.clip = exosuitSounds.GetRandomClip();
             }
+            else
+            {
+                ECCLog.AddMessage("Unknown Vehicle Type detected");
+            }
+            vehicleGrabSound.Play();
             InvokeRepeating("DamageVehicle", 1f, 1f);
-            Invoke("ReleaseVehicle", 5f + UnityEngine.Random.value);
+            Invoke("ReleaseVehicle", 6f + UnityEngine.Random.value);
             if (Player.main.GetVehicle() == heldVehicle)
             {
                 MainCameraControl.main.ShakeCamera(4f, 5f, MainCameraControl.ShakeMode.BuildUp, 1.2f);
@@ -148,8 +158,6 @@ namespace DeExtinctionMod.Mono
             }
             heldVehicleType = VehicleType.None;
             CancelInvoke("DamageVehicle");
-            seamothGrabSound.Stop();
-            exosuitGrabSound.Stop();
             MainCameraControl.main.ShakeCamera(0f, 0f);
         }
         public void Update()

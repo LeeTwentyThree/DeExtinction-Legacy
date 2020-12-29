@@ -35,7 +35,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float EyeFov => 0.75f;
 
-        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.3f, true, 10f);
+        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.6f, true, 10f);
 
         public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 5f, 100f, "GulperRoar", "roar", 0.3f, 8f, 20f);
 
@@ -43,16 +43,25 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.4f, 50f);
 
+        public override UBERMaterialProperties MaterialSettings => new UBERMaterialProperties(7f, 2.4f);
+
+        public override float Mass => 2000f;
+
+        public override float TurnSpeed => 0.75f;
+
         public override void AddCustomBehaviour(CreatureComponents components)
         {
             GameObject spine2 = prefab.SearchChild("Spine2");
-            CreateTrail(spine2, new Transform[] { spine2.SearchChild("Spine3Phys").transform, spine2.SearchChild("Spine3").transform, spine2.SearchChild("Spine4Phys").transform, spine2.SearchChild("Spine4").transform, spine2.SearchChild("Spine5Phys").transform, spine2.SearchChild("Spine5").transform, spine2.SearchChild("Spine6Phys").transform, spine2.SearchChild("Spine6").transform, spine2.SearchChild("Spine7Phys").transform, spine2.SearchChild("Spine7").transform, spine2.SearchChild("Spine8Phys").transform, spine2.SearchChild("Spine8").transform, spine2.SearchChild("Spine9Phys").transform, spine2.SearchChild("Spine9").transform }, components, 3f);
+            CreateTrail(spine2, new Transform[] { spine2.SearchChild("Spine3Phys").transform, spine2.SearchChild("Spine3").transform, spine2.SearchChild("Spine4Phys").transform, spine2.SearchChild("Spine4").transform, spine2.SearchChild("Spine5Phys").transform, spine2.SearchChild("Spine5").transform, spine2.SearchChild("Spine6Phys").transform, spine2.SearchChild("Spine6").transform, spine2.SearchChild("Spine7Phys").transform, spine2.SearchChild("Spine7").transform, spine2.SearchChild("Spine8Phys").transform, spine2.SearchChild("Spine8").transform, spine2.SearchChild("Spine9Phys").transform, spine2.SearchChild("Spine9").transform }, components, 4.5f, 2f);
             MakeAggressiveTo(35f, 2, EcoTargetType.Shark, 0f, 3f);
             GameObject mouth = prefab.SearchChild("Mouth");
+            GameObject lClawTrigger = prefab.SearchChild("LClaw");
+            GameObject rClawTrigger = prefab.SearchChild("RClaw");
+
             GulperBehaviour gulperBehaviour = prefab.AddComponent<GulperBehaviour>();
             gulperBehaviour.creature = components.creature;
 
-            GulperMeleeAttack meleeAttack = prefab.AddComponent<GulperMeleeAttack>();
+            GulperMeleeAttack_Mouth meleeAttack = prefab.AddComponent<GulperMeleeAttack_Mouth>();
             meleeAttack.mouth = mouth;
             meleeAttack.canBeFed = false;
             meleeAttack.biteInterval = 1f;
@@ -65,7 +74,31 @@ namespace DeExtinctionMod.Prefabs.Creatures
             meleeAttack.creature = components.creature;
             meleeAttack.liveMixin = components.liveMixin;
             meleeAttack.animator = components.creature.GetAnimator();
-            OnTouch onTouch = mouth.AddComponent<OnTouch>();
+
+            mouth.AddComponent<OnTouch>();
+            lClawTrigger.AddComponent<OnTouch>();
+            rClawTrigger.AddComponent<OnTouch>();
+            AddClawAttack("LClaw", "swipeL", components);
+            AddClawAttack("RClaw", "swipeR", components);
+        }
+
+        void AddClawAttack(string triggerName, string animationName, CreatureComponents components)
+        {
+            GulperMeleeAttack_Claw meleeAttack = prefab.AddComponent<GulperMeleeAttack_Claw>();
+            meleeAttack.mouth = prefab.SearchChild(triggerName);
+            meleeAttack.canBeFed = false;
+            meleeAttack.biteInterval = 1f;
+            meleeAttack.biteDamage = 50f;
+            meleeAttack.eatHungerDecrement = 0.05f;
+            meleeAttack.eatHappyIncrement = 0.1f;
+            meleeAttack.biteAggressionDecrement = 0.02f;
+            meleeAttack.biteAggressionThreshold = 0.1f;
+            meleeAttack.lastTarget = components.lastTarget;
+            meleeAttack.creature = components.creature;
+            meleeAttack.liveMixin = components.liveMixin;
+            meleeAttack.animator = components.creature.GetAnimator();
+            meleeAttack.colliderName = triggerName;
+            meleeAttack.animationTriggerName = animationName;
         }
 
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
