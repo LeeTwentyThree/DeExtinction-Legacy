@@ -35,7 +35,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float EyeFov => 0.75f;
 
-        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.6f, true, 10f);
+        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.6f, true, 20f);
 
         public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 5f, 100f, "GulperRoar", "roar", 0.3f, 8f, 20f);
 
@@ -43,7 +43,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.4f, 50f);
 
-        public override UBERMaterialProperties MaterialSettings => new UBERMaterialProperties(7f, 2.4f);
+        public override UBERMaterialProperties MaterialSettings => new UBERMaterialProperties(7f, 2.4f, 3f);
 
         public override float Mass => 2000f;
 

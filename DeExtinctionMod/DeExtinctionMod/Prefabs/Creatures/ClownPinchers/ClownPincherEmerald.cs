@@ -53,8 +53,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
             },
             new LootDistributionData.BiomeData()
             {
-                biome = BiomeType.Kelp_Sand,
-                probability = 0.5f,
+                biome = BiomeType.Kelp_GrassDense,
+                probability = 0.6f,
                 count = 4
             },
             new LootDistributionData.BiomeData()

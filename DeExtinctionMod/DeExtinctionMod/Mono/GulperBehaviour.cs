@@ -125,10 +125,11 @@ namespace DeExtinctionMod.Mono
             }
             vehicleGrabSound.Play();
             InvokeRepeating("DamageVehicle", 1f, 1f);
-            Invoke("ReleaseVehicle", 6f + UnityEngine.Random.value);
+            float attackLength = 6f + UnityEngine.Random.value;
+            Invoke("ReleaseVehicle", attackLength);
             if (Player.main.GetVehicle() == heldVehicle)
             {
-                MainCameraControl.main.ShakeCamera(4f, 5f, MainCameraControl.ShakeMode.BuildUp, 1.2f);
+                MainCameraControl.main.ShakeCamera(4f, attackLength, MainCameraControl.ShakeMode.BuildUp, 1.2f);
             }
         }
         private void DamageVehicle()
