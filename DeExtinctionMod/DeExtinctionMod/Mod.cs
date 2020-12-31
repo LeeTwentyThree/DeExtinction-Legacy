@@ -157,9 +157,12 @@ namespace DeExtinctionMod
 
             #endregion
 
-            const float gulperSpawnDistance = 100f;
-            //StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(1000f, 0f, 1000f), "TestGulper", gulperSpawnDistance));
-            //StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(0f, 0f, 0f), "OriginGulper", gulperSpawnDistance));
+            const float gulperSpawnDistance = 125f;
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-970f, -216f, -509f), "BKTGulper", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(1169, -370, 903), "Mountains+KooshGulper", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-72, -300, 867), "UWIGulper1", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-174, -460, 1070), "UWIGulper2", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-265, -287, 1118), "BK+UWIGulper", gulperSpawnDistance));
 
             Harmony harmony = new Harmony("SpaceCatCreations.DeExtinctionMod");
             harmony.PatchAll(Assembly.GetExecutingAssembly());

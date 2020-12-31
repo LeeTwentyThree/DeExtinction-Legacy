@@ -29,7 +29,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(0.25f, 50f);
 
-        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.5f, 28f, 12f, 20f, 3f, 16f);
+        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.5f, 28f, 16f, 20f, 10f, 16f);
 
         public override float MaxVelocityForSpeedParameter => 28f;
 
@@ -41,7 +41,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override BehaviourLODLevelsStruct BehaviourLODSettings => new BehaviourLODLevelsStruct(30f, 100f, 200f);
 
-        public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.4f, 50f);
+        public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.4f, 40f);
 
         public override UBERMaterialProperties MaterialSettings => new UBERMaterialProperties(7f, 2.4f, 3f);
 
