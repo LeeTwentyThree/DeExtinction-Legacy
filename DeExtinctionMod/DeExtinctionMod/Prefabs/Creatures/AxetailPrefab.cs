@@ -28,8 +28,6 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override EatableData EatableSettings => new EatableData(true, 12f, -7f, false);
 
-        public override string GetEncyTitle => "Axetail";
-
         public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.2f, 12f);
 
         public override float MaxVelocityForSpeedParameter => 7f;

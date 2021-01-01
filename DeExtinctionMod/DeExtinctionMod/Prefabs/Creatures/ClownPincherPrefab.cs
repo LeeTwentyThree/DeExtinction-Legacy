@@ -39,9 +39,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.25f), new Keyframe(1f, 1f) });
 
-        public override float Mass => 15f;
-
-        public override string GetEncyTitle => FriendlyName;
+        public override float Mass => 4f;
 
         public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 0.1f, 4f, "ClownPincherIdle", null, 0.65f, 15f, 35f);
 

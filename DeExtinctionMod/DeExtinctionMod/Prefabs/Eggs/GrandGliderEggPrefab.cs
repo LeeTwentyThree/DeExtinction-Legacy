@@ -15,6 +15,7 @@ namespace DeExtinctionMod.Prefabs.Eggs
 
         public override Vector2int SizeInInventory => new Vector2int(2, 2);
 
+        public override bool IsScannable => true;
         public override string GetEncyDesc => "Each Grand Glider lays only a few eggs in its lifetime. If an individual Grand Glider is unable to find a safe and secluded place for her egg, the entire shoal will often be very determined to protect it.";
 
         public override List<LootDistributionData.BiomeData> BiomesToSpawnIn => new List<LootDistributionData.BiomeData>()

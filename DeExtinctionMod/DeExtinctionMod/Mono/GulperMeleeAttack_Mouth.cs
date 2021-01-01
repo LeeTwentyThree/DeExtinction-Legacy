@@ -49,9 +49,9 @@ namespace DeExtinctionMod.Mono
 						Player player = target.GetComponent<Player>();
 						if (player != null)
 						{
-							if (Time.time > timeCinematicAgain && player.CanBeAttacked() && !player.cinematicModeActive)
+							if (Time.time > timeCinematicAgain && player.CanBeAttacked() && player.liveMixin.IsAlive() && !player.cinematicModeActive)
 							{
-								Invoke("KillPlayer", 1f);
+								Invoke("KillPlayer", 0.9f);
 								playerDeathCinematic.StartCinematicMode(player);
 								attackSource.clip = clipPool.GetRandomClip();
 								attackSource.Play();
@@ -76,7 +76,7 @@ namespace DeExtinctionMod.Mono
 								return;
 							}
 						}
-						LiveMixin liveMixin = collider.GetComponent<LiveMixin>();
+						LiveMixin liveMixin = target.GetComponent<LiveMixin>();
 						if (liveMixin == null) return;
 						if (CanSwallowWhole(collider.gameObject, liveMixin))
 						{
@@ -87,13 +87,21 @@ namespace DeExtinctionMod.Mono
 						}
 						else
 						{
-							liveMixin.TakeDamage(90f);
+							liveMixin.TakeDamage(GetBiteDamage(target));
 						}
 						creature.GetAnimator().SetTrigger("bite");
 						component.Aggression.Value -= 0.15f;
 					}
 				}
 			}
+		}
+		private float GetBiteDamage(GameObject target)
+		{
+			if (target.GetComponent<SubControl>() != null)
+			{
+				return 300f; //cyclops damage
+			}
+			return biteDamage; //base damage
 		}
 		private bool CanSwallowWhole(GameObject gameObject, LiveMixin liveMixin)
 		{
@@ -105,7 +113,11 @@ namespace DeExtinctionMod.Mono
 			{
 				return false;
 			}
-			if(liveMixin.health > 600f)
+			if (gameObject.GetComponent<SubRoot>())
+			{
+				return false;
+			}
+			if (liveMixin.maxHealth > 600f)
 			{
 				return false;
 			}

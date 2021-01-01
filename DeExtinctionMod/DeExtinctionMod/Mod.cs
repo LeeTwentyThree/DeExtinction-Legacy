@@ -158,11 +158,15 @@ namespace DeExtinctionMod
             #endregion
 
             const float gulperSpawnDistance = 125f;
-            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-970f, -216f, -509f), "BKTGulper", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-970, -216, -509), "BKTGulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(1169, -370, 903), "Mountains+KooshGulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-72, -300, 867), "UWIGulper1", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-174, -460, 1070), "UWIGulper2", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-265, -287, 1118), "BK+UWIGulper", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-683, -129, -717), "SparseReefGulper", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-717, -100, -1088), "FloatingIslandGulper", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(1400, -348, 1281), "Mountains+KooshGulper2", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-573, -448, 1311), "Lifepod2Gulper", gulperSpawnDistance));
 
             Harmony harmony = new Harmony("SpaceCatCreations.DeExtinctionMod");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
@@ -173,7 +177,7 @@ namespace DeExtinctionMod
             GameObject obj = Resources.Load<GameObject>(path);
             if (obj == null)
             {
-                Debug.Log("DE EXTINCTION: No prefab found at path " + path);
+                ECCLog.AddMessage("DE EXTINCTION: No prefab found at path " + path);
                 return;
             }
             obj.AddComponent<EcoTarget>().type = clownPincherSpecialEdible;

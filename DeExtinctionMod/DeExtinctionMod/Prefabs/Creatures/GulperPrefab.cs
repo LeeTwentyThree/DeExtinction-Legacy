@@ -21,6 +21,10 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override LargeWorldEntity.CellLevel CellLevel => LargeWorldEntity.CellLevel.Far;
 
+        public override ScannableItemData ScannableSettings => new ScannableItemData(true, 15f, "Lifeforms/Fauna/Leviathans", new string[] { "Lifeforms", "Fauna", "Leviathans" }, QPatch.assetBundle.LoadAsset<Sprite>("Gulper_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Gulper_Ency"));
+
+        public override string GetEncyDesc => "This vast animal is at the top of the local food chain, and has been designated leviathan class.\n\n1. Jaws:\nSituated within the maw of the leviathan are four mobile jaws capable of launching forward and dragging prey in towards the mouth.\n\n2. Limbs:\nA pair of fins modified into muscular limbs serve an unknown purpose. Possibilities include restraint of other animals, propulsion off of the seabed, and slashing of potential prey or threats. Whatever the case, avoidance of limbs is highly recommended.\n\n3. Behavior:\nConsumes anything it can fit into its mouth. Will attempt to crush prey if too large or tough.\n\nHunts using electromagnetic signals, may be drawn to wrecked technology.\n\nAssessment: Extreme threat - Avoid in all circumstances";
+
         public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(30f, 10f, 30f), 14f, 2f, 0.1f);
 
         public override EcoTargetType EcoTargetType => EcoTargetType.Leviathan;
@@ -47,7 +51,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float Mass => 2000f;
 
-        public override float TurnSpeed => 0.75f;
+        public override float TurnSpeed => 0.5f;
 
         public override void AddCustomBehaviour(CreatureComponents components)
         {
@@ -65,7 +69,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             meleeAttack.mouth = mouth;
             meleeAttack.canBeFed = false;
             meleeAttack.biteInterval = 1f;
-            meleeAttack.biteDamage = 90f;
+            meleeAttack.biteDamage = 100f;
             meleeAttack.eatHungerDecrement = 0.05f;
             meleeAttack.eatHappyIncrement = 0.1f;
             meleeAttack.biteAggressionDecrement = 0.02f;
@@ -80,6 +84,13 @@ namespace DeExtinctionMod.Prefabs.Creatures
             rClawTrigger.AddComponent<OnTouch>();
             AddClawAttack("LClaw", "swipeL", components);
             AddClawAttack("RClaw", "swipeR", components);
+
+            AttackCyclops actionAtkCyclops = prefab.AddComponent<AttackCyclops>();
+            actionAtkCyclops.swimVelocity = 28f;
+            actionAtkCyclops.aggressiveToNoise = new CreatureTrait(0f, 0.01f);
+            actionAtkCyclops.evaluatePriority = 0.6f;
+            actionAtkCyclops.priorityMultiplier = ECCHelpers.Curve_Flat();
+            actionAtkCyclops.maxDistToLeash = 60f;
         }
 
         void AddClawAttack(string triggerName, string animationName, CreatureComponents components)
