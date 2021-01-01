@@ -36,6 +36,7 @@ namespace DeExtinctionMod
         public static ClownPincherCitrine citrineClownPincher;
         public static AxetailPrefab axetail;
         public static GulperPrefab gulper;
+        public static RibbonRayPrefab ribbonRay;
 
         public static EatableAsset rcpCooked;
         public static EatableAsset rcpCured;
@@ -54,6 +55,9 @@ namespace DeExtinctionMod
 
         public static EatableAsset axetailCooked;
         public static EatableAsset axetailCured;
+
+        public static EatableAsset ribbonRayCooked;
+        public static EatableAsset ribbonRayCured;
 
         public static StellarThalassaceanEggPrefab stellarEgg;
         public static JasperThalassaceanEggPrefab jasperEgg;
@@ -107,6 +111,9 @@ namespace DeExtinctionMod
             axetail = new AxetailPrefab("Axetail", "Axetail", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), assetBundle.LoadAsset<Texture2D>("Axetail_Item"));
             axetail.Patch();
 
+            ribbonRay = new RibbonRayPrefab("RibbonRay", "Ribbon Ray", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), assetBundle.LoadAsset<Texture2D>("RibbonRay_Item"));
+            ribbonRay.Patch();
+
             #endregion
 
             #region Eggs
@@ -150,10 +157,15 @@ namespace DeExtinctionMod
             ccpCured = new EatableAsset("CuredCitrineClownPincher", "Cured Citrine Clown Pincher", "Tastes like potatoes. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("CCP_Cured"));
             ccpCured.Patch();
 
-            axetailCooked = new EatableAsset("CookedAxetail", "Cooked Axetail", "A sharp taste. Hydrating.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, 13f, true), false, assetBundle.LoadAsset<Texture2D>("Axetail_Cooked"));
+            axetailCooked = new EatableAsset("CookedAxetail", "Cooked Axetail", "A sharp taste. Somewhat hydrating.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, 13f, true), false, assetBundle.LoadAsset<Texture2D>("Axetail_Cooked"));
             axetailCooked.Patch();
-            axetailCured = new EatableAsset("CuredAxetail", "Cooked Axetail", "Eat around the pointy bits. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Axetail_Cured"));
+            axetailCured = new EatableAsset("CuredAxetail", "Cured Axetail", "Eat around the pointy bits. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Axetail_Cured"));
             axetailCured.Patch();
+
+            ribbonRayCooked = new EatableAsset("CookedRibbonRay", "Cooked Ribbon Ray", "A hefty meal.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), ribbonRay.TechType, new EatableData(true, 36f, 7f, true), false, assetBundle.LoadAsset<Texture2D>("RibbonRay_Cooked"));
+            ribbonRayCooked.Patch();
+            ribbonRayCured = new EatableAsset("CuredRibbonRay", "Cured Ribbon Ray", "Rubbery and stringy. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), ribbonRay.TechType, new EatableData(true, 36f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("RibbonRay_Cured"));
+            ribbonRayCured.Patch();
 
             #endregion
 

@@ -24,13 +24,19 @@ namespace DeExtinctionMod.Prefabs.Creatures
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.MushroomForest_Grass,
-                probability = 0.4f,
+                probability = 0.8f,
                 count = 4
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.MushroomForest_Sand,
-                probability = 0.4f,
+                probability = 0.8f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.MushroomForest_GiantTreeExterior,
+                probability = 0.8f,
                 count = 4
             },
             new LootDistributionData.BiomeData()
