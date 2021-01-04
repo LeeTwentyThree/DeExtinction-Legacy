@@ -80,6 +80,7 @@ namespace DeExtinctionMod.Mono
 						if (liveMixin == null) return;
 						if (CanSwallowWhole(collider.gameObject, liveMixin))
 						{
+							Debug.Log("Gulper collision with " + collider.gameObject.name);
 								Destroy(liveMixin.gameObject, 0.5f);
 								var suckInWhole = collider.gameObject.AddComponent<BeingSuckedInWhole>();
 								suckInWhole.animationLength = 0.5f;

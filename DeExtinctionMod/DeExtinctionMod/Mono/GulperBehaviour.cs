@@ -159,7 +159,7 @@ namespace DeExtinctionMod.Mono
             }
             heldVehicleType = VehicleType.None;
             CancelInvoke("DamageVehicle");
-            MainCameraControl.main.ShakeCamera(0f, 0f);
+            //MainCameraControl.main.ShakeCamera(0f, 0f);
         }
         public void Update()
         {

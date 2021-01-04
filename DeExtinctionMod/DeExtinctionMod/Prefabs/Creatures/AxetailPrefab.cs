@@ -33,6 +33,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float MaxVelocityForSpeedParameter => 7f;
 
+        public override float BioReactorCharge => 300f;
+
         public override string GetEncyDesc => "A solitary herbivore with a derived body plan compared to surrounding lifeforms.\n\nBody:\nTwo pairs of eyes protrude from the frontwards dorsal and ventral sides of the animal’s body, which is otherwise largely conical save for a fan-shaped tail.This body plan is unusual even compared to surrounding fauna, suggesting adaptations for environments no longer present in the Axetail’s range.\n\nDefense:\nIn addition to quick bursts of speed the Axetail is armored with tough scales to deter potential predators.\n\nAssessment: Edible beyond the rough exterior.";
 
         public override ScannableItemData ScannableSettings => new ScannableItemData(true, 3f, "Lifeforms/Fauna/SmallHerbivores", new string[] { "Lifeforms", "Fauna", "SmallHerbivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Axetail_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Axetail_Ency"));

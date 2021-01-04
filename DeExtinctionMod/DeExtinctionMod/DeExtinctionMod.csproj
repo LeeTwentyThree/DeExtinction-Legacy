@@ -120,6 +120,7 @@
     <Compile Include="Prefabs\Creatures\GrandGliderPrefab.cs" />
     <Compile Include="Prefabs\Creatures\GulperPrefab.cs" />
     <Compile Include="Prefabs\Creatures\RibbonRayPrefab.cs" />
+    <Compile Include="Prefabs\Creatures\TwisteelPrefab.cs" />
     <Compile Include="Prefabs\Eggs\JasperThalassaceanEggPrefab.cs" />
     <Compile Include="Prefabs\Eggs\GrandGliderEggPrefab.cs" />
     <Compile Include="Prefabs\Eggs\StellarThalassaceanEggPrefab.cs" />

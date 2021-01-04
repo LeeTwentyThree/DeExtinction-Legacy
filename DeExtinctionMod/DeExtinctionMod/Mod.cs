@@ -37,6 +37,7 @@ namespace DeExtinctionMod
         public static AxetailPrefab axetail;
         public static GulperPrefab gulper;
         public static RibbonRayPrefab ribbonRay;
+        public static TwisteelPrefab twisteel;
 
         public static EatableAsset rcpCooked;
         public static EatableAsset rcpCured;
@@ -113,6 +114,9 @@ namespace DeExtinctionMod
 
             ribbonRay = new RibbonRayPrefab("RibbonRay", "Ribbon Ray", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), assetBundle.LoadAsset<Texture2D>("RibbonRay_Item"));
             ribbonRay.Patch();
+
+            twisteel = new TwisteelPrefab("Twisteel", "Twisteel", "Thin eel-like organism, raised in containment.", assetBundle.LoadAsset<GameObject>("Twisteel_Prefab"), assetBundle.LoadAsset<Texture2D>("Twisteel_Item"));
+            twisteel.Patch();
 
             #endregion
 

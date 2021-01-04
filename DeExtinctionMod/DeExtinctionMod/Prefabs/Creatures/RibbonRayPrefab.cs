@@ -40,6 +40,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.8f), new Keyframe(1f, 1f) });
 
+        public override float BioReactorCharge => 400f;
+
         public override float Mass => 3f;
 
         public override float TurnSpeed => 0.5f;
