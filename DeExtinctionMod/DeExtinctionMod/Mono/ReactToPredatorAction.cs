@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using ECCLibrary.Internal;
 
 namespace DeExtinctionMod.Mono
 {
@@ -11,35 +12,32 @@ namespace DeExtinctionMod.Mono
     {
         void Start()
         {
-            lastScare = GetComponent<LastScarePosition>();
+            lastScare = gameObject.EnsureComponent<LastScarePosition>();
         }
 
         public float maxReactDistance;
         public EcoTargetType targetType = EcoTargetType.Shark;
-        public float actionLength;
+        public float actionLength = 1f;
 
         protected LastScarePosition lastScare;
 
         public override float Evaluate(Creature creature)
         {
-            if (performingAction)
-            {
-                if(Time.time > timeStopAction)
-                {
-                    performingAction = false;
-                }
-            }
-            else
-            {
                 IEcoTarget closestTarget = EcoRegionManager.main.FindNearestTarget(targetType, transform.position, null, 1);
-                if(closestTarget != null && closestTarget.GetGameObject() != null)
+                if (closestTarget != null && closestTarget.GetGameObject() != null)
                 {
                     if (Vector3.Distance(closestTarget.GetPosition(), transform.position) < maxReactDistance)
                     {
                         performingAction = true;
                         timeStopAction = Time.time + actionLength;
-                        lastScare.lastScarePosition = closestTarget.GetPosition();
+                        if(lastScare) lastScare.lastScarePosition = closestTarget.GetPosition();
                     }
+                }
+            if (performingAction)
+            {
+                if (Time.time > timeStopAction)
+                {
+                    performingAction = false;
                 }
             }
 
@@ -53,7 +51,7 @@ namespace DeExtinctionMod.Mono
             }
         }
         
-        bool performingAction;
-        float timeStopAction;
+        protected bool performingAction;
+        protected float timeStopAction;
     }
 }

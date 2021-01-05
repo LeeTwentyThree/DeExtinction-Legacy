@@ -102,6 +102,8 @@
     <Compile Include="Mono\ClownPincher.cs" />
     <Compile Include="Mono\ClownPincherNibble.cs" />
     <Compile Include="Mono\ClownPincherScavengeBehaviour.cs" />
+    <Compile Include="Mono\FiltorbHide.cs" />
+    <Compile Include="Mono\FreeFloating.cs" />
     <Compile Include="Mono\GulperBehaviour.cs" />
     <Compile Include="Mono\GulperMeleeAttack_Claw.cs" />
     <Compile Include="Mono\GulperMeleeAttack_Mouth.cs" />
@@ -117,6 +119,7 @@
     <Compile Include="Prefabs\Creatures\ClownPinchers\ClownPincherAmber.cs" />
     <Compile Include="Prefabs\Creatures\ClownPinchers\ClownPincherRuby.cs" />
     <Compile Include="Prefabs\Creatures\ClownPinchers\ClownPincherSapphire.cs" />
+    <Compile Include="Prefabs\Creatures\FiltorbPrefab.cs" />
     <Compile Include="Prefabs\Creatures\GrandGliderPrefab.cs" />
     <Compile Include="Prefabs\Creatures\GulperPrefab.cs" />
     <Compile Include="Prefabs\Creatures\RibbonRayPrefab.cs" />

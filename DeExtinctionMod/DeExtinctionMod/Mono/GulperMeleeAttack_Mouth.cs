@@ -80,7 +80,6 @@ namespace DeExtinctionMod.Mono
 						if (liveMixin == null) return;
 						if (CanSwallowWhole(collider.gameObject, liveMixin))
 						{
-							Debug.Log("Gulper collision with " + collider.gameObject.name);
 								Destroy(liveMixin.gameObject, 0.5f);
 								var suckInWhole = collider.gameObject.AddComponent<BeingSuckedInWhole>();
 								suckInWhole.animationLength = 0.5f;
@@ -96,6 +95,10 @@ namespace DeExtinctionMod.Mono
 				}
 			}
 		}
+		private void PlayerDeathCinematic()
+		{
+
+		}
 		private float GetBiteDamage(GameObject target)
 		{
 			if (target.GetComponent<SubControl>() != null)
@@ -106,15 +109,19 @@ namespace DeExtinctionMod.Mono
 		}
 		private bool CanSwallowWhole(GameObject gameObject, LiveMixin liveMixin)
 		{
-			if (gameObject.GetComponent<Player>())
+			if (gameObject.GetComponentInParent<Player>())
 			{
 				return false;
 			}
-			if (gameObject.GetComponent<Vehicle>())
+			if (gameObject.GetComponentInChildren<Player>())
 			{
 				return false;
 			}
-			if (gameObject.GetComponent<SubRoot>())
+			if (gameObject.GetComponentInParent<Vehicle>())
+			{
+				return false;
+			}
+			if (gameObject.GetComponentInParent<SubRoot>())
 			{
 				return false;
 			}
@@ -132,6 +139,10 @@ namespace DeExtinctionMod.Mono
 		{
 			Player.main.liveMixin.Kill(DamageType.Normal);
 			playerDeathCinematic.OnPlayerCinematicModeEnd();
+		}
+		public void OnVehicleReleased()
+		{
+			timeLastBite = Time.time;
 		}
     }
 }

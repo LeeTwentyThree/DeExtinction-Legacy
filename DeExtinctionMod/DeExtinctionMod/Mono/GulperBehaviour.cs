@@ -21,7 +21,9 @@ namespace DeExtinctionMod.Mono
         private AudioSource vehicleGrabSound;
         private Transform subHoldPoint;
         private Transform exoHoldPoint;
-        float damagePerSecond = 17f;
+        private GulperMeleeAttack_Mouth mouthAttack;
+        private RoarAbility roar;
+        float damagePerSecond = 22f;
         private ECCAudio.AudioClipPool seamothSounds;
         private ECCAudio.AudioClipPool exosuitSounds;
 
@@ -35,6 +37,8 @@ namespace DeExtinctionMod.Mono
             exoHoldPoint = gameObject.SearchChild("ExoHoldPoint").transform;
             seamothSounds = ECCAudio.CreateClipPool("GulperSeamoth");
             exosuitSounds = ECCAudio.CreateClipPool("GulperExosuit");
+            mouthAttack = GetComponent<GulperMeleeAttack_Mouth>();
+            roar = GetComponent<RoarAbility>();
         }
 
         Transform GetHoldPoint()
@@ -76,9 +80,9 @@ namespace DeExtinctionMod.Mono
         }
         private enum VehicleType
         {
-            None,
-            Exosuit,
-            GenericSub
+            None = 0,
+            Exosuit = 1,
+            GenericSub = 2
         }
         public void GrabGenericSub(Vehicle vehicle)
         {
@@ -97,7 +101,6 @@ namespace DeExtinctionMod.Mono
             vehicle.GetComponent<Rigidbody>().isKinematic = true;
             vehicle.collisionModel.SetActive(false);
             heldVehicle = vehicle;
-            heldVehicleType = vehicleType;
             heldVehicleType = vehicleType;
             if (heldVehicleType == VehicleType.Exosuit)
             {
@@ -159,7 +162,9 @@ namespace DeExtinctionMod.Mono
             }
             heldVehicleType = VehicleType.None;
             CancelInvoke("DamageVehicle");
-            //MainCameraControl.main.ShakeCamera(0f, 0f);
+            mouthAttack.OnVehicleReleased();
+            MainCameraControl.main.ShakeCamera(0f, 0f);
+            roar.PlayRoar();
         }
         public void Update()
         {

@@ -38,6 +38,7 @@ namespace DeExtinctionMod
         public static GulperPrefab gulper;
         public static RibbonRayPrefab ribbonRay;
         public static TwisteelPrefab twisteel;
+        public static FiltorbPrefab filtorb;
 
         public static EatableAsset rcpCooked;
         public static EatableAsset rcpCured;
@@ -59,6 +60,9 @@ namespace DeExtinctionMod
 
         public static EatableAsset ribbonRayCooked;
         public static EatableAsset ribbonRayCured;
+
+        public static EatableAsset filtorbCooked;
+        public static EatableAsset filtorbCured;
 
         public static StellarThalassaceanEggPrefab stellarEgg;
         public static JasperThalassaceanEggPrefab jasperEgg;
@@ -118,6 +122,9 @@ namespace DeExtinctionMod
             twisteel = new TwisteelPrefab("Twisteel", "Twisteel", "Thin eel-like organism, raised in containment.", assetBundle.LoadAsset<GameObject>("Twisteel_Prefab"), assetBundle.LoadAsset<Texture2D>("Twisteel_Item"));
             twisteel.Patch();
 
+            filtorb = new FiltorbPrefab("Filtorb", "Filtorb", "Small, filter feeding organism.", assetBundle.LoadAsset<GameObject>("Filtorb_Prefab"), assetBundle.LoadAsset<Texture2D>("Filtorb_Item"));
+            filtorb.Patch();
+
             #endregion
 
             #region Eggs
@@ -170,6 +177,11 @@ namespace DeExtinctionMod
             ribbonRayCooked.Patch();
             ribbonRayCured = new EatableAsset("CuredRibbonRay", "Cured Ribbon Ray", "Rubbery and stringy. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), ribbonRay.TechType, new EatableData(true, 36f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("RibbonRay_Cured"));
             ribbonRayCured.Patch();
+
+            filtorbCooked = new EatableAsset("CookedFiltorb", "Cooked Filtorb", "Juicy.", assetBundle.LoadAsset<GameObject>("Filtorb_Prefab"), filtorb.TechType, new EatableData(true, 5f, 20f, true), false, assetBundle.LoadAsset<Texture2D>("Filtorb_Cooked"));
+            filtorbCooked.Patch();
+            filtorbCured = new EatableAsset("CuredFiltorb", "Cured Filtorb", "Chalky. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Filtorb_Prefab"), filtorb.TechType, new EatableData(true, 5f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Filtorb_Cured"));
+            filtorbCured.Patch();
 
             #endregion
 
