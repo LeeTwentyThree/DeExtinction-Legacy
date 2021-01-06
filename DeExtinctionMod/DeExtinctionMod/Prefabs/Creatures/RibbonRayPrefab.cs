@@ -42,11 +42,15 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float BioReactorCharge => 400f;
 
+        public override Vector2int SizeInInventory => new Vector2int(2, 1);
+
         public override float Mass => 3f;
 
         public override float TurnSpeed => 0.5f;
 
         public override string GetEncyDesc => "Medium sized herbivore found in a diverse biome.\n\nBanded Coloration:\nWhile some of the Ribbon Ray’s coloration is similar to the surrounding environment, this pattern seems to serve the purpose of display more than anything else.\n\nBehavior:\nFound commonly taking shelter under the massive coral-like lifeforms towering over the surrounding biome. Ribbon Rays are not particularly skittish, but are still cautious in open areas.\n\nAssessment: Edible";
+
+        public override string GetEncyTitle => "Ribbon Ray";
 
         public override ScannableItemData ScannableSettings => new ScannableItemData(true, 2f, "Lifeforms/Fauna/SmallHerbivores", new string[] { "Lifeforms", "Fauna", "SmallHerbivores" }, QPatch.assetBundle.LoadAsset<Sprite>("RibbonRay_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("RibbonRay_Ency"));
 

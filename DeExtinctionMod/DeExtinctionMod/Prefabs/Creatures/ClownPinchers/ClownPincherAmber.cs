@@ -19,6 +19,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyDesc => "A small colorful scavenger found amongst large organic formations.\n\nColoration:\nColoration appears to mimic the surrounding coral, with white stripes to break up the pattern.\n\nBehavior:\nA social species, the Amber Clown Pincher can be found forming loose shoals while foraging on organic matter.\n\nSpecimen shows high genetic diversity suggesting many extant, closely related species that frequently mate.\n\nAssessment: Edible";
 
+        public override string GetEncyTitle => "Amber Clown Pincher";
+
         public override List<LootDistributionData.BiomeData> BiomesToSpawnIn => new List<LootDistributionData.BiomeData>()
         {
             new LootDistributionData.BiomeData()

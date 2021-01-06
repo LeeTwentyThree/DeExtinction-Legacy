@@ -52,5 +52,65 @@ namespace DeExtinctionMod.Prefabs.Creatures
         {
             liveMixinData.maxHealth = 130f;
         }
+
+        public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.02f, 0.5f, 0.7f, 0.8f, true);
+
+        public override List<LootDistributionData.BiomeData> BiomesToSpawnIn => new List<LootDistributionData.BiomeData>()
+        {
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Mountains_OpenDeep_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Mountains_OpenShallow_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Dunes_OpenDeep_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Dunes_OpenShallow_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_OpenDeep_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_OpenShallow_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.DeepGrandReef_Ceiling,
+                count = 3,
+                probability = 0.8f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.DeepGrandReef_Ground,
+                count = 3,
+                probability = 0.8f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.DeepGrandReef_BlueCoral,
+                count = 3,
+                probability = 0.3f
+            },
+        };
     }
 }

@@ -64,10 +64,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
             fleeFromPredators.maxReactDistance = 35f;
             fleeFromPredators.evaluatePriority = 0.9f;
             fleeFromPredators.targetType = EcoTargetType.Leviathan;
-
-            AddMeleeAttack(prefab.SearchChild("Mouth"), 0.35f, 15f, "ThalassaceanBite", 35f, true, components);
         }
 
-        public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.02f, 0.3f, 0.5f, 1.25f, false);
+        public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.02f, 0.09f, 0.5f, 1.25f, false);
     }
 }

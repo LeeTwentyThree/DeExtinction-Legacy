@@ -14,6 +14,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyDesc => "A small colorful scavenger found in deep waters.\n\nColoration:\nColoration appears to mimic the surrounding ocean, with white stripes to break up the pattern.\n\nBehavior:\nA social species, the Sapphire Clown Pincher can be found forming loose shoals while foraging on various pieces of waste.\n\nSpecimen shows high genetic diversity suggesting many extant, closely related species that frequently mate.\n\nAssessment: Edible";
 
+        public override string GetEncyTitle => "Sapphire Clown Pincher";
+
         public ClownPincherSapphire(string classId, string friendlyName, string description, GameObject model, Texture2D spriteTexture) : base(classId, friendlyName, description, model, spriteTexture)
         {
         }

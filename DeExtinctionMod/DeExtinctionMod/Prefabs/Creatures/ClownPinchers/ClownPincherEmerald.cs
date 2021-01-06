@@ -19,6 +19,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyDesc => "A small colorful scavenger found amongst large plantlife.\n\nColoration:\nColoration appears to mimic the surrounding flora, with white stripes to break up the pattern.\n\nBehavior:\nA social species, the Emerald Clown Pincher can be found forming loose shoals while foraging on seed clusters and deceased creatures.\n\nSpecimen shows high genetic diversity suggesting many extant, closely related species that frequently mate.\n\nAssessment: Edible";
 
+        public override string GetEncyTitle => "Emerald Clown Pincher";
+
         public override List<LootDistributionData.BiomeData> BiomesToSpawnIn => new List<LootDistributionData.BiomeData>()
         {
             new LootDistributionData.BiomeData()

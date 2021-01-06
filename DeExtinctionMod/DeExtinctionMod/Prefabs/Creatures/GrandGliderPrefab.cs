@@ -37,6 +37,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyDesc => "A medium sized herbivore with an unusual ocular arrangement.\n\n1. Behavior:\nThis animal often forms large schools within the water column for safety, though this may have the unintended effect of attracting the attention of larger predators.\n\n2. Eyes:\nTwo pairs of three eyes give the Grand Glider dual trioptical vision, used to sense faint movements within the surrounding water.\n\nAssessment: Edible, but too large to catch efficiently.";
 
+        public override string GetEncyTitle => "Grand Glider";
+
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
         {
             liveMixinData.maxHealth = 90f;

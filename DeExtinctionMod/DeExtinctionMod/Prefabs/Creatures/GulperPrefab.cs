@@ -25,6 +25,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyDesc => "This vast animal is at the top of the local food chain, and has been designated leviathan class.\n\n1. Jaws:\nSituated within the maw of the leviathan are four mobile jaws capable of launching forward and dragging prey in towards the mouth.\n\n2. Limbs:\nA pair of fins modified into muscular limbs serve an unknown purpose. Possibilities include restraint of other animals, propulsion off of the seabed, and slashing of potential prey or threats. Whatever the case, avoidance of limbs is highly recommended.\n\n3. Behavior:\nConsumes anything it can fit into its mouth. Will attempt to crush prey if too large or tough.\n\nHunts using electromagnetic signals, may be drawn to wrecked technology.\n\nAssessment: Extreme threat - Avoid in all circumstances";
 
+        public override string GetEncyTitle => "Gulper Leviathan";
+
         public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(30f, 10f, 30f), 14f, 2f, 0.1f);
 
         public override EcoTargetType EcoTargetType => EcoTargetType.Leviathan;
@@ -91,7 +93,12 @@ namespace DeExtinctionMod.Prefabs.Creatures
             actionAtkCyclops.evaluatePriority = 0.6f;
             actionAtkCyclops.priorityMultiplier = ECCHelpers.Curve_Flat();
             actionAtkCyclops.maxDistToLeash = 60f;
-        }
+
+            ResourceTracker resourceTracker = prefab.AddComponent<ResourceTracker>();
+            resourceTracker.prefabIdentifier = components.prefabIdentifier;
+            resourceTracker.rb = components.rigidbody;
+            prefab.AddComponent<ResourceTrackerUpdater>();
+            }
 
         void AddClawAttack(string triggerName, string animationName, CreatureComponents components)
         {

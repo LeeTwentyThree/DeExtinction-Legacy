@@ -56,6 +56,7 @@ namespace DeExtinctionMod.Mono
 								attackSource.clip = clipPool.GetRandomClip();
 								attackSource.Play();
 								timeCinematicAgain = Time.time + 2f;
+								timeLastBite = Time.time;
 								return;
 							}
 						}
@@ -88,6 +89,7 @@ namespace DeExtinctionMod.Mono
 						else
 						{
 							liveMixin.TakeDamage(GetBiteDamage(target));
+							timeLastBite = Time.time;
 						}
 						creature.GetAnimator().SetTrigger("bite");
 						component.Aggression.Value -= 0.15f;

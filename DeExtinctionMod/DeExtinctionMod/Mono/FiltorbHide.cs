@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UWE;
 
 namespace DeExtinctionMod.Mono
 {
@@ -46,7 +47,7 @@ namespace DeExtinctionMod.Mono
             animator = GetComponentInChildren<Animator>();
             pickupable = GetComponent<Pickupable>();
             closedDamageModifier = gameObject.EnsureComponent<DamageModifier>();
-            closedDamageModifier.multiplier = 0.25f;
+            closedDamageModifier.multiplier = 0.5f;
             closedDamageModifier.damageType = DamageType.Normal;
             surface = GetComponent<VFXSurface>();
         }

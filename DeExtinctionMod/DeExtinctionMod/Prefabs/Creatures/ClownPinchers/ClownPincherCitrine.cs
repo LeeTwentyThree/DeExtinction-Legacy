@@ -19,6 +19,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyDesc => "A small colorful scavenger found along a barren seabed.\n\nColoration:\nColoration appears to mimic the surrounding seabed, with white stripes to break up the pattern.\n\nBehavior:\nA social species, the Citrine Clown Pincher can be found forming loose shoals while foraging for organic debris. If they are lucky they will feed on the carcasses of dead sharks and leviathans.\n\nSpecimen shows high genetic diversity suggesting many extant, closely related species that frequently mate.\n\nAssessment: Edible";
 
+        public override string GetEncyTitle => "Citrine Clown Pincher";
+
         public override List<LootDistributionData.BiomeData> BiomesToSpawnIn => new List<LootDistributionData.BiomeData>()
         {
             new LootDistributionData.BiomeData()

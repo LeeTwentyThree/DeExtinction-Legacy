@@ -122,6 +122,7 @@
     <Compile Include="Prefabs\Creatures\FiltorbPrefab.cs" />
     <Compile Include="Prefabs\Creatures\GrandGliderPrefab.cs" />
     <Compile Include="Prefabs\Creatures\GulperPrefab.cs" />
+    <Compile Include="Prefabs\Creatures\JellySpinnerPrefab.cs" />
     <Compile Include="Prefabs\Creatures\RibbonRayPrefab.cs" />
     <Compile Include="Prefabs\Creatures\TwisteelPrefab.cs" />
     <Compile Include="Prefabs\Eggs\JasperThalassaceanEggPrefab.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Prefabs\Creatures\JasperThalassaceanPrefab.cs" />
     <Compile Include="Prefabs\Creatures\StellarThalassaceanPrefab.cs" />
     <Compile Include="Prefabs\Creatures\ThalassaceanPrefab.cs" />
+    <Compile Include="Prefabs\Eggs\TwisteelEggPrefab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

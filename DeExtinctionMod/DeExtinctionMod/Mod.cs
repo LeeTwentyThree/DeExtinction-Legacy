@@ -39,6 +39,7 @@ namespace DeExtinctionMod
         public static RibbonRayPrefab ribbonRay;
         public static TwisteelPrefab twisteel;
         public static FiltorbPrefab filtorb;
+        public static JellySpinnerPrefab jellySpinner;
 
         public static EatableAsset rcpCooked;
         public static EatableAsset rcpCured;
@@ -64,9 +65,13 @@ namespace DeExtinctionMod
         public static EatableAsset filtorbCooked;
         public static EatableAsset filtorbCured;
 
+        public static EatableAsset jellySpinnerCooked;
+        public static EatableAsset jellySpinnerCured;
+
         public static StellarThalassaceanEggPrefab stellarEgg;
         public static JasperThalassaceanEggPrefab jasperEgg;
         public static GrandGliderEggPrefab grandGliderEgg;
+        public static TwisteelEggPrefab twisteelEgg;
 
         public static EcoTargetType clownPincherSpecialEdible;
 
@@ -84,39 +89,22 @@ namespace DeExtinctionMod
 
             #region Creatures
 
-            stellarThalassacean = new StellarThalassaceanPrefab("StellarThalassacean", "Stellar Thalassacean", "Large filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Stellar_Item"));
+            stellarThalassacean = new StellarThalassaceanPrefab("StellarThalassacean", "Stellar thalassacean", "Large filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Stellar_Item"));
             stellarThalassacean.Patch();
 
-            jasperThalassacean = new JasperThalassaceanPrefab("JasperThalassacean", "Jasper Thalassacean", "Large cave-dwelling filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
+            jasperThalassacean = new JasperThalassaceanPrefab("JasperThalassacean", "Jasper thalassacean", "Large cave-dwelling filter feeder, raised in containment.", assetBundle.LoadAsset<GameObject>("JasperThalassaceanPrefab"), assetBundle.LoadAsset<Texture2D>("Jasper_Item"));
             jasperThalassacean.Patch();
 
-            grandGlider = new GrandGliderPrefab("GrandGlider", "Grand Glider", "Medium sized prey animal, raised in containment.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("GrandGlider_Item"));
+            grandGlider = new GrandGliderPrefab("GrandGlider", "Grand glider", "Medium sized prey animal, raised in containment.", assetBundle.LoadAsset<GameObject>("GrandGliderPrefab"), assetBundle.LoadAsset<Texture2D>("GrandGlider_Item"));
             grandGlider.Patch();
 
-            gulper = new GulperPrefab("GulperLeviathan", "Gulper Leviathan", "Leviathan-class predator with a huge mouth.", assetBundle.LoadAsset<GameObject>("Gulper_Prefab"), null);
+            gulper = new GulperPrefab("GulperLeviathan", "Gulper leviathan", "Leviathan-class predator with a huge mouth.", assetBundle.LoadAsset<GameObject>("Gulper_Prefab"), assetBundle.LoadAsset<Texture2D>("Gulper_ScannerRoom"));
             gulper.Patch();
-
-            #region ClownPinchers
-            rubyClownPincher = new ClownPincherRuby("RubyClownPincher", "Ruby Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), assetBundle.LoadAsset<Texture2D>("RCP_Item"));
-            rubyClownPincher.Patch();
-
-            sapphireClownPincher = new ClownPincherSapphire("SapphireClownPincher", "Sapphire Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), assetBundle.LoadAsset<Texture2D>("SCP_Item"));
-            sapphireClownPincher.Patch();
-
-            emeraldClownPincher = new ClownPincherEmerald("EmeraldClownPincher", "Emerald Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), assetBundle.LoadAsset<Texture2D>("ECP_Item"));
-            emeraldClownPincher.Patch();
-
-            amberClownPincher = new ClownPincherAmber("AmberClownPincher", "Amber Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), assetBundle.LoadAsset<Texture2D>("ACP_Item"));
-            amberClownPincher.Patch();
-
-            citrineClownPincher = new ClownPincherCitrine("CitrineClownPincher", "Citrine Clown Pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), assetBundle.LoadAsset<Texture2D>("CCP_Item"));
-            citrineClownPincher.Patch();
-            #endregion
 
             axetail = new AxetailPrefab("Axetail", "Axetail", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), assetBundle.LoadAsset<Texture2D>("Axetail_Item"));
             axetail.Patch();
 
-            ribbonRay = new RibbonRayPrefab("RibbonRay", "Ribbon Ray", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), assetBundle.LoadAsset<Texture2D>("RibbonRay_Item"));
+            ribbonRay = new RibbonRayPrefab("RibbonRay", "Ribbon ray", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), assetBundle.LoadAsset<Texture2D>("RibbonRay_Item"));
             ribbonRay.Patch();
 
             twisteel = new TwisteelPrefab("Twisteel", "Twisteel", "Thin eel-like organism, raised in containment.", assetBundle.LoadAsset<GameObject>("Twisteel_Prefab"), assetBundle.LoadAsset<Texture2D>("Twisteel_Item"));
@@ -124,6 +112,26 @@ namespace DeExtinctionMod
 
             filtorb = new FiltorbPrefab("Filtorb", "Filtorb", "Small, filter feeding organism.", assetBundle.LoadAsset<GameObject>("Filtorb_Prefab"), assetBundle.LoadAsset<Texture2D>("Filtorb_Item"));
             filtorb.Patch();
+
+            jellySpinner = new JellySpinnerPrefab("JellySpinner", "Jelly spinner", "Small organism.", assetBundle.LoadAsset<GameObject>("JellySpinner_Prefab"), assetBundle.LoadAsset<Texture2D>("JellySpinner_Item"));
+            jellySpinner.Patch();
+
+            #region ClownPinchers
+            rubyClownPincher = new ClownPincherRuby("RubyClownPincher", "Ruby clown pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), assetBundle.LoadAsset<Texture2D>("RCP_Item"));
+            rubyClownPincher.Patch();
+
+            sapphireClownPincher = new ClownPincherSapphire("SapphireClownPincher", "Sapphire clown pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), assetBundle.LoadAsset<Texture2D>("SCP_Item"));
+            sapphireClownPincher.Patch();
+
+            emeraldClownPincher = new ClownPincherEmerald("EmeraldClownPincher", "Emerald clown pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), assetBundle.LoadAsset<Texture2D>("ECP_Item"));
+            emeraldClownPincher.Patch();
+
+            amberClownPincher = new ClownPincherAmber("AmberClownPincher", "Amber clown pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), assetBundle.LoadAsset<Texture2D>("ACP_Item"));
+            amberClownPincher.Patch();
+
+            citrineClownPincher = new ClownPincherCitrine("CitrineClownPincher", "Citrine clown pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), assetBundle.LoadAsset<Texture2D>("CCP_Item"));
+            citrineClownPincher.Patch();
+            #endregion
 
             #endregion
 
@@ -140,57 +148,70 @@ namespace DeExtinctionMod
             grandGliderEgg = new GrandGliderEggPrefab("GrandGliderEgg", "Grand Glider Egg", "Grand Gliders hatch from these.", assetBundle.LoadAsset<GameObject>("GGEggPrefab"), grandGlider.TechType, assetBundle.LoadAsset<Texture2D>("GGEgg_Item"), 1f);
             grandGliderEgg.Patch();
 
+            twisteelEgg = new TwisteelEggPrefab("TwisteelEgg", "Twisteel Egg", "Twisteels hatch from these", assetBundle.LoadAsset<GameObject>("TwisteelEgg_Prefab"), twisteel.TechType, assetBundle.LoadAsset<Texture2D>("TwisteelEgg_Item"), 1.5f);
+            twisteelEgg.Patch();
+
             #endregion
 
             #region Edibles
-            rcpCooked = new EatableAsset("CookedRubyClownPincher", "Cooked Ruby Clown Pincher", "1,219 Scoville Heat Unit meal.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("RCP_Cooked"));
+            rcpCooked = new EatableAsset("CookedRubyClownPincher", "Cooked ruby clown pincher", "1,219 Scoville Heat Unit meal.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("RCP_Cooked"));
             rcpCooked.Patch();
-            rcpCured = new EatableAsset("CuredRubyClownPincher", "Cured Ruby Clown Pincher", "Tastes like igneous. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("RCP_Cured"));
+            rcpCured = new EatableAsset("CuredRubyClownPincher", "Cured ruby clown pincher", "Tastes like igneous. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("RCP_Cured"));
             rcpCured.Patch();
 
-            scpCooked = new EatableAsset("CookedSapphireClownPincher", "Cooked Sapphire Clown Pincher", "The slime enhances flavor.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), sapphireClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("SCP_Cooked"));
+            scpCooked = new EatableAsset("CookedSapphireClownPincher", "Cooked sapphire clown pincher", "The slime enhances flavor.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), sapphireClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("SCP_Cooked"));
             scpCooked.Patch();
-            scpCured = new EatableAsset("CuredSapphireClownPincher", "Cured Sapphire Clown Pincher", "Tastes like milk. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), sapphireClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("SCP_Cured"));
+            scpCured = new EatableAsset("CuredSapphireClownPincher", "Cured sapphire clown pincher", "Tastes like milk. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), sapphireClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("SCP_Cured"));
             scpCured.Patch();
 
-            ecpCooked = new EatableAsset("CookedEmeraldClownPincher", "Cooked Emerald Clown Pincher", "Pre-sautéed.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), emeraldClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("ECP_Cooked"));
+            ecpCooked = new EatableAsset("CookedEmeraldClownPincher", "Cooked emerald clown pincher", "Pre-sautéed.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), emeraldClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("ECP_Cooked"));
             ecpCooked.Patch();
-            ecpCured = new EatableAsset("CuredEmeraldClownPincher", "Cured Emerald Clown Pincher", "Tastes like lettuce. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), emeraldClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("ECP_Cured"));
+            ecpCured = new EatableAsset("CuredEmeraldClownPincher", "Cured emerald clown pincher", "Tastes like lettuce. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), emeraldClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("ECP_Cured"));
             ecpCured.Patch();
 
-            acpCooked = new EatableAsset("CookedAmberClownPincher", "Cooked Amber Clown Pincher", "Not the worst tasting thing on the planet.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), amberClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("ACP_Cooked"));
+            acpCooked = new EatableAsset("CookedAmberClownPincher", "Cooked amber clown pincher", "Not the worst tasting thing on the planet.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), amberClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("ACP_Cooked"));
             acpCooked.Patch();
-            acpCured = new EatableAsset("CuredAmberClownPincher", "Cured Amber Clown Pincher", "Tastes like radish. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), amberClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("ACP_Cured"));
+            acpCured = new EatableAsset("CuredAmberClownPincher", "Cured amber clown pincher", "Tastes like radish. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), amberClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("ACP_Cured"));
             acpCured.Patch();
 
-            ccpCooked = new EatableAsset("CookedCitrineClownPincher", "Cooked Citrine Clown Pincher", "The secret is in the claws.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("CCP_Cooked"));
+            ccpCooked = new EatableAsset("CookedCitrineClownPincher", "Cooked citrine clown pincher", "The secret is in the claws.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 41f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("CCP_Cooked"));
             ccpCooked.Patch();
-            ccpCured = new EatableAsset("CuredCitrineClownPincher", "Cured Citrine Clown Pincher", "Tastes like potatoes. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("CCP_Cured"));
+            ccpCured = new EatableAsset("CuredCitrineClownPincher", "Cured citrine clown pincher", "Tastes like potatoes. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 41f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("CCP_Cured"));
             ccpCured.Patch();
 
-            axetailCooked = new EatableAsset("CookedAxetail", "Cooked Axetail", "A sharp taste. Somewhat hydrating.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, 13f, true), false, assetBundle.LoadAsset<Texture2D>("Axetail_Cooked"));
+            axetailCooked = new EatableAsset("CookedAxetail", "Cooked axetail", "A sharp taste. Somewhat hydrating.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, 13f, true), false, assetBundle.LoadAsset<Texture2D>("Axetail_Cooked"));
             axetailCooked.Patch();
-            axetailCured = new EatableAsset("CuredAxetail", "Cured Axetail", "Eat around the pointy bits. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Axetail_Cured"));
+            axetailCured = new EatableAsset("CuredAxetail", "Cured axetail", "Eat around the pointy bits. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Axetail_Cured"));
             axetailCured.Patch();
 
-            ribbonRayCooked = new EatableAsset("CookedRibbonRay", "Cooked Ribbon Ray", "A hefty meal.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), ribbonRay.TechType, new EatableData(true, 36f, 7f, true), false, assetBundle.LoadAsset<Texture2D>("RibbonRay_Cooked"));
+            ribbonRayCooked = new EatableAsset("CookedRibbonRay", "Cooked ribbon ray", "A hefty meal.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), ribbonRay.TechType, new EatableData(true, 36f, 7f, true), false, assetBundle.LoadAsset<Texture2D>("RibbonRay_Cooked"));
             ribbonRayCooked.Patch();
-            ribbonRayCured = new EatableAsset("CuredRibbonRay", "Cured Ribbon Ray", "Rubbery and stringy. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), ribbonRay.TechType, new EatableData(true, 36f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("RibbonRay_Cured"));
+            ribbonRayCured = new EatableAsset("CuredRibbonRay", "Cured ribbon ray", "Rubbery and stringy. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), ribbonRay.TechType, new EatableData(true, 36f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("RibbonRay_Cured"));
             ribbonRayCured.Patch();
 
-            filtorbCooked = new EatableAsset("CookedFiltorb", "Cooked Filtorb", "Juicy.", assetBundle.LoadAsset<GameObject>("Filtorb_Prefab"), filtorb.TechType, new EatableData(true, 5f, 20f, true), false, assetBundle.LoadAsset<Texture2D>("Filtorb_Cooked"));
+            filtorbCooked = new EatableAsset("CookedFiltorb", "Cooked filtorb", "Juicy.", assetBundle.LoadAsset<GameObject>("Filtorb_Prefab"), filtorb.TechType, new EatableData(true, 5f, 20f, true), false, assetBundle.LoadAsset<Texture2D>("Filtorb_Cooked"));
             filtorbCooked.Patch();
-            filtorbCured = new EatableAsset("CuredFiltorb", "Cured Filtorb", "Chalky. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Filtorb_Prefab"), filtorb.TechType, new EatableData(true, 5f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Filtorb_Cured"));
+            filtorbCured = new EatableAsset("CuredFiltorb", "Cured filtorb", "Chalky. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Filtorb_Prefab"), filtorb.TechType, new EatableData(true, 5f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Filtorb_Cured"));
             filtorbCured.Patch();
+
+            jellySpinnerCooked = new EatableAsset("CookedJellySpinner", "Cooked jelly spinner", "Pops in your mouth.", assetBundle.LoadAsset<GameObject>("JellySpinner_Prefab"), jellySpinner.TechType, new EatableData(true, 9f, 2f, true), false, assetBundle.LoadAsset<Texture2D>("JellySpinner_Cooked"));
+
+            jellySpinnerCooked.Patch();
+            jellySpinnerCured = new EatableAsset("CuredJellySpinner", "Cured jelly spinner", "Like eating bubble wrap. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("JellySpinner_Prefab"), jellySpinner.TechType, new EatableData(true, 9f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("JellySpinner_Cured"));
+            jellySpinnerCured.Patch();
 
             #endregion
 
             const float gulperSpawnDistance = 125f;
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-970, -216, -509), "BKTGulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(1169, -370, 903), "Mountains+KooshGulper", gulperSpawnDistance));
+
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-72, -300, 867), "UWIGulper1", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-174, -460, 1070), "UWIGulper2", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-71, -464, 869), "UWIGulper3", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-49, -308, 1184), "Mountains+UWIGulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-265, -287, 1118), "BK+UWIGulper", gulperSpawnDistance));
+
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-683, -129, -717), "SparseReefGulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-717, -100, -1088), "FloatingIslandGulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(1400, -348, 1281), "Mountains+KooshGulper2", gulperSpawnDistance));
