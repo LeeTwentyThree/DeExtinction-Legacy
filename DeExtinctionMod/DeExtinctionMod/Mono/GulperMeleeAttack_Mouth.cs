@@ -101,6 +101,22 @@ namespace DeExtinctionMod.Mono
 		{
 
 		}
+		private bool CanAttackTargetFromPosition(GameObject target)
+		{
+			Vector3 direction = target.transform.position - transform.position;
+			float magnitude = direction.magnitude;
+			int num = UWE.Utils.RaycastIntoSharedBuffer(transform.position, direction, magnitude, -5, QueryTriggerInteraction.Ignore);
+			for (int i = 0; i < num; i++)
+			{
+				Collider collider = UWE.Utils.sharedHitBuffer[i].collider;
+				GameObject gameObject = (collider.attachedRigidbody != null) ? collider.attachedRigidbody.gameObject : collider.gameObject;
+				if (!(gameObject == target) && !(gameObject == base.gameObject) && !(gameObject.GetComponent<Creature>() != null))
+				{
+					return false;
+				}
+			}
+			return true;
+		}
 		private float GetBiteDamage(GameObject target)
 		{
 			if (target.GetComponent<SubControl>() != null)

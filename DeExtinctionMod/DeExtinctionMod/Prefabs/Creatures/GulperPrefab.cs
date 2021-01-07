@@ -55,6 +55,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float TurnSpeed => 0.5f;
 
+        public override bool ScannerRoomScannable => true;
+
         public override void AddCustomBehaviour(CreatureComponents components)
         {
             GameObject spine2 = prefab.SearchChild("Spine2");
@@ -93,11 +95,6 @@ namespace DeExtinctionMod.Prefabs.Creatures
             actionAtkCyclops.evaluatePriority = 0.6f;
             actionAtkCyclops.priorityMultiplier = ECCHelpers.Curve_Flat();
             actionAtkCyclops.maxDistToLeash = 60f;
-
-            ResourceTracker resourceTracker = prefab.AddComponent<ResourceTracker>();
-            resourceTracker.prefabIdentifier = components.prefabIdentifier;
-            resourceTracker.rb = components.rigidbody;
-            prefab.AddComponent<ResourceTrackerUpdater>();
             }
 
         void AddClawAttack(string triggerName, string animationName, CreatureComponents components)
