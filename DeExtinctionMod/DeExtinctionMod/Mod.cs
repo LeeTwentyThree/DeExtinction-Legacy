@@ -40,6 +40,7 @@ namespace DeExtinctionMod
         public static TwisteelPrefab twisteel;
         public static FiltorbPrefab filtorb;
         public static JellySpinnerPrefab jellySpinner;
+        public static TrianglefishPrefab triangleFish;
 
         public static EatableAsset rcpCooked;
         public static EatableAsset rcpCured;
@@ -67,6 +68,9 @@ namespace DeExtinctionMod
 
         public static EatableAsset jellySpinnerCooked;
         public static EatableAsset jellySpinnerCured;
+
+        public static EatableAsset trianglefishCooked;
+        public static EatableAsset trianglefishCured;
 
         public static StellarThalassaceanEggPrefab stellarEgg;
         public static JasperThalassaceanEggPrefab jasperEgg;
@@ -115,6 +119,9 @@ namespace DeExtinctionMod
 
             jellySpinner = new JellySpinnerPrefab("JellySpinner", "Jelly spinner", "Small organism.", assetBundle.LoadAsset<GameObject>("JellySpinner_Prefab"), assetBundle.LoadAsset<Texture2D>("JellySpinner_Item"));
             jellySpinner.Patch();
+
+            triangleFish = new TrianglefishPrefab("TriangleFish", "Trianglefish", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("Trianglefish_Prefab"), assetBundle.LoadAsset<Texture2D>("Trianglefish_Item"));
+            triangleFish.Patch();
 
             #region ClownPinchers
             rubyClownPincher = new ClownPincherRuby("RubyClownPincher", "Ruby clown pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), assetBundle.LoadAsset<Texture2D>("RCP_Item"));
@@ -195,27 +202,36 @@ namespace DeExtinctionMod
             filtorbCured.Patch();
 
             jellySpinnerCooked = new EatableAsset("CookedJellySpinner", "Cooked jelly spinner", "Pops in your mouth.", assetBundle.LoadAsset<GameObject>("JellySpinner_Prefab"), jellySpinner.TechType, new EatableData(true, 9f, 2f, true), false, assetBundle.LoadAsset<Texture2D>("JellySpinner_Cooked"));
-
             jellySpinnerCooked.Patch();
             jellySpinnerCured = new EatableAsset("CuredJellySpinner", "Cured jelly spinner", "Like eating bubble wrap. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("JellySpinner_Prefab"), jellySpinner.TechType, new EatableData(true, 9f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("JellySpinner_Cured"));
             jellySpinnerCured.Patch();
 
+            trianglefishCooked = new EatableAsset("CookedTriangleFish", "Cooked trianglefish", "Small yet filling.", assetBundle.LoadAsset<GameObject>("Trianglefish_Prefab"), triangleFish.TechType, new EatableData(true, 22f, 3f, true), false, assetBundle.LoadAsset<Texture2D>("Trianglefish_Cooked"));
+            trianglefishCooked.Patch();
+            trianglefishCured = new EatableAsset("CuredTriangleFish", "Cured trianglefish", "Unusually crunchy. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Trianglefish_Prefab"), triangleFish.TechType, new EatableData(true, 22f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Trianglefish_Cured"));
+            trianglefishCured.Patch();
+
             #endregion
 
             const float gulperSpawnDistance = 125f;
-            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-970, -216, -509), "BKTGulper", gulperSpawnDistance));
+            //Mountains
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(1169, -370, 903), "Mountains+KooshGulper", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(1400, -348, 1281), "Mountains+KooshGulper2", gulperSpawnDistance));
 
+            //Underwater islands
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-72, -300, 867), "UWIGulper1", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-174, -460, 1070), "UWIGulper2", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-71, -464, 869), "UWIGulper3", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-49, -308, 1184), "Mountains+UWIGulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-265, -287, 1118), "BK+UWIGulper", gulperSpawnDistance));
 
+            //Sparse reef
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-683, -129, -717), "SparseReefGulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-717, -100, -1088), "FloatingIslandGulper", gulperSpawnDistance));
-            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(1400, -348, 1281), "Mountains+KooshGulper2", gulperSpawnDistance));
+
+            //Blood kelp
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-573, -448, 1311), "Lifepod2Gulper", gulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-970, -216, -509), "BKTGulper", gulperSpawnDistance));
 
             Harmony harmony = new Harmony("SpaceCatCreations.DeExtinctionMod");
             harmony.PatchAll(Assembly.GetExecutingAssembly());

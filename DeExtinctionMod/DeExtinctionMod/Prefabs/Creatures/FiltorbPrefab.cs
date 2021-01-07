@@ -36,7 +36,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
         public override float BioReactorCharge => 300f;
 
         public override ScannableItemData ScannableSettings => new ScannableItemData(true, 3f, "Lifeforms/Fauna/SmallHerbivores", new string[] { "Lifeforms", "Fauna", "SmallHerbivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Filtorb_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Filtorb_Ency"));
-        public override string GetEncyDesc => "Small, free-floating filter feeder with a tough shell.\n\nBody Plan:\nSix appendages used for filter feeding branch off from a soft central chamber.A calcified shell encases the body, and can seal shut if necessary.\n\nBehavior: While generally stationary within the water column, Filtorbs will close up when other lifeforms come near for protection.\n\nAssessment: Edible, though mostly water.";
+        public override string GetEncyDesc => "Small, free-floating filter feeder with a tough shell.\n\nBody Plan:\nSix appendages used for filter feeding branch off from a soft central chamber. A calcified shell encases the body, and can seal shut if necessary.\n\nBehavior: While generally stationary within the water column, Filtorbs will close up when other lifeforms come near for protection.\n\nAssessment: Edible, though mostly water.";
 
         public override void AddCustomBehaviour(CreatureComponents components)
         {
@@ -111,6 +111,24 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 count = 3,
                 probability = 0.3f
             },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SafeShallows_CaveWall,
+                count = 3,
+                probability = 0.8f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Kelp_CaveFloor,
+                count = 5,
+                probability = 0.9f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrassyPlateaus_OpenShallow_CreatureOnly,
+                count = 5,
+                probability = 0.1f
+            }
         };
     }
 }

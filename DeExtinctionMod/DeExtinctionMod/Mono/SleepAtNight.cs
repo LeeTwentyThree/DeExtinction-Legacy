@@ -10,7 +10,7 @@ namespace DeExtinctionMod.Mono
     {
         float timeSwimAgain;
         public float lightThreshold = 0.2f;
-        public float sleepSwimmingSpeed = 0.5f;
+        public float sleepSwimVelocity = 0.5f;
         public float swimInterval = 2f;
         public Vector3 swimRadius = new Vector3(15f, 5f, 15f);
 
@@ -36,7 +36,7 @@ namespace DeExtinctionMod.Mono
             if(Time.time > timeSwimAgain)
             {
                 timeSwimAgain = Time.time + swimInterval;
-                swimBehaviour.SwimTo(transform.position + Vector3.Scale(Random.insideUnitSphere + (transform.forward * 0.25f), swimRadius), sleepSwimmingSpeed);
+                swimBehaviour.SwimTo(transform.position + Vector3.Scale(Random.insideUnitSphere + (transform.forward * 0.25f), swimRadius), sleepSwimVelocity);
             }
         }
     }

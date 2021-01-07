@@ -60,7 +60,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
             var fleeFromPredators = prefab.AddComponent<SwimAwayFromPredators>();
             fleeFromPredators.actionLength = 6f;
-            fleeFromPredators.swimVelocity = 6f;
+            fleeFromPredators.swimVelocity = 15f;
             fleeFromPredators.maxReactDistance = 35f;
             fleeFromPredators.evaluatePriority = 0.9f;
             fleeFromPredators.targetType = EcoTargetType.Leviathan;

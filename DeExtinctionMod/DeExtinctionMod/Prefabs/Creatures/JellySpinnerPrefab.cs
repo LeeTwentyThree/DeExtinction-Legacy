@@ -30,6 +30,10 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override bool Pickupable => true;
 
+        public override float Mass => 0.5f;
+
+        public override bool AcidImmune => true;
+
         public override float MaxVelocityForSpeedParameter => 4f;
 
         public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.8f), new Keyframe(1f, 1f) });

@@ -111,6 +111,12 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 probability = 1f,
                 count = 2
             },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_Coral,
+                count = 3,
+                probability = 0.2f
+            },
         };
     }
 }

@@ -97,6 +97,19 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 probability = 0.4f,
                 count = 1
             },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrassyPlateaus_OpenShallow_CreatureOnly,
+                probability = 1f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrassyPlateaus_Grass,
+                probability = 0.5f,
+                count = 1
+            }
         };
     }
 }
+    
