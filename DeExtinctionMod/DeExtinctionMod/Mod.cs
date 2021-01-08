@@ -233,7 +233,14 @@ namespace DeExtinctionMod
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-573, -448, 1311), "Lifepod2Gulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-970, -216, -509), "BKTGulper", gulperSpawnDistance));
 
-            Harmony harmony = new Harmony("SpaceCatCreations.DeExtinctionMod");
+            Harmony harmony = new Harmony("Lee23.DeExtinctionMod");
+
+            string bonesharkClassId = CraftData.GetClassIdForTechType(TechType.BoneShark);
+            LootDistributionHandler.EditLootDistributionData(bonesharkClassId, BiomeType.UnderwaterIslands_OpenShallow_CreatureOnly, 0f, 0);
+            LootDistributionHandler.EditLootDistributionData(bonesharkClassId, BiomeType.UnderwaterIslands_OpenDeep_CreatureOnly, 0f, 0);
+            LootDistributionHandler.EditLootDistributionData(bonesharkClassId, BiomeType.UnderwaterIslands_ValleyFloor, 0f, 0);
+            LootDistributionHandler.EditLootDistributionData(bonesharkClassId, BiomeType.UnderwaterIslands_IslandSides, 0f, 0);
+            LootDistributionHandler.EditLootDistributionData(bonesharkClassId, BiomeType.UnderwaterIslands_ValleyLedge, 0f, 0);
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 

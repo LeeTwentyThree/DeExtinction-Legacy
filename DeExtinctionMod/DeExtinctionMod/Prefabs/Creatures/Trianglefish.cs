@@ -22,7 +22,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override LargeWorldEntity.CellLevel CellLevel => LargeWorldEntity.CellLevel.Near;
 
-        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(5f, 10f, 5f), 4f, 0.5f, 0.1f);
+        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(1f, 5f, 1f), 4f, 0.5f, 0.1f);
 
         public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.2f, 15f);
 
