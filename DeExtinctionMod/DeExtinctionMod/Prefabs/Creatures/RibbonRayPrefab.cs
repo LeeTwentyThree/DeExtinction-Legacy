@@ -30,7 +30,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override EcoTargetType EcoTargetType => EcoTargetType.SmallFish;
 
-        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.15f, true, 4f);
+        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.3f, true, 4f);
 
         public override bool Pickupable => true;
 

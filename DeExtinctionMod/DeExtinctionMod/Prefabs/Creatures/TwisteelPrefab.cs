@@ -59,7 +59,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             AddMeleeAttack(prefab.SearchChild("Head", ECCStringComparison.Contains), 1f, 30f, "TwisteelBite", 30f, false, components);
             GameObject trailParent = prefab.SearchChild("Spine1");
             Transform[] trails = new Transform[] { prefab.SearchChild("Spine2").transform, prefab.SearchChild("Spine3").transform, prefab.SearchChild("Spine4").transform, prefab.SearchChild("Spine5").transform, prefab.SearchChild("Spine6").transform, prefab.SearchChild("Spine7").transform, prefab.SearchChild("Spine8").transform, prefab.SearchChild("Spine9").transform, prefab.SearchChild("Spine10").transform, prefab.SearchChild("Spine11").transform, prefab.SearchChild("Spine12").transform, prefab.SearchChild("Spine13").transform, prefab.SearchChild("Spine14").transform, prefab.SearchChild("Spine15").transform, prefab.SearchChild("Spine16").transform, prefab.SearchChild("Spine17").transform, prefab.SearchChild("Spine18").transform };
-            CreateTrail(trailParent, trails, components, 3f);
+            CreateTrail(trailParent, trails, components, 4f, 0.5f);
             MakeAggressiveTo(15f, 1, EcoTargetType.Shark, 0f, 0.5f);
             MakeAggressiveTo(25f, 1, EcoTargetType.SmallFish, 0.1f, 0.4f);
         }
