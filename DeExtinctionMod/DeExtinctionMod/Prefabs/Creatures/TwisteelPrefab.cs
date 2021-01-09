@@ -78,9 +78,9 @@ namespace DeExtinctionMod.Prefabs.Creatures
             GameObject trailParent = prefab.SearchChild("Spine1");
             Transform[] trails = new Transform[] { prefab.SearchChild("Spine2").transform, prefab.SearchChild("Spine3").transform, prefab.SearchChild("Spine4").transform, prefab.SearchChild("Spine5").transform, prefab.SearchChild("Spine6").transform, prefab.SearchChild("Spine7").transform, prefab.SearchChild("Spine8").transform, prefab.SearchChild("Spine9").transform, prefab.SearchChild("Spine10").transform, prefab.SearchChild("Spine11").transform, prefab.SearchChild("Spine12").transform, prefab.SearchChild("Spine13").transform, prefab.SearchChild("Spine14").transform, prefab.SearchChild("Spine15").transform, prefab.SearchChild("Spine16").transform, prefab.SearchChild("Spine17").transform, prefab.SearchChild("Spine18").transform };
             CreateTrail(trailParent, trails, components, 4f, 0.5f);
-            MakeAggressiveTo(27f, 1, EcoTargetType.Shark, 0f, 0.6f);
+            MakeAggressiveTo(27f, 2, EcoTargetType.Shark, 0f, 0.67f);
             MakeAggressiveTo(15f, 1, EcoTargetType.MediumFish, 0f, 0.4f);
-            MakeAggressiveTo(10f, 1, EcoTargetType.SmallFish, 0.1f, 0.2f);
+            MakeAggressiveTo(7f, 1, EcoTargetType.SmallFish, 0.1f, 0.2f);
             MakeAggressiveTo(20f, 1, EcoTargetType.Shiny, 0.1f, 0.2f);
             MakeAggressiveTo(20f, 1, EcoTargetType.CuteFish, 0f, 0.6f);
         }
