@@ -106,6 +106,7 @@
     <Compile Include="Mono\FreeFloating.cs" />
     <Compile Include="Mono\GulperBehaviour.cs" />
     <Compile Include="Mono\GulperMeleeAttack_Claw.cs" />
+    <Compile Include="Mono\TwisteelMeleeAttack.cs" />
     <Compile Include="Mono\GulperMeleeAttack_Mouth.cs" />
     <Compile Include="Mono\PassBelowPlayerAction.cs" />
     <Compile Include="Mono\ReactToPredatorAction.cs" />

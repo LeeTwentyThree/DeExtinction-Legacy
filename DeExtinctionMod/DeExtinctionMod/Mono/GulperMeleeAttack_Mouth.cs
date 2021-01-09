@@ -20,7 +20,8 @@ namespace DeExtinctionMod.Mono
 		{
 			attackSource = gameObject.AddComponent<AudioSource>();
 			attackSource.minDistance = 10f;
-			attackSource.maxDistance = 50f;
+			attackSource.maxDistance = 40f;
+			attackSource.spatialBlend = 1f;
 			attackSource.volume = ECCHelpers.GetECCVolume();
 			clipPool = ECCAudio.CreateClipPool("GulperAttack");
 			gameObject.SearchChild("Mouth").GetComponent<OnTouch>().onTouch = new OnTouch.OnTouchEvent();
@@ -79,6 +80,10 @@ namespace DeExtinctionMod.Mono
 						}
 						LiveMixin liveMixin = target.GetComponent<LiveMixin>();
 						if (liveMixin == null) return;
+						if (!CanAttackTargetFromPosition(target))
+						{
+							return;
+						}
 						if (CanSwallowWhole(collider.gameObject, liveMixin))
 						{
 								Destroy(liveMixin.gameObject, 0.5f);
@@ -90,16 +95,14 @@ namespace DeExtinctionMod.Mono
 						{
 							liveMixin.TakeDamage(GetBiteDamage(target));
 							timeLastBite = Time.time;
+							attackSource.clip = clipPool.GetRandomClip();
+							attackSource.Play();
 						}
 						creature.GetAnimator().SetTrigger("bite");
 						component.Aggression.Value -= 0.15f;
 					}
 				}
 			}
-		}
-		private void PlayerDeathCinematic()
-		{
-
 		}
 		private bool CanAttackTargetFromPosition(GameObject target)
 		{

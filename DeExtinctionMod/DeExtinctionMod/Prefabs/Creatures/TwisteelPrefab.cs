@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DeExtinctionMod.Mono;
 using ECCLibrary;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override EcoTargetType EcoTargetType => EcoTargetType.Shark;
 
-        public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(0.31f, 15f);
+        public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(0.5f, 25f);
 
         public override bool EnableAggression => true;
 
@@ -50,18 +51,34 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override BehaviourLODLevelsStruct BehaviourLODSettings => new BehaviourLODLevelsStruct(20f, 100f, 150f);
 
+        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 1f, 20f, "TwisteelIdle", "roar", 0.12f, 7f, 20f);
+
         public override string GetEncyDesc => "A large eel-like predator found within a deep canyon.\n\n1. Body:\nA long and flexible body allows the Twisteel to snake around the environment with a low profile while hunting for prey.\n\n2. Jaws:\nDistantly related to other lifeforms on the planet possessing a quad-jaw arrangement, the lateral pair of jaws have been reduced to a vestigial point.The remaining jaws reach lengths of up to 3m, and are filled with rows of large teeth to trap prey items.\n\nAssessment: Avoid";
 
         public override ScannableItemData ScannableSettings => new ScannableItemData(true, 7f, "Lifeforms/Fauna/Carnivores", new string[] { "Lifeforms", "Fauna", "Carnivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Twisteel_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Twisteel_Ency"));
 
         public override void AddCustomBehaviour(CreatureComponents components)
         {
-            AddMeleeAttack(prefab.SearchChild("Head", ECCStringComparison.Contains), 1f, 30f, "TwisteelBite", 30f, false, components);
+            GameObject mouth = prefab.SearchChild("Head");
+            TwisteelMeleeAttack meleeAttack = prefab.AddComponent<TwisteelMeleeAttack>();
+            meleeAttack.mouth = mouth;
+            meleeAttack.biteInterval = 1f;
+            meleeAttack.biteDamage = 30f;
+            meleeAttack.eatHungerDecrement = 0.05f;
+            meleeAttack.eatHappyIncrement = 0.1f;
+            meleeAttack.biteAggressionDecrement = 0.02f;
+            meleeAttack.biteAggressionThreshold = 0.1f;
+            meleeAttack.lastTarget = components.lastTarget;
+            meleeAttack.creature = components.creature;
+            meleeAttack.liveMixin = components.liveMixin;
+            meleeAttack.animator = components.creature.GetAnimator();
+
             GameObject trailParent = prefab.SearchChild("Spine1");
             Transform[] trails = new Transform[] { prefab.SearchChild("Spine2").transform, prefab.SearchChild("Spine3").transform, prefab.SearchChild("Spine4").transform, prefab.SearchChild("Spine5").transform, prefab.SearchChild("Spine6").transform, prefab.SearchChild("Spine7").transform, prefab.SearchChild("Spine8").transform, prefab.SearchChild("Spine9").transform, prefab.SearchChild("Spine10").transform, prefab.SearchChild("Spine11").transform, prefab.SearchChild("Spine12").transform, prefab.SearchChild("Spine13").transform, prefab.SearchChild("Spine14").transform, prefab.SearchChild("Spine15").transform, prefab.SearchChild("Spine16").transform, prefab.SearchChild("Spine17").transform, prefab.SearchChild("Spine18").transform };
             CreateTrail(trailParent, trails, components, 4f, 0.5f);
-            MakeAggressiveTo(15f, 1, EcoTargetType.Shark, 0f, 0.5f);
-            MakeAggressiveTo(25f, 1, EcoTargetType.SmallFish, 0.1f, 0.4f);
+            MakeAggressiveTo(25f, 1, EcoTargetType.Shark, 0f, 0.6f);
+            MakeAggressiveTo(30f, 1, EcoTargetType.MediumFish, 0f, 0.4f);
+            MakeAggressiveTo(30f, 1, EcoTargetType.SmallFish, 0.1f, 0.4f);
         }
 
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
