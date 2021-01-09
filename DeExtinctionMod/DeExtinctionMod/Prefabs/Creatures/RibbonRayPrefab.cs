@@ -34,7 +34,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override bool Pickupable => true;
 
-        public override HeldFishData ViewModelSettings => new HeldFishData(TechType.Spadefish, "WorldModel", "ViewModel");
+        public override HeldFishData ViewModelSettings => new HeldFishData(TechType.Peeper, "WorldModel", "ViewModel");
 
         public override EatableData EatableSettings => new EatableData(true, 12f, -6f, false);
 
@@ -117,6 +117,12 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 count = 3,
                 probability = 0.2f
             },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SafeShallows_ShellTunnelHuge,
+                count = 2,
+                probability = 3f
+            }
         };
     }
 }

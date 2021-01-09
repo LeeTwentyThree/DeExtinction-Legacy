@@ -32,6 +32,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override HeldFishData ViewModelSettings => new HeldFishData(TechType.GarryFish, "WorldModel", "ViewModel");
 
+        public override float BioReactorCharge => 300f;
+
         public override EatableData EatableSettings => new EatableData(true, 7f, -5f, false);
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.4f, true, 4f);

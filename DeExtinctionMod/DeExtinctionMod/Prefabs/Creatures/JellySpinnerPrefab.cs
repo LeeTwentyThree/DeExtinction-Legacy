@@ -52,8 +52,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override void AddCustomBehaviour(CreatureComponents components)
         {
-            var burst = prefab.AddComponent<VFXBurstModel>();
-            burst.displaceTex = CraftData.GetPrefabForTechType(TechType.AcidMushroom).GetComponent<VFXBurstModel>().displaceTex;
+
         }
 
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)

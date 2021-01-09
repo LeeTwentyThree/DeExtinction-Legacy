@@ -108,6 +108,12 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 biome = BiomeType.GrassyPlateaus_Grass,
                 probability = 0.5f,
                 count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.JellyshroomCaves_CaveFloor,
+                count = 2,
+                probability = 1f
             }
         };
     }

@@ -31,7 +31,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float MaxVelocityForSpeedParameter => 12f;
 
-        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.21f, true, 8f);
+        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.31f, true, 8f);
 
         public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.3f, 12f, 3f, 6f, 5f, 15f);
 
@@ -51,9 +51,11 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override BehaviourLODLevelsStruct BehaviourLODSettings => new BehaviourLODLevelsStruct(20f, 100f, 150f);
 
+        public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.5f), new Keyframe(1f, 1f) });
+
         public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 1f, 20f, "TwisteelIdle", "roar", 0.12f, 7f, 20f);
 
-        public override string GetEncyDesc => "A large eel-like predator found within a deep canyon.\n\n1. Body:\nA long and flexible body allows the Twisteel to snake around the environment with a low profile while hunting for prey.\n\n2. Jaws:\nDistantly related to other lifeforms on the planet possessing a quad-jaw arrangement, the lateral pair of jaws have been reduced to a vestigial point.The remaining jaws reach lengths of up to 3m, and are filled with rows of large teeth to trap prey items.\n\nAssessment: Avoid";
+        public override string GetEncyDesc => "A large eel-like predator found within a deep canyon.\n\n1. Body:\nA long and flexible body allows the Twisteel to snake around the environment with a low profile while hunting for prey.\n\n2. Jaws:\nDistantly related to other lifeforms on the planet possessing a quad-jaw arrangement, the lateral pair of jaws have been reduced to a vestigial point. The remaining jaws reach lengths of up to 3m, and are filled with rows of large teeth to trap relatively large prey items.\n\nAssessment: Avoid";
 
         public override ScannableItemData ScannableSettings => new ScannableItemData(true, 7f, "Lifeforms/Fauna/Carnivores", new string[] { "Lifeforms", "Fauna", "Carnivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Twisteel_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Twisteel_Ency"));
 
@@ -76,9 +78,11 @@ namespace DeExtinctionMod.Prefabs.Creatures
             GameObject trailParent = prefab.SearchChild("Spine1");
             Transform[] trails = new Transform[] { prefab.SearchChild("Spine2").transform, prefab.SearchChild("Spine3").transform, prefab.SearchChild("Spine4").transform, prefab.SearchChild("Spine5").transform, prefab.SearchChild("Spine6").transform, prefab.SearchChild("Spine7").transform, prefab.SearchChild("Spine8").transform, prefab.SearchChild("Spine9").transform, prefab.SearchChild("Spine10").transform, prefab.SearchChild("Spine11").transform, prefab.SearchChild("Spine12").transform, prefab.SearchChild("Spine13").transform, prefab.SearchChild("Spine14").transform, prefab.SearchChild("Spine15").transform, prefab.SearchChild("Spine16").transform, prefab.SearchChild("Spine17").transform, prefab.SearchChild("Spine18").transform };
             CreateTrail(trailParent, trails, components, 4f, 0.5f);
-            MakeAggressiveTo(25f, 1, EcoTargetType.Shark, 0f, 0.6f);
-            MakeAggressiveTo(30f, 1, EcoTargetType.MediumFish, 0f, 0.4f);
-            MakeAggressiveTo(30f, 1, EcoTargetType.SmallFish, 0.1f, 0.4f);
+            MakeAggressiveTo(27f, 1, EcoTargetType.Shark, 0f, 0.6f);
+            MakeAggressiveTo(15f, 1, EcoTargetType.MediumFish, 0f, 0.4f);
+            MakeAggressiveTo(10f, 1, EcoTargetType.SmallFish, 0.1f, 0.2f);
+            MakeAggressiveTo(20f, 1, EcoTargetType.Shiny, 0.1f, 0.2f);
+            MakeAggressiveTo(20f, 1, EcoTargetType.CuteFish, 0f, 0.6f);
         }
 
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
@@ -134,6 +138,12 @@ namespace DeExtinctionMod.Prefabs.Creatures
             {
                 biome = BiomeType.BloodKelp_WreckCreatures,
                 probability = 0.2f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.KooshZone_Grass,
+                probability = 0.1f,
                 count = 1
             }
         };
