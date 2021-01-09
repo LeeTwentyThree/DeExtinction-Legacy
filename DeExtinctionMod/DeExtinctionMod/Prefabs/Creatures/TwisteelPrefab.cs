@@ -33,7 +33,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.21f, true, 8f);
 
-        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.3f, 8f, 3f, 6f, 5f, 15f);
+        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.3f, 12f, 3f, 6f, 5f, 15f);
 
         public override float BioReactorCharge => 630f;
 
@@ -118,6 +118,24 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 probability = 0.1f,
                 count = 1
             },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BloodKelp_UniqueCreatures,
+                probability = 0.04f,
+                count = 3
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BloodKelp_TrenchWall,
+                probability = 0.6f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BloodKelp_WreckCreatures,
+                probability = 0.2f,
+                count = 1
+            }
         };
     }
 }

@@ -88,6 +88,24 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 biome = BiomeType.SparseReef_OpenDeep_CreatureOnly,
                 count = 3,
                 probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.KooshZone_Sand,
+                count = 3,
+                probability = 1.5f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.KooshZone_Grass,
+                count = 3,
+                probability = 3f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.CrashZone_Sand,
+                count = 3,
+                probability = 0.4f
             }
         };
     }

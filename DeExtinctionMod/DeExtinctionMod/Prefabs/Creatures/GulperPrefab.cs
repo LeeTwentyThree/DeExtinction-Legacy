@@ -61,7 +61,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
         {
             GameObject spine2 = prefab.SearchChild("Spine2");
             CreateTrail(spine2, new Transform[] { spine2.SearchChild("Spine3Phys").transform, spine2.SearchChild("Spine3").transform, spine2.SearchChild("Spine4Phys").transform, spine2.SearchChild("Spine4").transform, spine2.SearchChild("Spine5Phys").transform, spine2.SearchChild("Spine5").transform, spine2.SearchChild("Spine6Phys").transform, spine2.SearchChild("Spine6").transform, spine2.SearchChild("Spine7Phys").transform, spine2.SearchChild("Spine7").transform, spine2.SearchChild("Spine8Phys").transform, spine2.SearchChild("Spine8").transform, spine2.SearchChild("Spine9Phys").transform, spine2.SearchChild("Spine9").transform }, components, 4.5f, 2f);
-            MakeAggressiveTo(35f, 2, EcoTargetType.Shark, 0f, 3f);
+            MakeAggressiveTo(70f, 2, EcoTargetType.Shark, 0f, 3f);
             MakeAggressiveTo(35f, 2, EcoTargetType.MediumFish, 0f, 2f);
             GameObject mouth = prefab.SearchChild("Mouth");
             GameObject lClawTrigger = prefab.SearchChild("LClaw");
