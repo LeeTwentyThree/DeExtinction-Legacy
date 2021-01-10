@@ -24,37 +24,37 @@ namespace DeExtinctionMod.Prefabs.Creatures
             {
                 biome = BiomeType.LostRiverCorridor_Open_CreatureOnly,
                 count = 1,
-                probability = 0.1f
+                probability = 0.05f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.LostRiverJunction_Open_CreatureOnly,
                 count = 1,
-                probability = 0.1f
+                probability = 0.05f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.BonesField_Skeleton_Open_CreatureOnly,
                 count = 1,
-                probability = 0.1f
+                probability = 0.05f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.BonesField_LakePit_Open_CreatureOnly,
                 count = 1,
-                probability = 0.1f
+                probability = 0.05f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.GhostTree_Open_Big_CreatureOnly,
                 count = 1,
-                probability = 0.1f
+                probability = 0.05f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.Canyon_Open_CreatureOnly,
                 count = 1,
-                probability = 0.1f
+                probability = 0.05f
             }
         };
 

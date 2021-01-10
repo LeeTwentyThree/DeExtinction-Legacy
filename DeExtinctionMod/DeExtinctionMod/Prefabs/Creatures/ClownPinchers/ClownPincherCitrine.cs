@@ -70,12 +70,6 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 biome = BiomeType.Mountains_OpenDeep_CreatureOnly,
                 count = 4,
                 probability = 0.2f
-            },
-            new LootDistributionData.BiomeData()
-            {
-                biome = BiomeType.SafeShallows_OpenShallow_CreatureOnly,
-                count = 6,
-                probability = 0.05f
             }
         };
     }

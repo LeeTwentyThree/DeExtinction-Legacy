@@ -44,7 +44,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override ItemSoundsType ItemSounds => ItemSoundsType.Floater;
 
-        public override string GetEncyDesc => "Small bell-shaped herbivore.\n\nBody Plan:\nA large bell surrounds a lengthy flagellum used for propulsion.A tube situated the base of the bell is used for consumption of small pieces of biomatter,\n\nBehavior: Jelly Spinners can generally be found close to the seabed or higher in the water column foraging for food.Primary defense is not being particularly edible.\n\nAssessment: Edible, but not particularly filling.";
+        public override string GetEncyDesc => "Small bell-shaped herbivore.\n\nBody Plan:\nA large bell surrounds a lengthy flagellum used for propulsion. A tube situated the base of the bell is used for consumption of small pieces of biomatter,\n\nBehavior: Jelly Spinners can generally be found close to the seabed or higher in the water column foraging for food. Primary defense is not being particularly edible.\n\nAssessment: Edible, but not particularly filling.";
 
         public override string GetEncyTitle => "Jelly Spinner";
 

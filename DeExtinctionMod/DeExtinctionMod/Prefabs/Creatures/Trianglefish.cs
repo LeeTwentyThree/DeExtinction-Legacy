@@ -40,7 +40,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyDesc => "Small herbivore generally found in shallow waters.\n\nEye Stalks:\nTwo eyes on stalks give the Trianglefish a mobile field of vision.\n\nBehavior: A skittish animal, Trianglefish will generally try to stay out of sight of larger animals, and dart away when confronted.\n\nAssessment: Edible";
 
-        public override ScannableItemData ScannableSettings => new ScannableItemData(true, 2f, "Lifeforms/Fauna/SmallHerbivores", new string[] { "Lifeforms", "Fauna", "SmallHerbviores" }, QPatch.assetBundle.LoadAsset<Sprite>("TriangleFish_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Trianglefish_Ency"));
+        public override ScannableItemData ScannableSettings => new ScannableItemData(true, 2f, "Lifeforms/Fauna/SmallHerbivores", new string[] { "Lifeforms", "Fauna", "SmallHerbivores" }, QPatch.assetBundle.LoadAsset<Sprite>("TriangleFish_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Trianglefish_Ency"));
 
         public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.1f, 0.7f, 0.9f, 1f, true);
 
