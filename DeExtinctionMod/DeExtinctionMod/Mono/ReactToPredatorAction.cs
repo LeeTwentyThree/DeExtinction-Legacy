@@ -20,19 +20,27 @@ namespace DeExtinctionMod.Mono
         public float actionLength = 1f;
 
         protected LastScarePosition lastScare;
+        protected bool performingAction;
+        protected float timeStopAction;
+
+        private bool frozen;
 
         public override float Evaluate(Creature creature)
         {
-                IEcoTarget closestTarget = EcoRegionManager.main.FindNearestTarget(targetType, transform.position, null, 1);
-                if (closestTarget != null && closestTarget.GetGameObject() != null)
+            if (frozen)
+            {
+                return 0f;
+            }
+            IEcoTarget closestTarget = EcoRegionManager.main.FindNearestTarget(targetType, transform.position, null, 1);
+            if (closestTarget != null && closestTarget.GetGameObject() != null)
+            {
+                if (Vector3.Distance(closestTarget.GetPosition(), transform.position) < maxReactDistance)
                 {
-                    if (Vector3.Distance(closestTarget.GetPosition(), transform.position) < maxReactDistance)
-                    {
-                        performingAction = true;
-                        timeStopAction = Time.time + actionLength;
-                        if(lastScare) lastScare.lastScarePosition = closestTarget.GetPosition();
-                    }
+                    performingAction = true;
+                    timeStopAction = Time.time + actionLength;
+                    if (lastScare) lastScare.lastScarePosition = closestTarget.GetPosition();
                 }
+            }
             if (performingAction)
             {
                 if (Time.time > timeStopAction)
@@ -50,8 +58,15 @@ namespace DeExtinctionMod.Mono
                 return 0f;
             }
         }
-        
-        protected bool performingAction;
-        protected float timeStopAction;
+
+        public void OnFreeze()
+        {
+            frozen = true;
+        }
+
+        public void OnUnfreeze()
+        {
+            frozen = false;
+        }
     }
 }

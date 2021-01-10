@@ -56,7 +56,7 @@ namespace DeExtinctionMod.Mono
 								playerDeathCinematic.StartCinematicMode(player);
 								attackSource.clip = clipPool.GetRandomClip();
 								attackSource.Play();
-								timeCinematicAgain = Time.time + 2f;
+								timeCinematicAgain = Time.time + 4f;
 								timeLastBite = Time.time;
 								return;
 							}
@@ -80,6 +80,10 @@ namespace DeExtinctionMod.Mono
 						}
 						LiveMixin liveMixin = target.GetComponent<LiveMixin>();
 						if (liveMixin == null) return;
+						if (!liveMixin.IsAlive())
+						{
+							return;
+						}
 						if (!CanAttackTargetFromPosition(target))
 						{
 							return;

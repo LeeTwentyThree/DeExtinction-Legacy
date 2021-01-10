@@ -18,7 +18,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override TechType CreatureTraitsReference => TechType.GarryFish;
 
-        public override BehaviourType BehaviourType => BehaviourType.SmallFish;
+        public override BehaviourType BehaviourType => BehaviourType.MediumFish;
 
         public override LargeWorldEntity.CellLevel CellLevel => LargeWorldEntity.CellLevel.Near;
 
@@ -28,7 +28,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.2f, 20f);
 
-        public override EcoTargetType EcoTargetType => EcoTargetType.SmallFish;
+        public override EcoTargetType EcoTargetType => EcoTargetType.MediumFish;
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.3f, true, 4f);
 

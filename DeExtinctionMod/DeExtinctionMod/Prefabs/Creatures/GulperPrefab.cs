@@ -35,13 +35,13 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(0.25f, 50f);
 
-        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.5f, 28f, 16f, 20f, 10f, 16f);
+        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.5f, 35f, 18f, 20f, 10f, 16f);
 
         public override float MaxVelocityForSpeedParameter => 28f;
 
         public override float EyeFov => 0.75f;
 
-        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.6f, true, 20f);
+        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.6f, true, 30f);
 
         public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 5f, 100f, "GulperRoar", "roar", 0.3f, 8f, 20f);
 
@@ -60,9 +60,9 @@ namespace DeExtinctionMod.Prefabs.Creatures
         public override void AddCustomBehaviour(CreatureComponents components)
         {
             GameObject spine2 = prefab.SearchChild("Spine2");
-            CreateTrail(spine2, new Transform[] { spine2.SearchChild("Spine3Phys").transform, spine2.SearchChild("Spine3").transform, spine2.SearchChild("Spine4Phys").transform, spine2.SearchChild("Spine4").transform, spine2.SearchChild("Spine5Phys").transform, spine2.SearchChild("Spine5").transform, spine2.SearchChild("Spine6Phys").transform, spine2.SearchChild("Spine6").transform, spine2.SearchChild("Spine7Phys").transform, spine2.SearchChild("Spine7").transform, spine2.SearchChild("Spine8Phys").transform, spine2.SearchChild("Spine8").transform, spine2.SearchChild("Spine9Phys").transform, spine2.SearchChild("Spine9").transform }, components, 4.5f, 2f);
-            MakeAggressiveTo(70f, 2, EcoTargetType.Shark, 0f, 3f);
-            MakeAggressiveTo(35f, 2, EcoTargetType.MediumFish, 0f, 2f);
+            CreateTrail(spine2, new Transform[] { spine2.SearchChild("Spine3").transform, spine2.SearchChild("Spine4").transform, spine2.SearchChild("Spine5").transform, spine2.SearchChild("Spine6").transform, spine2.SearchChild("Spine7").transform, spine2.SearchChild("Spine8").transform, spine2.SearchChild("Spine9").transform }, components, 8f);
+            MakeAggressiveTo(70f, 3, EcoTargetType.Shark, 0f, 3f);
+            MakeAggressiveTo(20f, 1, EcoTargetType.MediumFish, 0f, 2f);
             GameObject mouth = prefab.SearchChild("Mouth");
             GameObject lClawTrigger = prefab.SearchChild("LClaw");
             GameObject rClawTrigger = prefab.SearchChild("RClaw");
@@ -83,6 +83,10 @@ namespace DeExtinctionMod.Prefabs.Creatures
             meleeAttack.creature = components.creature;
             meleeAttack.liveMixin = components.liveMixin;
             meleeAttack.animator = components.creature.GetAnimator();
+
+            var avoidObstacels = prefab.GetComponent<AvoidObstacles>();
+            avoidObstacels.avoidanceIterations = 20;
+            avoidObstacels.scanInterval = 0.5f;
 
             mouth.AddComponent<OnTouch>();
             lClawTrigger.AddComponent<OnTouch>();
