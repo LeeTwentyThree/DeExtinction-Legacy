@@ -27,7 +27,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyTitle => "Gulper Leviathan";
 
-        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(30f, 10f, 30f), 14f, 2f, 0.1f);
+        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(30f, 10f, 30f), 10f, 2f, 0.1f);
 
         public override EcoTargetType EcoTargetType => EcoTargetType.Leviathan;
 
@@ -53,7 +53,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float Mass => 2000f;
 
-        public override float TurnSpeed => 0.5f;
+        public override float TurnSpeed => 0.4f;
 
         public override bool ScannerRoomScannable => true;
 
