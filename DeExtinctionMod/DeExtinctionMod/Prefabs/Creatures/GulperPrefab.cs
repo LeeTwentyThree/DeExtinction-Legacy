@@ -27,7 +27,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyTitle => "Gulper Leviathan";
 
-        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(30f, 10f, 30f), 10f, 2f, 0.1f);
+        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(30f, 10f, 30f), 15f, 2f, 0.1f);
 
         public override EcoTargetType EcoTargetType => EcoTargetType.Leviathan;
 
@@ -35,9 +35,9 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(0.25f, 50f);
 
-        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.5f, 35f, 18f, 20f, 10f, 16f);
+        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.5f, 62f, 18f, 20f, 10f, 16f);
 
-        public override float MaxVelocityForSpeedParameter => 28f;
+        public override float MaxVelocityForSpeedParameter => 30f;
 
         public override float EyeFov => 0.75f;
 
@@ -100,6 +100,9 @@ namespace DeExtinctionMod.Prefabs.Creatures
             actionAtkCyclops.evaluatePriority = 0.6f;
             actionAtkCyclops.priorityMultiplier = ECCHelpers.Curve_Flat();
             actionAtkCyclops.maxDistToLeash = 60f;
+
+            components.locomotion.driftFactor = 0.8f;
+            components.locomotion.maxAcceleration = 18f;
             }
 
         void AddClawAttack(string triggerName, string animationName, CreatureComponents components)

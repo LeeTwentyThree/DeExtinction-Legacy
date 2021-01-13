@@ -64,7 +64,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             GameObject mouth = prefab.SearchChild("Head");
             TwisteelMeleeAttack meleeAttack = prefab.AddComponent<TwisteelMeleeAttack>();
             meleeAttack.mouth = mouth;
-            meleeAttack.biteInterval = 1f;
+            meleeAttack.biteInterval = 2.5f;
             meleeAttack.biteDamage = 30f;
             meleeAttack.eatHungerDecrement = 0.05f;
             meleeAttack.eatHappyIncrement = 0.1f;
