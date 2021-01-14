@@ -27,7 +27,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyTitle => "Gulper Leviathan";
 
-        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(30f, 10f, 30f), 15f, 2f, 0.1f);
+        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(30f, 10f, 30f), 12f, 2f, 0.1f);
 
         public override EcoTargetType EcoTargetType => EcoTargetType.Leviathan;
 
@@ -37,19 +37,19 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.5f, 62f, 18f, 20f, 10f, 16f);
 
-        public override float MaxVelocityForSpeedParameter => 30f;
+        public override float MaxVelocityForSpeedParameter => 24f;
 
         public override float EyeFov => 0.75f;
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.6f, true, 30f);
 
-        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 5f, 100f, "GulperRoar", "roar", 0.3f, 8f, 20f);
+        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 10f, 100f, "GulperRoar", "roar", 0.3f, 10f, 20f);
 
         public override BehaviourLODLevelsStruct BehaviourLODSettings => new BehaviourLODLevelsStruct(30f, 100f, 200f);
 
         public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.4f, 40f);
 
-        public override UBERMaterialProperties MaterialSettings => new UBERMaterialProperties(7f, 2.4f, 3f);
+        public override UBERMaterialProperties MaterialSettings => new UBERMaterialProperties(7f, 2.4f, 4f);
 
         public override float Mass => 2000f;
 
