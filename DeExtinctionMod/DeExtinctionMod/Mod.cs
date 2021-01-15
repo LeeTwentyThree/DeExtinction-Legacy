@@ -82,7 +82,6 @@ namespace DeExtinctionMod
         [QModPatch]
         public static void Patch()
         {
-            ErrorMessage.AddMessage("Hello world!");
             assetBundle = ECCHelpers.LoadAssetBundleFromAssetsFolder(Assembly.GetExecutingAssembly(), "deextinctionassets");
             ECCAudio.RegisterClips(assetBundle);
 
@@ -143,8 +142,6 @@ namespace DeExtinctionMod
             #endregion
 
             #region Eggs
-
-            LanguageHandler.SetLanguageLine("EncyPath_Lifeforms/Fauna/Eggs", "Creature Eggs");
 
             stellarEgg = new StellarThalassaceanEggPrefab("StellarThalassaceanEgg", "Stellar Thalassacean Egg", "Stellar Thallasaceans hatch from these.", assetBundle.LoadAsset<GameObject>("StellarThalassaceanEggPrefab"), stellarThalassacean.TechType, assetBundle.LoadAsset<Texture2D>("StellarThalassaceanEgg_Icon"), 2f);
             stellarEgg.Patch();
