@@ -21,7 +21,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override LargeWorldEntity.CellLevel CellLevel => LargeWorldEntity.CellLevel.Near;
 
-        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(20f, 20f, 20f), 3.5f, 0.5f, 0.1f);
+        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(20f, 20f, 20f), 2.5f, 0.5f, 0.1f);
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.3f, true, 5f);
 
@@ -31,7 +31,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.2f, 12f);
 
-        public override float MaxVelocityForSpeedParameter => 7f;
+        public override float MaxVelocityForSpeedParameter => 6f;
 
         public override float BioReactorCharge => 300f;
 
@@ -51,9 +51,9 @@ namespace DeExtinctionMod.Prefabs.Creatures
             var fleeOnDamage = prefab.AddComponent<FleeOnDamage>();
             fleeOnDamage.damageThreshold = 10f;
             fleeOnDamage.evaluatePriority = 0.5f;
-            fleeOnDamage.swimVelocity = 7f;
+            fleeOnDamage.swimVelocity = 6f;
 
-            CreateTrail(prefab.SearchChild("Spine1", ECCStringComparison.Contains), new Transform[] { prefab.SearchChild("Spine2", ECCStringComparison.Contains).transform, prefab.SearchChild("Spine3", ECCStringComparison.Contains).transform , prefab.SearchChild("Spine4", ECCStringComparison.Contains).transform , prefab.SearchChild("Spine5", ECCStringComparison.Contains).transform , prefab.SearchChild("Spine6", ECCStringComparison.Contains).transform }, components, 0.5f, 0.5f);
+            //CreateTrail(prefab.SearchChild("Spine1", ECCStringComparison.Contains), new Transform[] { prefab.SearchChild("Spine2", ECCStringComparison.Contains).transform, prefab.SearchChild("Spine3", ECCStringComparison.Contains).transform , prefab.SearchChild("Spine4", ECCStringComparison.Contains).transform , prefab.SearchChild("Spine5", ECCStringComparison.Contains).transform , prefab.SearchChild("Spine6", ECCStringComparison.Contains).transform }, components, 0.5f, 0.5f);
         }
 
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
