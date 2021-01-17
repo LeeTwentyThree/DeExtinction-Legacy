@@ -41,7 +41,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float Mass => 4f;
 
-        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 0.1f, 4f, "ClownPincherIdle", null, 0.65f, 15f, 35f);
+        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 0.2f, 5f, "ClownPincherIdle", null, 0.65f, 10f, 20f);
 
         public override HeldFishData ViewModelSettings => new HeldFishData(TechType.Peeper, "WorldModel", "ViewModel");
 

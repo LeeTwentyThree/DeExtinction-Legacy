@@ -38,7 +38,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.8f, false, 5f);
 
-        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 2f, 10f, "ThalassaceanRoar", string.Empty, 0.51f, 20f, 35f);
+        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 4f, 30f, "ThalassaceanRoar", string.Empty, 0.51f, 20f, 30f);
 
         public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.8f), new Keyframe(1f, 1f) });
 
