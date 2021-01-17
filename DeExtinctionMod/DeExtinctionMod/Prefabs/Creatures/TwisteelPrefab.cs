@@ -33,7 +33,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.31f, true, 8f);
 
-        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.3f, 37f, 5f, 7f, 5f, 15f);
+        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.3f, 37f, 7f, 8f, 5f, 15f);
 
         public override float BioReactorCharge => 630f;
 
