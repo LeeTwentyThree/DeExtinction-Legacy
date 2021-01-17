@@ -63,13 +63,13 @@ namespace DeExtinctionMod.Prefabs.Creatures
             {
                 biome = BiomeType.GrandReef_OpenDeep_CreatureOnly,
                 count = 12,
-                probability = 0.03f
+                probability = 0.015f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.GrandReef_OpenShallow_CreatureOnly,
                 count = 12,
-                probability = 0.03f
+                probability = 0.015f
             },
             new LootDistributionData.BiomeData()
             {

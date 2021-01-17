@@ -47,7 +47,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float EyeFov => 0.7f;
 
-        public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.01f, 0.4f, 0.6f, 1.5f, false);
+        public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.01f, 0.1f, 0.6f, 1.5f, false);
 
         public override BehaviourLODLevelsStruct BehaviourLODSettings => new BehaviourLODLevelsStruct(20f, 100f, 150f);
 

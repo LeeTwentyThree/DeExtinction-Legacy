@@ -100,7 +100,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.GrassyPlateaus_OpenShallow_CreatureOnly,
-                probability = 1f,
+                probability = 0.5f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
