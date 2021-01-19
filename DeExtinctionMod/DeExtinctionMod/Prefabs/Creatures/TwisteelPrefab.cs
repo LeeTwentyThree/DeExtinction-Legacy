@@ -131,7 +131,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.BloodKelp_TrenchWall,
-                probability = 0.6f,
+                probability = 0.1f,
                 count = 1
             },
             new LootDistributionData.BiomeData()

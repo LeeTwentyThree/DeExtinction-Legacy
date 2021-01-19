@@ -16,6 +16,9 @@ namespace DeExtinctionMod.Prefabs.Eggs
 
         public override Vector2int SizeInInventory => new Vector2int(3, 3);
 
+        public override bool IsScannable => true;
+        public override string GetEncyDesc => "The tendency of Jasper Thalassaceans to lay their eggs in the local brine pools may serve as a form of protection during the many years of incubation in this environment.";
+
         public override List<LootDistributionData.BiomeData> BiomesToSpawnIn => new List<LootDistributionData.BiomeData>()
         {
             new LootDistributionData.BiomeData()

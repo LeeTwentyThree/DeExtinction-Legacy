@@ -23,7 +23,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override ScannableItemData ScannableSettings => new ScannableItemData(true, 15f, "Lifeforms/Fauna/Leviathans", new string[] { "Lifeforms", "Fauna", "Leviathans" }, QPatch.assetBundle.LoadAsset<Sprite>("Gulper_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Gulper_Ency"));
 
-        public override string GetEncyDesc => "This vast animal is at the top of the local food chain, and has been designated leviathan class.\n\n1. Jaws:\nSituated within the maw of the leviathan are four mobile jaws capable of launching forward and dragging prey in towards the mouth.\n\n2. Limbs:\nA pair of fins modified into muscular limbs serve an unknown purpose. Possibilities include restraint of other animals, propulsion off of the seabed, and slashing of potential prey or threats. Whatever the case, avoidance of limbs is highly recommended.\n\n3. Behavior:\nConsumes anything it can fit into its mouth. Will attempt to crush prey if too large or tough.\n\nHunts using electromagnetic signals, may be drawn to wrecked technology.\n\nAssessment: Extreme threat - Avoid in all circumstances";
+        public override string GetEncyDesc => "This vast animal is at the top of the local food chain, and has been designated leviathan class.\n\n1. Jaws:\nSituated within the maw of the leviathan are four mobile jaws capable of launching forward and dragging prey in towards the mouth.\n\n2. Limbs:\nA pair of fins modified into muscular limbs serve an unknown purpose. Possibilities include restraint of other animals, propulsion off of the seabed, and slashing of potential prey or threats. Whatever the case, avoidance of limbs is highly recommended.\n\n3. Behavior:\nConsumes anything it can fit into its mouth. Will attempt to crush prey if too large or tough.\n\nHunts using electromagnetic signals, may be drawn to wrecked technology.\n\nAssessment: Extreme threat to whatever can fit into its mouth - Avoid in all circumstances";
 
         public override string GetEncyTitle => "Gulper Leviathan";
 
@@ -41,7 +41,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float EyeFov => 0.75f;
 
-        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.6f, true, 30f);
+        public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.7f, true, 30f);
 
         public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 10f, 100f, "GulperRoar", "roar", 0.3f, 10f, 20f);
 
@@ -95,11 +95,12 @@ namespace DeExtinctionMod.Prefabs.Creatures
             AddClawAttack("RClaw", "swipeR", components);
 
             AttackCyclops actionAtkCyclops = prefab.AddComponent<AttackCyclops>();
-            actionAtkCyclops.swimVelocity = 28f;
+            actionAtkCyclops.swimVelocity = 62f;
             actionAtkCyclops.aggressiveToNoise = new CreatureTrait(0f, 0.01f);
             actionAtkCyclops.evaluatePriority = 0.6f;
             actionAtkCyclops.priorityMultiplier = ECCHelpers.Curve_Flat();
-            actionAtkCyclops.maxDistToLeash = 60f;
+            actionAtkCyclops.maxDistToLeash = 90f;
+            actionAtkCyclops.attackAggressionThreshold = 0.4f;
 
             components.locomotion.driftFactor = 0.8f;
             components.locomotion.maxAcceleration = 18f;
