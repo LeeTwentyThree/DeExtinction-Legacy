@@ -33,7 +33,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.31f, true, 8f);
 
-        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.3f, 43f, 7f, 8f, 5f, 15f);
+        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.3f, 48f, 7f, 8f, 5f, 15f);
 
         public override float BioReactorCharge => 630f;
 
@@ -55,7 +55,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 1f, 20f, "TwisteelIdle", "roar", 0.12f, 7f, 20f);
 
-        public override string GetEncyDesc => "A large eel-like predator found within a deep canyon.\n\n1. Body:\nA long and flexible body allows the Twisteel to snake around the environment with a low profile while hunting for prey. The Twisteel appears to share many characteristics with other shark-like creatures found on Planet 4546B.\n\n2. Jaws:\nDistantly related to other lifeforms on the planet possessing a quad-jaw arrangement, the lateral pair of jaws have been reduced to a vestigial point. The remaining jaws reach lengths of up to 3m, and are filled with rows of large teeth to trap relatively large prey items.\n\nAssessment: Avoid";
+        public override string GetEncyDesc => "A large eel-like predator found within a deep canyon.\n\n1. Body:\nA long and flexible body allows the Twisteel to snake around the environment with a low profile while hunting for prey, often in small groups. The Twisteel appears to share many characteristics with other shark-like creatures found on Planet 4546B.\n\n2. Jaws:\nDistantly related to other lifeforms on the planet possessing a quad-jaw arrangement, the lateral pair of jaws have been reduced to a vestigial point. The remaining jaws reach lengths of up to 3m, and are filled with rows of large teeth to trap relatively large prey items.\n\nAssessment: Avoid";
 
         public override ScannableItemData ScannableSettings => new ScannableItemData(true, 7f, "Lifeforms/Fauna/Carnivores", new string[] { "Lifeforms", "Fauna", "Carnivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Twisteel_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Twisteel_Ency"));
 
@@ -132,7 +132,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             {
                 biome = BiomeType.BloodKelp_TrenchWall,
                 probability = 0.1f,
-                count = 1
+                count = 3
             },
             new LootDistributionData.BiomeData()
             {
@@ -145,6 +145,12 @@ namespace DeExtinctionMod.Prefabs.Creatures
                 biome = BiomeType.KooshZone_Grass,
                 probability = 0.1f,
                 count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BloodKelp_Wall,
+                probability = 0.024f,
+                count = 2
             }
         };
     }

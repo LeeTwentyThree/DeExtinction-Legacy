@@ -35,6 +35,12 @@ namespace DeExtinctionMod.Prefabs.Eggs
                 biome = BiomeType.UnderwaterIslands_ValleyFloor,
                 count = 1,
                 probability = 0.09f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BloodKelp_Grass,
+                count = 1,
+                probability = 0.05f
             }
         };
     }

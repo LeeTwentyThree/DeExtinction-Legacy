@@ -65,26 +65,26 @@ namespace DeExtinctionMod.Prefabs.Creatures
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.BloodKelp_Grass,
-                probability = 0.25f,
-                count = 6
+                probability = 0.2f,
+                count = 2
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.BloodKelp_OpenDeep_CreatureOnly,
-                probability = 0.2f,
-                count = 6
+                probability = 0.075f,
+                count = 2
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.BloodKelp_TrenchWall,
                 probability = 0.3f,
-                count = 6
+                count = 2
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.BloodKelp_CaveFloor,
-                probability = 0.5f,
-                count = 6
+                probability = 0.6f,
+                count = 2
             },
             new LootDistributionData.BiomeData()
             {
