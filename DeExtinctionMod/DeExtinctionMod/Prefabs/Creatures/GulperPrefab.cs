@@ -27,7 +27,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override string GetEncyTitle => "Gulper Leviathan";
 
-        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(30f, 10f, 30f), 12f, 2f, 0.1f);
+        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(40f, 10f, 40f), 12f, 1.5f, 0.1f);
 
         public override EcoTargetType EcoTargetType => EcoTargetType.Leviathan;
 
@@ -35,7 +35,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(0.25f, 50f);
 
-        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.5f, 62f, 18f, 20f, 10f, 16f);
+        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.5f, 58f, 18f, 20f, 10f, 16f);
 
         public override float MaxVelocityForSpeedParameter => 24f;
 
@@ -63,8 +63,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
         {
             GameObject spine2 = prefab.SearchChild("Spine2");
             CreateTrail(spine2, new Transform[] { spine2.SearchChild("Spine3").transform, spine2.SearchChild("Spine4").transform, spine2.SearchChild("Spine5").transform, spine2.SearchChild("Spine6").transform, spine2.SearchChild("Spine7").transform, spine2.SearchChild("Spine8").transform, spine2.SearchChild("Spine9").transform }, components, 8f);
-            MakeAggressiveTo(70f, 3, EcoTargetType.Shark, 0f, 3f);
-            MakeAggressiveTo(20f, 1, EcoTargetType.MediumFish, 0f, 2f);
+            MakeAggressiveTo(45f, 3, EcoTargetType.Shark, 0f, 2f);
+            MakeAggressiveTo(30f, 1, EcoTargetType.MediumFish, 0f, 1.5f);
             GameObject mouth = prefab.SearchChild("Mouth");
             GameObject lClawTrigger = prefab.SearchChild("LClaw");
             GameObject rClawTrigger = prefab.SearchChild("RClaw");
