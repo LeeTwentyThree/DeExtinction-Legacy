@@ -22,7 +22,7 @@ namespace DeExtinctionMod.Mono
         private Transform exoHoldPoint;
         private GulperMeleeAttack_Mouth mouthAttack;
         private RoarAbility roar;
-        float damagePerSecond = 22f;
+        float damagePerSecond = 16f;
         private ECCAudio.AudioClipPool seamothSounds;
         private ECCAudio.AudioClipPool exosuitSounds;
 
