@@ -49,13 +49,15 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.4f, 40f);
 
-        public override UBERMaterialProperties MaterialSettings => new UBERMaterialProperties(7f, 2.4f, 4f);
+        public override UBERMaterialProperties MaterialSettings => new UBERMaterialProperties(10f, 12f, 3f);
 
         public override float Mass => 2000f;
 
         public override float TurnSpeed => 0.4f;
 
         public override bool ScannerRoomScannable => true;
+
+        public override RespawnData RespawnSettings => new RespawnData(false);
 
         public override void AddCustomBehaviour(CreatureComponents components)
         {
