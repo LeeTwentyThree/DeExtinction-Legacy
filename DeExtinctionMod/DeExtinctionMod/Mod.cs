@@ -158,54 +158,54 @@ namespace DeExtinctionMod
             #endregion
 
             #region Edibles
-            rcpCooked = new EatableAsset("CookedRubyClownPincher", "Cooked ruby clown pincher", "1,219 Scoville Heat Unit meal.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 33f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("RCP_Cooked"));
+            rcpCooked = new EatableAsset("CookedRubyClownPincher", "Cooked ruby clown pincher", "1,219 Scoville Heat Unit meal.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 33f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("RCP_Cooked"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("RCP_Popup"));
             rcpCooked.Patch();
-            rcpCured = new EatableAsset("CuredRubyClownPincher", "Cured ruby clown pincher", "Tastes like igneous. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 33f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("RCP_Cured"));
+            rcpCured = new EatableAsset("CuredRubyClownPincher", "Cured ruby clown pincher", "Tastes like igneous. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), rubyClownPincher.TechType, new EatableData(true, 33f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("RCP_Cured"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("RCP_Popup"));
             rcpCured.Patch();
 
-            scpCooked = new EatableAsset("CookedSapphireClownPincher", "Cooked sapphire clown pincher", "The slime enhances flavor.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), sapphireClownPincher.TechType, new EatableData(true, 33f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("SCP_Cooked"));
+            scpCooked = new EatableAsset("CookedSapphireClownPincher", "Cooked sapphire clown pincher", "The slime enhances flavor.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), sapphireClownPincher.TechType, new EatableData(true, 33f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("SCP_Cooked"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("SCP_Popup"));
             scpCooked.Patch();
-            scpCured = new EatableAsset("CuredSapphireClownPincher", "Cured sapphire clown pincher", "Tastes like milk. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), sapphireClownPincher.TechType, new EatableData(true, 33f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("SCP_Cured"));
+            scpCured = new EatableAsset("CuredSapphireClownPincher", "Cured sapphire clown pincher", "Tastes like milk. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("SCP_Prefab"), sapphireClownPincher.TechType, new EatableData(true, 33f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("SCP_Cured"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("SCP_Popup"));
             scpCured.Patch();
 
-            ecpCooked = new EatableAsset("CookedEmeraldClownPincher", "Cooked emerald clown pincher", "Pre-sautéed.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), emeraldClownPincher.TechType, new EatableData(true, 33f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("ECP_Cooked"));
+            ecpCooked = new EatableAsset("CookedEmeraldClownPincher", "Cooked emerald clown pincher", "Pre-sautéed.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), emeraldClownPincher.TechType, new EatableData(true, 33f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("ECP_Cooked"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("ECP_Popup"));
             ecpCooked.Patch();
-            ecpCured = new EatableAsset("CuredEmeraldClownPincher", "Cured emerald clown pincher", "Tastes like lettuce. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), emeraldClownPincher.TechType, new EatableData(true, 33f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("ECP_Cured"));
+            ecpCured = new EatableAsset("CuredEmeraldClownPincher", "Cured emerald clown pincher", "Tastes like lettuce. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("ECP_Prefab"), emeraldClownPincher.TechType, new EatableData(true, 33f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("ECP_Cured"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("ECP_Popup"));
             ecpCured.Patch();
 
-            acpCooked = new EatableAsset("CookedAmberClownPincher", "Cooked amber clown pincher", "Not the worst tasting thing on the planet.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), amberClownPincher.TechType, new EatableData(true, 33f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("ACP_Cooked"));
+            acpCooked = new EatableAsset("CookedAmberClownPincher", "Cooked amber clown pincher", "Not the worst tasting thing on the planet.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), amberClownPincher.TechType, new EatableData(true, 33f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("ACP_Cooked"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("ACP_Popup"));
             acpCooked.Patch();
-            acpCured = new EatableAsset("CuredAmberClownPincher", "Cured amber clown pincher", "Tastes like radish. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), amberClownPincher.TechType, new EatableData(true, 33f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("ACP_Cured"));
+            acpCured = new EatableAsset("CuredAmberClownPincher", "Cured amber clown pincher", "Tastes like radish. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("ACP_Prefab"), amberClownPincher.TechType, new EatableData(true, 33f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("ACP_Cured"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("ACP_Popup"));
             acpCured.Patch();
 
-            ccpCooked = new EatableAsset("CookedCitrineClownPincher", "Cooked citrine clown pincher", "The secret is in the claws.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 33f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("CCP_Cooked"));
+            ccpCooked = new EatableAsset("CookedCitrineClownPincher", "Cooked citrine clown pincher", "The secret is in the claws.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 33f, 9f, true), false, assetBundle.LoadAsset<Texture2D>("CCP_Cooked"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("CCP_Popup"));
             ccpCooked.Patch();
-            ccpCured = new EatableAsset("CuredCitrineClownPincher", "Cured citrine clown pincher", "Tastes like potatoes. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 33f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("CCP_Cured"));
+            ccpCured = new EatableAsset("CuredCitrineClownPincher", "Cured citrine clown pincher", "Tastes like potatoes. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("CCP_Prefab"), citrineClownPincher.TechType, new EatableData(true, 33f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("CCP_Cured"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("CCP_Popup"));
             ccpCured.Patch();
 
-            axetailCooked = new EatableAsset("CookedAxetail", "Cooked axetail", "A sharp taste. Somewhat hydrating.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, 13f, true), false, assetBundle.LoadAsset<Texture2D>("Axetail_Cooked"));
+            axetailCooked = new EatableAsset("CookedAxetail", "Cooked axetail", "A sharp taste. Somewhat hydrating.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, 13f, true), false, assetBundle.LoadAsset<Texture2D>("Axetail_Cooked"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("Axetail_Popup"));
             axetailCooked.Patch();
-            axetailCured = new EatableAsset("CuredAxetail", "Cured axetail", "Eat around the pointy bits. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Axetail_Cured"));
+            axetailCured = new EatableAsset("CuredAxetail", "Cured axetail", "Eat around the pointy bits. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Axetail_Prefab"), axetail.TechType, new EatableData(true, 20f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Axetail_Cured"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("Axetail_Popup"));
             axetailCured.Patch();
 
-            ribbonRayCooked = new EatableAsset("CookedRibbonRay", "Cooked ribbon ray", "A hefty meal.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), ribbonRay.TechType, new EatableData(true, 36f, 7f, true), false, assetBundle.LoadAsset<Texture2D>("RibbonRay_Cooked"));
+            ribbonRayCooked = new EatableAsset("CookedRibbonRay", "Cooked ribbon ray", "A hefty meal.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), ribbonRay.TechType, new EatableData(true, 36f, 7f, true), false, assetBundle.LoadAsset<Texture2D>("RibbonRay_Cooked"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("RibbonRay_Popup"));
             ribbonRayCooked.Patch();
-            ribbonRayCured = new EatableAsset("CuredRibbonRay", "Cured ribbon ray", "Rubbery and stringy. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), ribbonRay.TechType, new EatableData(true, 36f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("RibbonRay_Cured"));
+            ribbonRayCured = new EatableAsset("CuredRibbonRay", "Cured ribbon ray", "Rubbery and stringy. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("RibbonRay_Prefab"), ribbonRay.TechType, new EatableData(true, 36f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("RibbonRay_Cured"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("RibbonRay_Popup"));
             ribbonRayCured.Patch();
 
-            filtorbCooked = new EatableAsset("CookedFiltorb", "Cooked filtorb", "Juicy.", assetBundle.LoadAsset<GameObject>("Filtorb_Prefab"), filtorb.TechType, new EatableData(true, 5f, 20f, true), false, assetBundle.LoadAsset<Texture2D>("Filtorb_Cooked"));
+            filtorbCooked = new EatableAsset("CookedFiltorb", "Cooked filtorb", "Juicy.", assetBundle.LoadAsset<GameObject>("Filtorb_Prefab"), filtorb.TechType, new EatableData(true, 5f, 20f, true), false, assetBundle.LoadAsset<Texture2D>("Filtorb_Cooked"), ItemSoundsType.StillSuitWater, assetBundle.LoadAsset<Sprite>("Filtorb_Popup"));
             filtorbCooked.Patch();
-            filtorbCured = new EatableAsset("CuredFiltorb", "Cured filtorb", "Chalky. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Filtorb_Prefab"), filtorb.TechType, new EatableData(true, 5f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Filtorb_Cured"));
+            filtorbCured = new EatableAsset("CuredFiltorb", "Cured filtorb", "Chalky. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Filtorb_Prefab"), filtorb.TechType, new EatableData(true, 5f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Filtorb_Cured"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("Filtorb_Popup"));
             filtorbCured.Patch();
 
-            jellySpinnerCooked = new EatableAsset("CookedJellySpinner", "Cooked jelly spinner", "Pops in your mouth.", assetBundle.LoadAsset<GameObject>("JellySpinner_Prefab"), jellySpinner.TechType, new EatableData(true, 9f, 2f, true), false, assetBundle.LoadAsset<Texture2D>("JellySpinner_Cooked"));
+            jellySpinnerCooked = new EatableAsset("CookedJellySpinner", "Cooked jelly spinner", "Pops in your mouth.", assetBundle.LoadAsset<GameObject>("JellySpinner_Prefab"), jellySpinner.TechType, new EatableData(true, 9f, 2f, true), false, assetBundle.LoadAsset<Texture2D>("JellySpinner_Cooked"), ItemSoundsType.StillSuitWater, assetBundle.LoadAsset<Sprite>("JellySpinner_Popup"));
             jellySpinnerCooked.Patch();
-            jellySpinnerCured = new EatableAsset("CuredJellySpinner", "Cured jelly spinner", "Like eating bubble wrap. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("JellySpinner_Prefab"), jellySpinner.TechType, new EatableData(true, 9f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("JellySpinner_Cured"));
+            jellySpinnerCured = new EatableAsset("CuredJellySpinner", "Cured jelly spinner", "Like eating bubble wrap. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("JellySpinner_Prefab"), jellySpinner.TechType, new EatableData(true, 9f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("JellySpinner_Cured"), ItemSoundsType.StillSuitWater, assetBundle.LoadAsset<Sprite>("JellySpinner_Popup"));
             jellySpinnerCured.Patch();
 
-            trianglefishCooked = new EatableAsset("CookedTriangleFish", "Cooked trianglefish", "Small yet filling.", assetBundle.LoadAsset<GameObject>("Trianglefish_Prefab"), triangleFish.TechType, new EatableData(true, 22f, 3f, true), false, assetBundle.LoadAsset<Texture2D>("Trianglefish_Cooked"));
+            trianglefishCooked = new EatableAsset("CookedTriangleFish", "Cooked trianglefish", "Small yet filling.", assetBundle.LoadAsset<GameObject>("Trianglefish_Prefab"), triangleFish.TechType, new EatableData(true, 22f, 3f, true), false, assetBundle.LoadAsset<Texture2D>("Trianglefish_Cooked"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("Trianglefish_Popup"));
             trianglefishCooked.Patch();
-            trianglefishCured = new EatableAsset("CuredTriangleFish", "Cured trianglefish", "Unusually crunchy. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Trianglefish_Prefab"), triangleFish.TechType, new EatableData(true, 22f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Trianglefish_Cured"));
+            trianglefishCured = new EatableAsset("CuredTriangleFish", "Cured trianglefish", "Unusually crunchy. Dehydrating, but keeps well.", assetBundle.LoadAsset<GameObject>("Trianglefish_Prefab"), triangleFish.TechType, new EatableData(true, 22f, -2f, false), true, assetBundle.LoadAsset<Texture2D>("Trianglefish_Cured"), ItemSoundsType.Default, assetBundle.LoadAsset<Sprite>("Trianglefish_Popup"));
             trianglefishCured.Patch();
             #endregion
 
