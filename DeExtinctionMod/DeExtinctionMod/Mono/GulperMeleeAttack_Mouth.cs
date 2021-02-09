@@ -98,7 +98,7 @@ namespace DeExtinctionMod.Mono
                     }
                     else
                     {
-                        if (component.Aggression.Value >= 0.2f)
+                        if (component.Aggression.Value >= 0.2f && target.GetComponentInParent<Vehicle>() == null)
                         {
                             liveMixin.TakeDamage(GetBiteDamage(target));
                             timeLastBite = Time.time;
