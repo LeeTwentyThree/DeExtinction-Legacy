@@ -97,31 +97,31 @@ namespace DeExtinctionMod.Prefabs.Creatures
             new LootDistributionData.BiomeData()
             {
                 biome= BiomeType.UnderwaterIslands_OpenShallow_CreatureOnly,
-                probability = 0.03f,
+                probability = 0.015f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
             {
                 biome= BiomeType.UnderwaterIslands_OpenDeep_CreatureOnly,
-                probability = 0.03f,
+                probability = 0.015f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
             {
                 biome= BiomeType.UnderwaterIslands_IslandSides,
-                probability = 0.2f,
+                probability = 0.1f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
             {
                 biome= BiomeType.UnderwaterIslands_ValleyFloor,
-                probability = 0.4f,
+                probability = 0.2f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
             {
                 biome= BiomeType.UnderwaterIslands_ValleyLedge,
-                probability = 0.1f,
+                probability = 0.05f,
                 count = 1
             },
             new LootDistributionData.BiomeData()

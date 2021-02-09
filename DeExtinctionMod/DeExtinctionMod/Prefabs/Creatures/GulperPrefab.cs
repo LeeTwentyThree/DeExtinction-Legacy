@@ -33,7 +33,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override bool EnableAggression => true;
 
-        public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(0.25f, 50f);
+        public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(0.2f, 30f);
 
         public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.5f, 58f, 18f, 20f, 10f, 16f);
 
@@ -43,7 +43,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.7f, true, 30f);
 
-        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 10f, 100f, "GulperRoar", "roar", 0.3f, 10f, 20f);
+        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 10f, 100f, "GulperRoar", "roar", 0f, 10f, 20f);
 
         public override BehaviourLODLevelsStruct BehaviourLODSettings => new BehaviourLODLevelsStruct(30f, 100f, 200f);
 
@@ -62,9 +62,9 @@ namespace DeExtinctionMod.Prefabs.Creatures
         public override void AddCustomBehaviour(CreatureComponents components)
         {
             GameObject spine2 = prefab.SearchChild("Spine2");
-            CreateTrail(spine2, new Transform[] { spine2.SearchChild("Spine3").transform, spine2.SearchChild("Spine4").transform, spine2.SearchChild("Spine5").transform, spine2.SearchChild("Spine6").transform, spine2.SearchChild("Spine7").transform, spine2.SearchChild("Spine8").transform, spine2.SearchChild("Spine9").transform }, components, 8f);
-            MakeAggressiveTo(45f, 3, EcoTargetType.Shark, 0f, 2f);
-            MakeAggressiveTo(30f, 1, EcoTargetType.MediumFish, 0f, 1.5f);
+            CreateTrail(spine2, new Transform[] { spine2.SearchChild("Spine3").transform, spine2.SearchChild("Spine4").transform, spine2.SearchChild("Spine5").transform, spine2.SearchChild("Spine6").transform, spine2.SearchChild("Spine7").transform, spine2.SearchChild("Spine8").transform, spine2.SearchChild("Spine9").transform }, components, 3f);
+            MakeAggressiveTo(30f, 3, EcoTargetType.Shark, 0f, 2f);
+            MakeAggressiveTo(15f, 1, EcoTargetType.MediumFish, 0f, 1.5f);
             GameObject mouth = prefab.SearchChild("Mouth");
             GameObject lClawTrigger = prefab.SearchChild("LClaw");
             GameObject rClawTrigger = prefab.SearchChild("RClaw");

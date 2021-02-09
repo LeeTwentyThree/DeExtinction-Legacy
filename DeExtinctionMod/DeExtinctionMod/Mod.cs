@@ -221,8 +221,7 @@ namespace DeExtinctionMod
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-49, -308, 1184), "Mountains+UWIGulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-265, -287, 1118), "BK+UWIGulper", gulperSpawnDistance));
 
-            //Sparse reef
-            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-683, -129, -717), "SparseReefGulper", gulperSpawnDistance));
+            //Shallow
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-717, -100, -1088), "FloatingIslandGulper", gulperSpawnDistance));
 
             //Blood kelp

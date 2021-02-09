@@ -13,7 +13,7 @@ namespace DeExtinctionMod.Mono
 		{
 			rb = GetComponentInParent<Rigidbody>();
 			eatingSound = gameObject.AddComponent<AudioSource>();
-			eatingSound.volume = ECCHelpers.GetECCVolume();
+			eatingSound.volume = ECCHelpers.GetECCVolume() * 0.5f;
 			eatingSound.clip = QPatch.assetBundle.LoadAsset<AudioClip>("ClownPincherEating");
 			eatingSound.spatialBlend = 1f;
 			eatingSound.maxDistance = 10f;
