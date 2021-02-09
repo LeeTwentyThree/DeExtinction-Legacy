@@ -20,7 +20,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override LargeWorldEntity.CellLevel CellLevel => LargeWorldEntity.CellLevel.Medium;
 
-        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(30f, 0f, 30f), 0.5f, 5f, 0.5f);
+        public override SwimRandomData SwimRandomSettings => new SwimRandomData(true, new Vector3(30f, 0f, 30f), 1.2f, 5f, 0.5f);
 
         public override EcoTargetType EcoTargetType => EcoTargetType.Whale;
 
@@ -28,7 +28,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float Mass => 150f;
 
-        public override float TurnSpeed => 0.1f;
+        public override float TurnSpeed => 0.15f;
 
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
         {

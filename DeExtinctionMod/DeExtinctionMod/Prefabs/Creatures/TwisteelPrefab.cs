@@ -33,7 +33,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.31f, true, 8f);
 
-        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.3f, 48f, 7f, 8f, 5f, 15f);
+        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.3f, 48f, 5f, 6f, 15f, 16f);
 
         public override float BioReactorCharge => 630f;
 
@@ -76,6 +76,12 @@ namespace DeExtinctionMod.Prefabs.Creatures
             meleeAttack.creature = components.creature;
             meleeAttack.liveMixin = components.liveMixin;
             meleeAttack.animator = components.creature.GetAnimator();
+
+            var fleeOnDamage = prefab.AddComponent<FleeOnDamage>();
+            fleeOnDamage.breakLeash = true;
+            fleeOnDamage.swimVelocity = 12f;
+            fleeOnDamage.damageThreshold = 30f;
+            fleeOnDamage.evaluatePriority = 0.9f;
 
             GameObject trailParent = prefab.SearchChild("Spine1");
             Transform[] trails = new Transform[] { prefab.SearchChild("Spine2").transform, prefab.SearchChild("Spine3").transform, prefab.SearchChild("Spine4").transform, prefab.SearchChild("Spine5").transform, prefab.SearchChild("Spine6").transform, prefab.SearchChild("Spine7").transform, prefab.SearchChild("Spine8").transform, prefab.SearchChild("Spine9").transform, prefab.SearchChild("Spine10").transform, prefab.SearchChild("Spine11").transform, prefab.SearchChild("Spine12").transform, prefab.SearchChild("Spine13").transform, prefab.SearchChild("Spine14").transform, prefab.SearchChild("Spine15").transform, prefab.SearchChild("Spine16").transform, prefab.SearchChild("Spine17").transform, prefab.SearchChild("Spine18").transform };
