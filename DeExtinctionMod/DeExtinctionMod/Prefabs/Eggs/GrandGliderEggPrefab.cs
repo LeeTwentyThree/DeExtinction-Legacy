@@ -42,19 +42,19 @@ namespace DeExtinctionMod.Prefabs.Eggs
             {
                 biome = BiomeType.CragField_Ground,
                 count = 1,
-                probability = 0.5f
+                probability = 0.2f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.CragField_Rock,
                 count = 1,
-                probability = 0.5f
+                probability = 0.2f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.CragField_Sand,
                 count = 1,
-                probability = 0.5f
+                probability = 0.2f
             }
         };
 

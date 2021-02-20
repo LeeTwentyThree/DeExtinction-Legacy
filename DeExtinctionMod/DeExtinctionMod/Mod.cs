@@ -217,7 +217,6 @@ namespace DeExtinctionMod
             //Underwater islands
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-72, -300, 867), "UWIGulper1", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-174, -460, 1070), "UWIGulper2", gulperSpawnDistance));
-            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-71, -464, 869), "UWIGulper3", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-49, -308, 1184), "Mountains+UWIGulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-265, -287, 1118), "BK+UWIGulper", gulperSpawnDistance));
 
@@ -230,13 +229,124 @@ namespace DeExtinctionMod
 
             Harmony harmony = new Harmony("Lee23.DeExtinctionMod");
 
+            FixSpikeTrap();
+
             string bonesharkClassId = CraftData.GetClassIdForTechType(TechType.BoneShark);
-            LootDistributionHandler.EditLootDistributionData(bonesharkClassId, BiomeType.UnderwaterIslands_OpenShallow_CreatureOnly, 0f, 0);
+            string bloomPlanktonClassId = CraftData.GetClassIdForTechType(TechType.Bloom);
+            string mohawkClassId = CraftData.GetClassIdForTechType(TechType.Mohawk);
+            string basaltClassId = CraftData.GetClassIdForTechType(TechType.BasaltChunk);
+            string jellyrayPrefab = CraftData.GetClassIdForTechType(TechType.Jellyray);
+            string spikeTrapClassId = "6471a9df-1c83-4d80-a919-0f0e7d8dc2ee";
+            string plantMiddle11ClassId = "a4ad13d2-8f28-4b0b-abb3-d51cc4271d7a";
+            string reefbackCoral01ClassId = "a711c0fa-f31e-4426-9164-a9a65557a9a2";
+            string breakableBarnacleClassId = "31ccc496-c26b-4ed9-8e86-3334582d8d5b";
+            string barnacleClusterId = "73658f8a-7f66-404e-a645-466bc604e15b";
+            string drillableSulphurId = "697beac5-e39a-4809-854d-9163da9f997e";
+            string drillableRubyId = "109bbd29-c445-4ad8-a4bf-be7bc6d421d6";
+            string drillableDiamondId = "e7c097ac-e7be-4808-aaaa-70178d96f68b";
+            string whiteCaveCrawler = "7ce2ca9d-6154-4988-9b02-38f670e741b8";
+            string grandReefCrystal = "d0be2a21-7134-4641-a058-20e9da4a9b37";
             LootDistributionHandler.EditLootDistributionData(bonesharkClassId, BiomeType.UnderwaterIslands_OpenDeep_CreatureOnly, 0f, 0);
             LootDistributionHandler.EditLootDistributionData(bonesharkClassId, BiomeType.UnderwaterIslands_ValleyFloor, 0f, 0);
             LootDistributionHandler.EditLootDistributionData(bonesharkClassId, BiomeType.UnderwaterIslands_IslandSides, 0f, 0);
             LootDistributionHandler.EditLootDistributionData(bonesharkClassId, BiomeType.UnderwaterIslands_ValleyLedge, 0f, 0);
+            //Bloom plankton
+            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.TreeCove_Ground, 0.05f, 1);
+            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.TreeCove_Wall, 0.05f, 1);
+            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.TreeCove_Ceiling, 0.05f, 1);
+            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.TreeCove_TreeOpen_CreatureOnly, 0.25f, 1);
+            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.BloodKelp_OpenDeep_CreatureOnly, 0.055f, 1);
+            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.Kelp_CaveFloor, 0.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.GrassyPlateaus_CaveCeiling, 0.5f, 1);
+            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.DeepGrandReef_Ceiling, 0.25f, 1);
+            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.UnderwaterIslands_ValleyFloor, 0.2f, 1);
+            //Random mohawk stuff
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.GrassyPlateaus_Tower, 1f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.DeepGrandReef_BlueCoral, 0.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.SafeShallows_Plants, 0.6f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.KooshZone_CaveFloor, 0.4f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.UnderwaterIslands_IslandPlants, 1f, 1);
+            //Underwater islands
+            LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.UnderwaterIslands_IslandPlants, 0.5f, 1);
+            LootDistributionHandler.EditLootDistributionData(basaltClassId, BiomeType.UnderwaterIslands_ValleyWall, 1f, 1);
+            LootDistributionHandler.EditLootDistributionData(basaltClassId, BiomeType.UnderwaterIslands_ValleyLedge, 1f, 1);
+            //Spike traps
+            LootDistributionHandler.EditLootDistributionData(spikeTrapClassId, BiomeType.SparseReef_Sand, 0.5f, 1);
+            LootDistributionHandler.EditLootDistributionData(spikeTrapClassId, BiomeType.SparseReef_Spike, 0.5f, 1);
+            //Plant middle 11
+            LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.CragField_Grass, 0.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.CragField_Ground, 0.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.CragField_Sand, 0.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.GrassyPlateaus_Sand, 0.4f, 1);
+            //Grand reef deco
+            LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.DeepGrandReef_BlueCoral, 0.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(whiteCaveCrawler, BiomeType.DeepGrandReef_Ceiling, 1f, 3);
+            LootDistributionHandler.EditLootDistributionData(whiteCaveCrawler, BiomeType.DeepGrandReef_Wall, 0.5f, 3);
+            LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.GrandReef_Grass, 0.5f, 1);
+            LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.GrandReef_Ground, 0.5f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.GrandReef_Grass, 0.7f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.GrandReef_Ground, 0.2f, 1);
+            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.GrandReef_Grass, 0.1f, 1);
+            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.GrandReef_Ground, 0.1f, 1);
+            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.GrandReef_Wall, 0.1f, 1);
+            LootDistributionHandler.EditLootDistributionData(grandReefCrystal, BiomeType.DeepGrandReef_Ceiling, 0.7f, 1);
+            LootDistributionHandler.EditLootDistributionData(grandReefCrystal, BiomeType.DeepGrandReef_Wall, 0.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(grandReefCrystal, BiomeType.DeepGrandReef_Ground, 0.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(jellyrayPrefab, BiomeType.GrandReef_OpenShallow_CreatureOnly, 0.1f, 3);
+            LootDistributionHandler.EditLootDistributionData(jellyrayPrefab, BiomeType.GrandReef_OpenShallow_CreatureOnly, 0.05f, 3);
+            LootDistributionHandler.EditLootDistributionData(jellyrayPrefab, BiomeType.GrandReef_Grass, 0.5f, 3);
+            //Sea Treader's path Twistybridge-ification
+            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.SeaTreaderPath_CaveFloor, 2f, 1);
+            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.SeaTreaderPath_CaveCeiling, 2f, 1);
+            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.SeaTreaderPath_CaveWall, 2f, 1);
+            LootDistributionHandler.EditLootDistributionData(barnacleClusterId, BiomeType.SeaTreaderPath_CaveFloor, 1f, 1);
+            LootDistributionHandler.EditLootDistributionData(barnacleClusterId, BiomeType.SeaTreaderPath_CaveCeiling, 1f, 1);
+            LootDistributionHandler.EditLootDistributionData(barnacleClusterId, BiomeType.SeaTreaderPath_CaveWall, 1f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.SeaTreaderPath_CaveFloor, 1.2f, 1);
+            LootDistributionHandler.EditLootDistributionData(whiteCaveCrawler, BiomeType.SeaTreaderPath_CaveCeiling, 2f, 1);
+            //Drillable crystalline sulphur
+            LootDistributionHandler.EditLootDistributionData(drillableSulphurId, BiomeType.BonesField_Lake_Floor, 0.15f, 1);
+            LootDistributionHandler.EditLootDistributionData(drillableSulphurId, BiomeType.BonesField_LakePit_Floor, 0.4f, 1); 
+            LootDistributionHandler.EditLootDistributionData(drillableSulphurId, BiomeType.GhostTree_Lake_Floor, 0.4f, 1);
+            //Dunes
+            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.Dunes_Rock, 1.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.Dunes_CaveCeiling, 1.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.Dunes_CaveFloor, 1.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.Dunes_CaveWall, 1.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(drillableRubyId, BiomeType.Dunes_SandDune, 0.2f, 1);
+            LootDistributionHandler.EditLootDistributionData(drillableRubyId, BiomeType.Dunes_SandPlateau, 0.2f, 1);
+            LootDistributionHandler.EditLootDistributionData(drillableDiamondId, BiomeType.Dunes_SandDune, 0.2f, 1);
+            LootDistributionHandler.EditLootDistributionData(drillableDiamondId, BiomeType.Dunes_SandPlateau, 0.2f, 1);
+            LootDistributionHandler.EditLootDistributionData(spikeTrapClassId, BiomeType.Dunes_SandPlateau, 0.2f, 1);
+            LootDistributionHandler.EditLootDistributionData(spikeTrapClassId, BiomeType.Dunes_SandDune, 0.2f, 1);
+            LootDistributionHandler.EditLootDistributionData(basaltClassId, BiomeType.Dunes_SandDune, 0.6f, 1);
+            LootDistributionHandler.EditLootDistributionData(basaltClassId, BiomeType.Dunes_SandPlateau, 0.8f, 1);
+            LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.Dunes_SandPlateau, 0.4f, 1);
+            LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.Dunes_SandDune, 0.4f, 1);
+            LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.Dunes_Grass, 0.4f, 1);
+
+            PatchPlantPDAEntry(TechType.Mohawk, "Mohawk", "Mohawk plant", "A similar, albeit more resilient relative to the Scaly Maw Anemone found on other sections of the planet. Thrives off of abundances of microorganisms found in the water. Lives in both shallow waters and deep cave systems."); 
+
             harmony.PatchAll(Assembly.GetExecutingAssembly());
+        }
+
+        static void PatchPlantPDAEntry(TechType techType, string key, string name, string desc, float scanTime = 3f)
+        {
+            PDAEncyclopediaHandler.AddCustomEntry(new PDAEncyclopedia.EntryData()
+            {
+                path = "Lifeforms/Flora/Sea",
+                key = key,
+                nodes = new string[] { "Lifeforms", "Flora", "Sea" }
+            });
+            PDAHandler.AddCustomScannerEntry(new PDAScanner.EntryData()
+            {
+                key = techType,
+                encyclopedia = key,
+                scanTime = scanTime,
+                isFragment = false
+            });
+            LanguageHandler.SetLanguageLine("Ency_" + key, name);
+            LanguageHandler.SetLanguageLine("EncyDesc_" + key, desc);
         }
 
         static void MakeItemClownPincherEdible(string path)
@@ -248,6 +358,21 @@ namespace DeExtinctionMod
                 return;
             }
             obj.AddComponent<EcoTarget>().type = clownPincherSpecialEdible;
+        }
+
+        static void FixSpikeTrap()
+        {
+            GameObject obj = Resources.Load<GameObject>("WorldEntities/Doodads/Coral_reef_Light/coral_reef_spiky_trap");
+            if (obj == null)
+            {
+                ECCLog.AddMessage("DE EXTINCTION: Spike trap found at path " + "WorldEntities/Doodads/Coral_reef_Light/coral_reef_spiky_trap");
+                return;
+            }
+            obj.AddComponent<FreezeRigidbodyWhenFar>().freezeDist = 40f;
+            obj.AddComponent<EcoTarget>().type = EcoTargetType.Trap;
+            TechType spikeTrapTechType = TechTypeHandler.AddTechType("SpikyTrap", "Spikey trap", "A very spikey trap.");
+            obj.AddComponent<TechTag>().type = spikeTrapTechType;
+            PatchPlantPDAEntry(spikeTrapTechType, "SpikyTrap", "Spikey Trap", "A very large plant with obvious carnivorous adapations.\n\nBehavior:\nUnusually docile. The carnivorous parts may be vestigial, or this individual may have just eaten a large meal.");
         }
     }
 }
