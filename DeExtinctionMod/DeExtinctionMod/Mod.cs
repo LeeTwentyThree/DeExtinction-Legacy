@@ -234,9 +234,7 @@ namespace DeExtinctionMod
             string bonesharkClassId = CraftData.GetClassIdForTechType(TechType.BoneShark);
             string bloomPlanktonClassId = CraftData.GetClassIdForTechType(TechType.Bloom);
             string mohawkClassId = CraftData.GetClassIdForTechType(TechType.Mohawk);
-            string basaltClassId = CraftData.GetClassIdForTechType(TechType.BasaltChunk);
             string jellyrayPrefab = CraftData.GetClassIdForTechType(TechType.Jellyray);
-            string spikeTrapClassId = "6471a9df-1c83-4d80-a919-0f0e7d8dc2ee";
             string plantMiddle11ClassId = "a4ad13d2-8f28-4b0b-abb3-d51cc4271d7a";
             string reefbackCoral01ClassId = "a711c0fa-f31e-4426-9164-a9a65557a9a2";
             string breakableBarnacleClassId = "31ccc496-c26b-4ed9-8e86-3334582d8d5b";
@@ -268,11 +266,6 @@ namespace DeExtinctionMod
             LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.UnderwaterIslands_IslandPlants, 1f, 1);
             //Underwater islands
             LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.UnderwaterIslands_IslandPlants, 0.5f, 1);
-            LootDistributionHandler.EditLootDistributionData(basaltClassId, BiomeType.UnderwaterIslands_ValleyWall, 1f, 1);
-            LootDistributionHandler.EditLootDistributionData(basaltClassId, BiomeType.UnderwaterIslands_ValleyLedge, 1f, 1);
-            //Spike traps
-            LootDistributionHandler.EditLootDistributionData(spikeTrapClassId, BiomeType.SparseReef_Sand, 0.5f, 1);
-            LootDistributionHandler.EditLootDistributionData(spikeTrapClassId, BiomeType.SparseReef_Spike, 0.5f, 1);
             //Plant middle 11
             LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.CragField_Grass, 0.3f, 1);
             LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.CragField_Ground, 0.3f, 1);
@@ -292,8 +285,8 @@ namespace DeExtinctionMod
             LootDistributionHandler.EditLootDistributionData(grandReefCrystal, BiomeType.DeepGrandReef_Ceiling, 0.7f, 1);
             LootDistributionHandler.EditLootDistributionData(grandReefCrystal, BiomeType.DeepGrandReef_Wall, 0.3f, 1);
             LootDistributionHandler.EditLootDistributionData(grandReefCrystal, BiomeType.DeepGrandReef_Ground, 0.3f, 1);
-            LootDistributionHandler.EditLootDistributionData(jellyrayPrefab, BiomeType.GrandReef_OpenShallow_CreatureOnly, 0.1f, 3);
             LootDistributionHandler.EditLootDistributionData(jellyrayPrefab, BiomeType.GrandReef_OpenShallow_CreatureOnly, 0.05f, 3);
+            LootDistributionHandler.EditLootDistributionData(jellyrayPrefab, BiomeType.GrandReef_OpenShallow_CreatureOnly, 0.02f, 3);
             LootDistributionHandler.EditLootDistributionData(jellyrayPrefab, BiomeType.GrandReef_Grass, 0.5f, 3);
             //Sea Treader's path Twistybridge-ification
             LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.SeaTreaderPath_CaveFloor, 2f, 1);
@@ -317,10 +310,6 @@ namespace DeExtinctionMod
             LootDistributionHandler.EditLootDistributionData(drillableRubyId, BiomeType.Dunes_SandPlateau, 0.2f, 1);
             LootDistributionHandler.EditLootDistributionData(drillableDiamondId, BiomeType.Dunes_SandDune, 0.2f, 1);
             LootDistributionHandler.EditLootDistributionData(drillableDiamondId, BiomeType.Dunes_SandPlateau, 0.2f, 1);
-            LootDistributionHandler.EditLootDistributionData(spikeTrapClassId, BiomeType.Dunes_SandPlateau, 0.2f, 1);
-            LootDistributionHandler.EditLootDistributionData(spikeTrapClassId, BiomeType.Dunes_SandDune, 0.2f, 1);
-            LootDistributionHandler.EditLootDistributionData(basaltClassId, BiomeType.Dunes_SandDune, 0.6f, 1);
-            LootDistributionHandler.EditLootDistributionData(basaltClassId, BiomeType.Dunes_SandPlateau, 0.8f, 1);
             LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.Dunes_SandPlateau, 0.4f, 1);
             LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.Dunes_SandDune, 0.4f, 1);
             LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.Dunes_Grass, 0.4f, 1);
