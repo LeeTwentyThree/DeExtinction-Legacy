@@ -10,7 +10,7 @@ namespace DeExtinctionMod.Mono
     {
         Vector3 lookDir;
         private Rigidbody rb;
-        public float force = 0.2f;
+        public float force = 0.02f;
         public Vector3 moveDirection = Vector3.forward;
 
         float timeUpdateRotation;
@@ -37,7 +37,8 @@ namespace DeExtinctionMod.Mono
         void FixedUpdate()
         {
             rb.AddForce(moveDirection * force * rb.mass);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lookDir), Time.fixedDeltaTime * 15f);
+            if(lookDir != Vector3.zero)
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lookDir), Time.fixedDeltaTime * 15f);
         }
     }
 }
