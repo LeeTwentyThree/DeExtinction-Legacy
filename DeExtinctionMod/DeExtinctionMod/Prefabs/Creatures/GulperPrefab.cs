@@ -35,7 +35,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(0.2f, 30f);
 
-        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.5f, 35f, 18f, 20f, 10f, 16f);
+        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.5f, 20f, 18f, 20f, 10f, 16f);
 
         public override float MaxVelocityForSpeedParameter => 24f;
 
