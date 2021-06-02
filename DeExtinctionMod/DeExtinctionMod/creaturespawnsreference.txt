@@ -1,0 +1,843 @@
+This is simply a reference for where all the creatures spawn.
+
+> AXETAIL
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_OpenDeep_CreatureOnly,
+                probability = 0.4f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.KooshZone_OpenDeep_CreatureOnly,
+                probability = 0.4f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.KooshZone_Grass,
+                probability = 0.4f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SeaTreaderPath_OpenDeep_CreatureOnly,
+                probability = 0.4f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SeaTreaderPath_Path,
+                probability = 0.4f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrassyPlateaus_OpenShallow_CreatureOnly,
+                probability = 1f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrassyPlateaus_Grass,
+                probability = 0.5f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.JellyshroomCaves_CaveFloor,
+                count = 2,
+                probability = 1f
+            }
+
+> FILTORB
+
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Mountains_OpenDeep_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Mountains_OpenShallow_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Dunes_OpenDeep_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Dunes_OpenShallow_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_OpenDeep_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_OpenShallow_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.DeepGrandReef_Ceiling,
+                count = 3,
+                probability = 0.8f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.DeepGrandReef_Ground,
+                count = 3,
+                probability = 0.8f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.DeepGrandReef_BlueCoral,
+                count = 3,
+                probability = 0.3f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SafeShallows_CaveWall,
+                count = 3,
+                probability = 0.8f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Kelp_CaveFloor,
+                count = 5,
+                probability = 0.9f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrassyPlateaus_OpenShallow_CreatureOnly,
+                count = 5,
+                probability = 0.1f
+            }
+
+> GRAND GLIDER
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_OpenDeep_CreatureOnly,
+                count = 12,
+                probability = 0.03f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_OpenShallow_CreatureOnly,
+                count = 12,
+                probability = 0.03f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Mountains_OpenDeep_CreatureOnly,
+                count = 12,
+                probability = 0.01f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Mountains_OpenShallow_CreatureOnly,
+                count = 12,
+                probability = 0.01f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.CragField_OpenDeep_CreatureOnly,
+                count = 12,
+                probability = 0.02f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.CragField_OpenShallow_CreatureOnly,
+                count = 12,
+                probability = 0.02f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Mesas_Open,
+                count = 12,
+                probability = 0.04f
+            }
+
+> JASPER THALASSACEAN
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.LostRiverCorridor_Open_CreatureOnly,
+                count = 1,
+                probability = 0.1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.LostRiverJunction_Open_CreatureOnly,
+                count = 1,
+                probability = 0.1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BonesField_Skeleton_Open_CreatureOnly,
+                count = 1,
+                probability = 0.1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BonesField_LakePit_Open_CreatureOnly,
+                count = 1,
+                probability = 0.1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GhostTree_Open_Big_CreatureOnly,
+                count = 1,
+                probability = 0.1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Canyon_Open_CreatureOnly,
+                count = 1,
+                probability = 0.1f
+            }
+
+> JELLY SPINNER
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BloodKelp_Grass,
+                probability = 0.25f,
+                count = 6
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BloodKelp_OpenDeep_CreatureOnly,
+                probability = 0.2f,
+                count = 6
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BloodKelp_TrenchWall,
+                probability = 0.3f,
+                count = 6
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BloodKelp_CaveFloor,
+                probability = 0.5f,
+                count = 6
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.UnderwaterIslands_IslandTop,
+                probability = 1.4f,
+                count = 6
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.UnderwaterIslands_ValleyFloor,
+                probability = 0.05f,
+                count = 5
+            },
+             new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.UnderwaterIslands_OpenShallow_CreatureOnly,
+                probability = 0.06f,
+                count = 6
+            },
+             new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.UnderwaterIslands_OpenDeep_CreatureOnly,
+                probability = 0.06f,
+                count = 6
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.LostRiverCorridor_Open_CreatureOnly,
+                probability = 0.12f,
+                count = 6
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.LostRiverJunction_Open_CreatureOnly,
+                probability = 0.12f,
+                count = 6
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BonesField_Corridor_CreatureOnly,
+                probability = 0.12f,
+                count = 6
+            }, 
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BonesField_Open_Creature,
+                probability = 0.12f,
+                count = 6
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BonesField_Corridor_CreatureOnly,
+                probability = 0.12f,
+                count = 6
+            }
+
+> RIBBON RAY
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.MushroomForest_GiantTreeExterior,
+                probability = 2f,
+                count = 2
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.MushroomForest_GiantTreeExteriorBase,
+                probability = 0.9f,
+                count = 2
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.MushroomForest_CaveSand,
+                probability = 1f,
+                count = 2
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.MushroomForest_Grass,
+                probability = 1f,
+                count = 2
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.MushroomForest_MushroomTreeBase,
+                probability = 1f,
+                count = 2
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.MushroomForest_Sand,
+                probability = 1f,
+                count = 2
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_Coral,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SafeShallows_ShellTunnelHuge,
+                count = 2,
+                probability = 3f
+            }
+
+> STELLAR THALASSACEAN
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_OpenShallow_CreatureOnly,
+                count = 1,
+                probability = 0.02f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_OpenDeep_CreatureOnly,
+                count = 1,
+                probability = 0.02f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.KooshZone_OpenShallow_CreatureOnly,
+                count = 1,
+                probability = 0.1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.KooshZone_OpenDeep_CreatureOnly,
+                count = 1,
+                probability = 0.05f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Dunes_OpenShallow_CreatureOnly,
+                count = 1,
+                probability = 0.04f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Dunes_OpenDeep_CreatureOnly,
+                count = 1,
+                probability = 0.02f
+            }
+
+> TRIANGLEFISH
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SafeShallows_Grass,
+                count = 3,
+                probability = 0.4f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SafeShallows_SandFlat,
+                count = 3,
+                probability = 0.3f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_Coral,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_OpenDeep_CreatureOnly,
+                count = 3,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.KooshZone_Sand,
+                count = 3,
+                probability = 1.5f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.KooshZone_Grass,
+                count = 3,
+                probability = 3f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.CrashZone_Sand,
+                count = 3,
+                probability = 0.4f
+            }
+
+> TWISTEEL
+new LootDistributionData.BiomeData()
+            {
+                biome= BiomeType.UnderwaterIslands_OpenShallow_CreatureOnly,
+                probability = 0.03f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome= BiomeType.UnderwaterIslands_OpenDeep_CreatureOnly,
+                probability = 0.03f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome= BiomeType.UnderwaterIslands_IslandSides,
+                probability = 0.2f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome= BiomeType.UnderwaterIslands_ValleyFloor,
+                probability = 0.4f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome= BiomeType.UnderwaterIslands_ValleyLedge,
+                probability = 0.1f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BloodKelp_UniqueCreatures,
+                probability = 0.04f,
+                count = 3
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BloodKelp_TrenchWall,
+                probability = 0.6f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BloodKelp_WreckCreatures,
+                probability = 0.2f,
+                count = 1
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.KooshZone_Grass,
+                probability = 0.1f,
+                count = 1
+            }
+
+> AMBER CLOWN PINCHER
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.MushroomForest_Grass,
+                probability = 0.8f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.MushroomForest_Sand,
+                probability = 0.8f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.MushroomForest_GiantTreeExterior,
+                probability = 0.8f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.MushroomForest_GiantTreeExterior,
+                probability = 0.4f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.UnderwaterIslands_OpenShallow_CreatureOnly,
+                probability = 0.15f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.UnderwaterIslands_IslandTop,
+                probability = 0.15f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_OpenDeep_CreatureOnly,
+                probability = 0.1f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_OpenShallow_CreatureOnly,
+                probability = 0.05f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_Spike,
+                probability = 0.2f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_Coral,
+                probability = 0.2f,
+                count = 4
+            }
+
+> CITRINE CLOWN PINCHER
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_OpenDeep_CreatureOnly,
+                probability = 0.1f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_OpenShallow_CreatureOnly,
+                probability = 0.05f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_Spike,
+                probability = 0.2f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_Coral,
+                probability = 0.2f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Dunes_OpenShallow_CreatureOnly,
+                count = 4,
+                probability = 0.1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Dunes_OpenDeep_CreatureOnly,
+                count = 4,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Mountains_OpenShallow_CreatureOnly,
+                count = 4,
+                probability = 0.1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Mountains_OpenDeep_CreatureOnly,
+                count = 4,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SafeShallows_OpenShallow_CreatureOnly,
+                count = 6,
+                probability = 0.05f
+            }
+
+> EMERALD CLOWN PINCHER
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_OpenDeep_CreatureOnly,
+                probability = 0.1f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_OpenShallow_CreatureOnly,
+                probability = 0.05f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_Spike,
+                probability = 0.2f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.SparseReef_Coral,
+                probability = 0.2f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Kelp_DenseVine,
+                probability = 0.5f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Kelp_GrassDense,
+                probability = 0.6f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Kelp_GrassSparse,
+                probability = 0.5f,
+                count = 4
+            }
+
+> SAPPHIRE CLOWN PINCHER 
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_Grass,
+                count = 4,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_Ground,
+                count = 4,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_OpenDeep_CreatureOnly,
+                count = 4,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.LostRiverCorridor_Open_CreatureOnly,
+                count = 6,
+                probability = 0.12f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Dunes_Grass,
+                count = 4,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Dunes_SandDune,
+                count = 4,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Dunes_OpenDeep_CreatureOnly,
+                count = 4,
+                probability = 0.2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.CragField_OpenDeep_CreatureOnly,
+                count = 4,
+                probability = 0.06f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.CragField_Ground,
+                count = 4,
+                probability = 0.1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.CragField_Rock,
+                count = 4,
+                probability = 0.1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.CragField_Sand,
+                count = 4,
+                probability = 0.1f
+            },
+
+> RUBY CLOWN PINCHER
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.InactiveLavaZone_Chamber_Open_CreatureOnly,
+                probability = 0.4f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.InactiveLavaZone_LavaPit_Open_CreatureOnly,
+                probability = 0.4f,
+                count = 4
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.ActiveLavaZone_Chamber_Open_CreatureOnly,
+                probability = 0.4f,
+                count = 4
+            }
+
+> GULPER LEVIATHAN
+1169, -370, 903
+1400, -348, 1281
+-72, -300, 867
+-174, -460, 1070
+-71, -464, 869
+-49, -308, 1184
+-265, -287, 1118
+-683, -129, -717
+-717, -100, -1088
+-573, -448, 1311
+-970, -216, -509
+
+> STELLAR THALASSACEAN EGG
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_CaveFloor,
+                count = 1,
+                probability = 2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.KooshZone_CaveFloor,
+                count = 1,
+                probability = 2f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Dunes_CaveFloor,
+                count = 1,
+                probability = 2f
+            }
+
+> JASPER THALASSACEAN EGG
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.LostRiverCorridor_LakeFloor,
+                count = 1,
+                probability = 1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.LostRiverJunction_LakeFloor,
+                count = 1,
+                probability = 1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BonesField_Lake_Floor,
+                count = 1,
+                probability = 1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.BonesField_Cave_Ground,
+                count = 1,
+                probability = 1f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Canyon_Lake_Floor,
+                count = 1,
+                probability = 1f
+            }
+
+> GRAND GLIDER EGG
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.GrandReef_CaveFloor,
+                count = 1,
+                probability = 0.5f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Mountains_CaveFloor,
+                count = 1,
+                probability = 3f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.Mesas_Top,
+                count = 1,
+                probability = 5f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.CragField_Ground,
+                count = 1,
+                probability = 0.5f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.CragField_Rock,
+                count = 1,
+                probability = 0.5f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.CragField_Sand,
+                count = 1,
+                probability = 0.5f
+            }
+
+> TWISTEEL EGG
+new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.UnderwaterIslands_IslandCaveFloor,
+                count = 1,
+                probability = 0.8f
+            },
+            new LootDistributionData.BiomeData()
+            {
+                biome = BiomeType.UnderwaterIslands_ValleyFloor,
+                count = 1,
+                probability = 0.09f
+            }
