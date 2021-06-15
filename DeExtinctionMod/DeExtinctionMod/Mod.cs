@@ -292,10 +292,10 @@ namespace DeExtinctionMod
             LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.Dunes_CaveCeiling, 1.3f, 1);
             LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.Dunes_CaveFloor, 1.3f, 1);
             LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.Dunes_CaveWall, 1.3f, 1);
-            LootDistributionHandler.EditLootDistributionData(drillableRubyId, BiomeType.Dunes_SandDune, 0.2f, 1);
-            LootDistributionHandler.EditLootDistributionData(drillableRubyId, BiomeType.Dunes_SandPlateau, 0.2f, 1);
-            LootDistributionHandler.EditLootDistributionData(drillableDiamondId, BiomeType.Dunes_SandDune, 0.2f, 1);
-            LootDistributionHandler.EditLootDistributionData(drillableDiamondId, BiomeType.Dunes_SandPlateau, 0.2f, 1);
+            LootDistributionHandler.EditLootDistributionData(drillableRubyId, BiomeType.Dunes_SandDune, 0.1f, 1);
+            LootDistributionHandler.EditLootDistributionData(drillableRubyId, BiomeType.Dunes_SandPlateau, 0.1f, 1);
+            LootDistributionHandler.EditLootDistributionData(drillableDiamondId, BiomeType.Dunes_SandDune, 0.1f, 1);
+            LootDistributionHandler.EditLootDistributionData(drillableDiamondId, BiomeType.Dunes_SandPlateau, 0.1f, 1);
             LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.Dunes_SandPlateau, 0.4f, 1);
             LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.Dunes_SandDune, 0.4f, 1);
             LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.Dunes_Grass, 0.4f, 1);
