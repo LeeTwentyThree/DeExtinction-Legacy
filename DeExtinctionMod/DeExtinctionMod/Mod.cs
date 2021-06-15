@@ -253,41 +253,29 @@ namespace DeExtinctionMod
             LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.TreeCove_Wall, 0.05f, 1);
             LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.TreeCove_Ceiling, 0.05f, 1);
             LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.TreeCove_TreeOpen_CreatureOnly, 0.25f, 1);
-            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.BloodKelp_OpenDeep_CreatureOnly, 0.055f, 1);
             LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.Kelp_CaveFloor, 0.3f, 1);
-            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.GrassyPlateaus_CaveCeiling, 0.5f, 1);
+            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.GrassyPlateaus_CaveCeiling, 0.4f, 1);
             LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.DeepGrandReef_Ceiling, 0.25f, 1);
-            LootDistributionHandler.EditLootDistributionData(bloomPlanktonClassId, BiomeType.UnderwaterIslands_ValleyFloor, 0.2f, 1);
             //Random mohawk stuff
-            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.GrassyPlateaus_Tower, 1f, 1);
-            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.DeepGrandReef_BlueCoral, 0.3f, 1);
-            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.SafeShallows_Plants, 0.6f, 1);
-            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.KooshZone_CaveFloor, 0.4f, 1);
-            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.UnderwaterIslands_IslandPlants, 1f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.DeepGrandReef_BlueCoral, 0.1f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.SafeShallows_Plants, 0.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.KooshZone_CaveFloor, 0.2f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.UnderwaterIslands_IslandPlants, 0.5f, 1);
             //Underwater islands
             LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.UnderwaterIslands_IslandPlants, 0.5f, 1);
-            //Plant middle 11
-            LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.CragField_Grass, 0.3f, 1);
-            LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.CragField_Ground, 0.3f, 1);
-            LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.CragField_Sand, 0.3f, 1);
-            LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.GrassyPlateaus_Sand, 0.4f, 1);
             //Grand reef deco
-            LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.DeepGrandReef_BlueCoral, 0.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.DeepGrandReef_BlueCoral, 0.2f, 1);
             LootDistributionHandler.EditLootDistributionData(whiteCaveCrawler, BiomeType.DeepGrandReef_Ceiling, 1f, 3);
-            LootDistributionHandler.EditLootDistributionData(whiteCaveCrawler, BiomeType.DeepGrandReef_Wall, 0.5f, 3);
-            LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.GrandReef_Grass, 0.5f, 1);
-            LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.GrandReef_Ground, 0.5f, 1);
-            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.GrandReef_Grass, 0.7f, 1);
-            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.GrandReef_Ground, 0.2f, 1);
-            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.GrandReef_Grass, 0.1f, 1);
-            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.GrandReef_Ground, 0.1f, 1);
-            LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.GrandReef_Wall, 0.1f, 1);
+            LootDistributionHandler.EditLootDistributionData(whiteCaveCrawler, BiomeType.DeepGrandReef_Wall, 0.2f, 3);
+            LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.GrandReef_Grass, 0.2f, 1);
+            LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.GrandReef_Ground, 0.2f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.GrandReef_Grass, 0.3f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.GrandReef_Ground, 0.1f, 1);
             LootDistributionHandler.EditLootDistributionData(grandReefCrystal, BiomeType.DeepGrandReef_Ceiling, 0.7f, 1);
-            LootDistributionHandler.EditLootDistributionData(grandReefCrystal, BiomeType.DeepGrandReef_Wall, 0.3f, 1);
-            LootDistributionHandler.EditLootDistributionData(grandReefCrystal, BiomeType.DeepGrandReef_Ground, 0.3f, 1);
-            LootDistributionHandler.EditLootDistributionData(jellyrayPrefab, BiomeType.GrandReef_OpenShallow_CreatureOnly, 0.05f, 3);
-            LootDistributionHandler.EditLootDistributionData(jellyrayPrefab, BiomeType.GrandReef_OpenShallow_CreatureOnly, 0.02f, 3);
-            LootDistributionHandler.EditLootDistributionData(jellyrayPrefab, BiomeType.GrandReef_Grass, 0.5f, 3);
+            LootDistributionHandler.EditLootDistributionData(grandReefCrystal, BiomeType.DeepGrandReef_Wall, 0.1f, 1);
+            LootDistributionHandler.EditLootDistributionData(grandReefCrystal, BiomeType.DeepGrandReef_Ground, 0.1f, 1);
+            LootDistributionHandler.EditLootDistributionData(jellyrayPrefab, BiomeType.GrandReef_OpenShallow_CreatureOnly, 0.04f, 2);
+            LootDistributionHandler.EditLootDistributionData(jellyrayPrefab, BiomeType.GrandReef_OpenDeep_CreatureOnly, 0.02f, 1);
             //Sea Treader's path Twistybridge-ification
             LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.SeaTreaderPath_CaveFloor, 2f, 1);
             LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.SeaTreaderPath_CaveCeiling, 2f, 1);
@@ -298,8 +286,6 @@ namespace DeExtinctionMod
             LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.SeaTreaderPath_CaveFloor, 1.2f, 1);
             LootDistributionHandler.EditLootDistributionData(whiteCaveCrawler, BiomeType.SeaTreaderPath_CaveCeiling, 2f, 1);
             //Drillable crystalline sulphur
-            LootDistributionHandler.EditLootDistributionData(drillableSulphurId, BiomeType.BonesField_Lake_Floor, 0.15f, 1);
-            LootDistributionHandler.EditLootDistributionData(drillableSulphurId, BiomeType.BonesField_LakePit_Floor, 0.4f, 1); 
             LootDistributionHandler.EditLootDistributionData(drillableSulphurId, BiomeType.GhostTree_Lake_Floor, 0.4f, 1);
             //Dunes
             LootDistributionHandler.EditLootDistributionData(breakableBarnacleClassId, BiomeType.Dunes_Rock, 1.3f, 1);
