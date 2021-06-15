@@ -154,6 +154,10 @@ namespace DeExtinctionMod.Mono
             {
                 return false;
             }
+            if (gameObject.GetComponentInParent<EscapePod>())
+            {
+                return false;
+            }
             if (liveMixin.maxHealth > 600f)
             {
                 return false;
