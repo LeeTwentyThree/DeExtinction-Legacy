@@ -25,7 +25,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override EcoTargetType EcoTargetType => EcoTargetType.Shark;
 
-        public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(0.5f, 25f);
+        public override SmallVehicleAggressivenessSettings AggressivenessToSmallVehicles => new SmallVehicleAggressivenessSettings(0.1f, 25f);
 
         public override bool EnableAggression => true;
 
@@ -33,7 +33,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.31f, true, 8f);
 
-        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.3f, 48f, 5f, 6f, 15f, 16f);
+        public override AttackLastTargetSettings AttackSettings => new AttackLastTargetSettings(0.3f, 30f, 5f, 6f, 15f, 16f);
 
         public override float BioReactorCharge => 630f;
 
@@ -44,6 +44,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
         public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.2f, 30f);
 
         public override float TurnSpeed => 0.75f;
+
+        public override float TurnSpeedHorizontal => 0.3f;
 
         public override float EyeFov => 0.7f;
 
@@ -61,14 +63,16 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override ScannableItemData ScannableSettings => new ScannableItemData(true, 7f, "Lifeforms/Fauna/Carnivores", new string[] { "Lifeforms", "Fauna", "Carnivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Twisteel_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Twisteel_Ency"));
 
+        public override CreatureTraitsData TraitsSettings => new CreatureTraitsData(0.025f, 0.07f, 0.2f);
+
         public override void AddCustomBehaviour(CreatureComponents components)
         {
             GameObject mouth = prefab.SearchChild("Head");
             TwisteelMeleeAttack meleeAttack = prefab.AddComponent<TwisteelMeleeAttack>();
             meleeAttack.mouth = mouth;
-            meleeAttack.biteInterval = 2.5f;
-            meleeAttack.biteDamage = 30f;
-            meleeAttack.eatHungerDecrement = 0.05f;
+            meleeAttack.biteInterval = 3f;
+            meleeAttack.biteDamage = 25f;
+            meleeAttack.eatHungerDecrement = 0.8f;
             meleeAttack.eatHappyIncrement = 0.1f;
             meleeAttack.biteAggressionDecrement = 0.02f;
             meleeAttack.biteAggressionThreshold = 0.1f;
@@ -86,11 +90,9 @@ namespace DeExtinctionMod.Prefabs.Creatures
             GameObject trailParent = prefab.SearchChild("Spine1");
             Transform[] trails = new Transform[] { prefab.SearchChild("Spine2").transform, prefab.SearchChild("Spine3").transform, prefab.SearchChild("Spine4").transform, prefab.SearchChild("Spine5").transform, prefab.SearchChild("Spine6").transform, prefab.SearchChild("Spine7").transform, prefab.SearchChild("Spine8").transform, prefab.SearchChild("Spine9").transform, prefab.SearchChild("Spine10").transform, prefab.SearchChild("Spine11").transform, prefab.SearchChild("Spine12").transform, prefab.SearchChild("Spine13").transform, prefab.SearchChild("Spine14").transform, prefab.SearchChild("Spine15").transform, prefab.SearchChild("Spine16").transform, prefab.SearchChild("Spine17").transform, prefab.SearchChild("Spine18").transform };
             CreateTrail(trailParent, trails, components, 4f, 0.5f);
-            MakeAggressiveTo(27f, 2, EcoTargetType.Shark, 0f, 0.67f);
+            MakeAggressiveTo(27f, 2, EcoTargetType.Shark, 0.5f, 0.67f);
             MakeAggressiveTo(15f, 1, EcoTargetType.MediumFish, 0f, 0.4f);
             MakeAggressiveTo(7f, 1, EcoTargetType.SmallFish, 0.1f, 0.2f);
-            MakeAggressiveTo(20f, 1, EcoTargetType.Shiny, 0.1f, 0.2f);
-            MakeAggressiveTo(20f, 1, EcoTargetType.CuteFish, 0f, 0.6f);
         }
 
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)
@@ -103,13 +105,13 @@ namespace DeExtinctionMod.Prefabs.Creatures
             new LootDistributionData.BiomeData()
             {
                 biome= BiomeType.UnderwaterIslands_OpenShallow_CreatureOnly,
-                probability = 0.015f,
+                probability = 0.006f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
             {
                 biome= BiomeType.UnderwaterIslands_OpenDeep_CreatureOnly,
-                probability = 0.015f,
+                probability = 0.006f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
@@ -121,26 +123,26 @@ namespace DeExtinctionMod.Prefabs.Creatures
             new LootDistributionData.BiomeData()
             {
                 biome= BiomeType.UnderwaterIslands_ValleyFloor,
-                probability = 0.2f,
+                probability = 0.1f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
             {
                 biome= BiomeType.UnderwaterIslands_ValleyLedge,
-                probability = 0.05f,
+                probability = 0.04f,
                 count = 1
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.BloodKelp_UniqueCreatures,
                 probability = 0.04f,
-                count = 3
+                count = 1
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.BloodKelp_TrenchWall,
                 probability = 0.1f,
-                count = 3
+                count = 1
             },
             new LootDistributionData.BiomeData()
             {
@@ -158,7 +160,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
             {
                 biome = BiomeType.BloodKelp_Wall,
                 probability = 0.024f,
-                count = 2
+                count = 1
             }
         };
     }
