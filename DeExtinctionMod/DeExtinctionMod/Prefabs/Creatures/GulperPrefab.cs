@@ -21,7 +21,7 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override LargeWorldEntity.CellLevel CellLevel => LargeWorldEntity.CellLevel.Far;
 
-        public override ScannableItemData ScannableSettings => new ScannableItemData(true, 15f, "Lifeforms/Fauna/Leviathans", new string[] { "Lifeforms", "Fauna", "Leviathans" }, QPatch.assetBundle.LoadAsset<Sprite>("Gulper_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Gulper_Ency"));
+        public override ScannableItemData ScannableSettings => new ScannableItemData(true, 8f, "Lifeforms/Fauna/Leviathans", new string[] { "Lifeforms", "Fauna", "Leviathans" }, QPatch.assetBundle.LoadAsset<Sprite>("Gulper_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Gulper_Ency"));
 
         public override string GetEncyDesc => "This vast animal is at the top of the local food chain, and has been designated leviathan class.\n\n1. Jaws:\nSituated within the maw of the leviathan are four mobile jaws capable of launching forward and dragging prey in towards the mouth.\n\n2. Limbs:\nA pair of fins modified into muscular limbs serve an unknown purpose. Possibilities include restraint of other animals, propulsion off of the seabed, and slashing of potential prey or threats. Whatever the case, avoidance of limbs is highly recommended.\n\n3. Behavior:\nConsumes anything it can fit into its mouth. Will attempt to crush prey if too large or tough.\n\nHunts using electromagnetic signals, may be drawn to wrecked technology.\n\nAssessment: Extreme threat to whatever can fit into its mouth - Avoid in all circumstances";
 
