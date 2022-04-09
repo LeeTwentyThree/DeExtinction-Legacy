@@ -70,14 +70,14 @@ namespace DeExtinctionMod.Prefabs.Creatures
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.SafeShallows_Grass,
-                count = 3,
-                probability = 0.4f
+                count = 2,
+                probability = 0.2f
             },
             new LootDistributionData.BiomeData()
             {
                 biome = BiomeType.SafeShallows_SandFlat,
-                count = 3,
-                probability = 0.3f
+                count = 2,
+                probability = 0.2f
             },
             new LootDistributionData.BiomeData()
             {
