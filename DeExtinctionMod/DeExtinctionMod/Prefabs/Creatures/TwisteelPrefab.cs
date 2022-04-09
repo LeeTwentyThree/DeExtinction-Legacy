@@ -57,8 +57,6 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override RespawnData RespawnSettings => new RespawnData(false);
 
-        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 1f, 20f, "TwisteelIdle", "roar", 0.12f, 7f, 20f);
-
         public override string GetEncyDesc => "A large eel-like predator found within a deep canyon.\n\n1. Body:\nA long and flexible body allows the Twisteel to snake around the environment with a low profile while hunting for prey, often in small groups. The Twisteel appears to share many characteristics with other shark-like creatures found on Planet 4546B.\n\n2. Jaws:\nDistantly related to other lifeforms on the planet possessing a quad-jaw arrangement, the lateral pair of jaws have been reduced to a vestigial point. The remaining jaws reach lengths of up to 3m, and are filled with rows of large teeth to trap relatively large prey items.\n\nAssessment: Avoid";
 
         public override ScannableItemData ScannableSettings => new ScannableItemData(true, 7f, "Lifeforms/Fauna/Carnivores", new string[] { "Lifeforms", "Fauna", "Carnivores" }, QPatch.assetBundle.LoadAsset<Sprite>("Twisteel_Popup"), QPatch.assetBundle.LoadAsset<Texture2D>("Twisteel_Ency"));
@@ -93,6 +91,11 @@ namespace DeExtinctionMod.Prefabs.Creatures
             MakeAggressiveTo(27f, 2, EcoTargetType.Shark, 0.5f, 0.67f);
             MakeAggressiveTo(15f, 1, EcoTargetType.MediumFish, 0f, 0.4f);
             MakeAggressiveTo(7f, 1, EcoTargetType.SmallFish, 0.1f, 0.2f);
+
+            var idleSounds = prefab.AddComponent<CreatureRandomSound>();
+            idleSounds.asset = QPatch.CreateFMODAsset("TwisteelIdle");
+            idleSounds.minInterval = 10f;
+            idleSounds.maxInterval = 30f;
         }
 
         public override void SetLiveMixinData(ref LiveMixinData liveMixinData)

@@ -308,7 +308,7 @@ namespace DeExtinctionMod
             var thalassaceanRoarSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("ThalassaceanRoar").clips, k3DSoundModes).ToArray();
             for (int i = 0; i < thalassaceanRoarSounds.Length; i++)
             {
-                thalassaceanRoarSounds[i].set3DMinMaxDistance(5f, 60f);
+                thalassaceanRoarSounds[i].set3DMinMaxDistance(5f, 80f);
             }
             var thalassaceanRoarEvent = new FModMultiSounds(thalassaceanRoarSounds, kCreatureSFXBus, true);
             CustomSoundHandler.RegisterCustomSound("ThalassaceanRoar", thalassaceanRoarEvent);
@@ -316,7 +316,7 @@ namespace DeExtinctionMod
             var twisteelIdleSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("TwisteelIdle").clips, k3DSoundModes).ToArray();
             for (int i = 0; i < twisteelIdleSounds.Length; i++)
             {
-                twisteelIdleSounds[i].set3DMinMaxDistance(5f, 30f);
+                twisteelIdleSounds[i].set3DMinMaxDistance(1f, 60f);
             }
             var twisteelIdleEvent = new FModMultiSounds(twisteelIdleSounds, kCreatureSFXBus, true);
             CustomSoundHandler.RegisterCustomSound("TwisteelIdle", twisteelIdleEvent);
@@ -324,23 +324,15 @@ namespace DeExtinctionMod
             var twisteelBiteSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("TwisteelBite").clips, k3DSoundModes).ToArray();
             for (int i = 0; i < twisteelBiteSounds.Length; i++)
             {
-                twisteelBiteSounds[i].set3DMinMaxDistance(2f, 15f);
+                twisteelBiteSounds[i].set3DMinMaxDistance(2f, 35f);
             }
             var twisteelBiteEvent = new FModMultiSounds(twisteelBiteSounds, kCreatureSFXBus, true);
             CustomSoundHandler.RegisterCustomSound("TwisteelBite", twisteelBiteEvent);
 
-            var clownPincherIdleSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("ClownPincherIdle").clips, k3DSoundModes).ToArray();
-            for (int i = 0; i < clownPincherIdleSounds.Length; i++)
-            {
-                clownPincherIdleSounds[i].set3DMinMaxDistance(2f, 15f);
-            }
-            var clownPincherIdleEvent = new FModMultiSounds(clownPincherIdleSounds, kCreatureSFXBus, true);
-            CustomSoundHandler.RegisterCustomSound("ClownPincherIdle", clownPincherIdleEvent);
-
             var gulperRoarSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("GulperRoar").clips, k3DSoundModes).ToArray();
             for (int i = 0; i < gulperRoarSounds.Length; i++)
             {
-                gulperRoarSounds[i].set3DMinMaxDistance(2f, 15f);
+                gulperRoarSounds[i].set3DMinMaxDistance(2f, 100f);
             }
             var gulperRoarEvent = new FModMultiSounds(gulperRoarSounds, kCreatureSFXBus, true);
             CustomSoundHandler.RegisterCustomSound("GulperRoar", gulperRoarEvent);
@@ -348,10 +340,18 @@ namespace DeExtinctionMod
             var gulperAttackSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("GulperAttack").clips, k3DSoundModes).ToArray();
             for (int i = 0; i < gulperAttackSounds.Length; i++)
             {
-                gulperAttackSounds[i].set3DMinMaxDistance(2f, 15f);
+                gulperAttackSounds[i].set3DMinMaxDistance(2f, 50f);
             }
             var gulperAttackEvent = new FModMultiSounds(gulperAttackSounds, kCreatureSFXBus, true);
             CustomSoundHandler.RegisterCustomSound("GulperAttack", gulperAttackEvent);
+
+            var clownPincherIdleSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("ClownPincherIdle").clips, k3DSoundModes).ToArray();
+            for (int i = 0; i < clownPincherIdleSounds.Length; i++)
+            {
+                clownPincherIdleSounds[i].set3DMinMaxDistance(2f, 10f);
+            }
+            var clownPincherIdleEvent = new FModMultiSounds(clownPincherIdleSounds, kCreatureSFXBus, true);
+            CustomSoundHandler.RegisterCustomSound("ClownPincherIdle", clownPincherIdleEvent);
 
             var clownPincherEatingSound = AudioUtils.CreateSound(assetBundle.LoadAsset<AudioClip>("ClownPincherEating"), k3DSoundModes);
             clownPincherEatingSound.set3DMinMaxDistance(1f, 12f);

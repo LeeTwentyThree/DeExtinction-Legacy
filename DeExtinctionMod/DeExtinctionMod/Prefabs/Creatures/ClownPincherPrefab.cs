@@ -41,8 +41,6 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override float Mass => 4f;
 
-        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 0.2f, 3.5f, "ClownPincherIdle", null, 0.65f, 60f, 120f);
-
         public override HeldFishData ViewModelSettings => new HeldFishData(TechType.Peeper, "WorldModel", "ViewModel");
 
         public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.01f, 0.8f, 0.9f, 1f, true);
@@ -74,6 +72,11 @@ namespace DeExtinctionMod.Prefabs.Creatures
             nibble.creature = components.creature;
             nibble.clownPincher = clownPincherBehaviour;
             nibble.liveMixin = components.liveMixin;
+
+            var idleSounds = prefab.AddComponent<CreatureRandomSound>();
+            idleSounds.asset = QPatch.CreateFMODAsset("ClownPincherIdle");
+            idleSounds.minInterval = 30f;
+            idleSounds.maxInterval = 120f;
 
             prefab.AddComponent<SleepAtNight>().evaluatePriority = 0.9f;
 

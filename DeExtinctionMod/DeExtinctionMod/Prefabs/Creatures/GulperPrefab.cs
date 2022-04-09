@@ -43,8 +43,6 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.7f, true, 30f);
 
-        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 10f, 100f, "GulperRoar", "roar", 0f, 10f, 20f);
-
         public override BehaviourLODLevelsStruct BehaviourLODSettings => new BehaviourLODLevelsStruct(30f, 100f, 200f);
 
         public override StayAtLeashData StayAtLeashSettings => new StayAtLeashData(0.4f, 40f);
@@ -107,7 +105,12 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
             components.locomotion.driftFactor = 0.8f;
             components.locomotion.maxAcceleration = 18f;
-            }
+
+            var idleSounds = prefab.AddComponent<CreatureRandomSound>();
+            idleSounds.asset = QPatch.CreateFMODAsset("GulperRoar");
+            idleSounds.minInterval = 30f;
+            idleSounds.maxInterval = 60f;
+        }
 
         void AddClawAttack(string triggerName, string animationName, CreatureComponents components)
         {
