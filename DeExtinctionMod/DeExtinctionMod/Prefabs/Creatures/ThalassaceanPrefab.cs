@@ -38,6 +38,8 @@ namespace DeExtinctionMod.Prefabs.Creatures
 
         public override AvoidObstaclesData AvoidObstaclesSettings => new AvoidObstaclesData(0.8f, false, 5f);
 
+        public override RoarAbilityData RoarAbilitySettings => new RoarAbilityData(true, 4f, 30f, "ThalassaceanRoar", string.Empty, 0.51f, 20f, 30f);
+
         public override AnimationCurve SizeDistribution => new AnimationCurve(new Keyframe[] { new Keyframe(0f, 0.8f), new Keyframe(1f, 1f) });
 
         public override BehaviourType BehaviourType => BehaviourType.Whale;
@@ -62,11 +64,6 @@ namespace DeExtinctionMod.Prefabs.Creatures
             fleeFromPredators.maxReactDistance = 35f;
             fleeFromPredators.evaluatePriority = 0.9f;
             fleeFromPredators.targetType = EcoTargetType.Leviathan;
-
-            var idleSounds = prefab.AddComponent<CreatureRandomSound>();
-            idleSounds.asset = QPatch.CreateFMODAsset("ThalassaceanRoar");
-            idleSounds.minInterval = 20f;
-            idleSounds.maxInterval = 35f;
         }
 
         public override WaterParkCreatureParameters WaterParkParameters => new WaterParkCreatureParameters(0.02f, 0.09f, 0.5f, 1.25f, false);

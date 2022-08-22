@@ -9,40 +9,15 @@ namespace DeExtinctionMod.Mono
 {
 	public class ClownPincherNibble : MonoBehaviour
 	{
-		public Creature creature;
-
-		public ClownPincherBehaviour clownPincher;
-
-		public LiveMixin liveMixin;
-
-		public float nibbleHungerDecrement = 0.12f;
-
-		public float nibbleMassToRemove = 1f;
-
-		protected bool frozen;
-
-		private Rigidbody rb;
-
-		float timeNextNibble = 0f;
-
-		public const float kNibbleInterval = 1f;
-
-		public GameObject objectEating;
-
-		FMOD_CustomLoopingEmitter eatingEmitter;
-
-		float timeStartNibbling;
-
-		bool nibbling;
-
-		private static FMODAsset eatingSound = QPatch.CreateFMODAsset("ClownPincherEating");
-
 		void Awake()
 		{
 			rb = GetComponentInParent<Rigidbody>();
-			eatingEmitter = gameObject.EnsureComponent<FMOD_CustomLoopingEmitter>();
-			eatingEmitter.SetAsset(eatingSound);
-			eatingEmitter.followParent = true;
+			eatingSound = gameObject.AddComponent<AudioSource>();
+			eatingSound.volume = ECCHelpers.GetECCVolume() * 0.5f;
+			eatingSound.clip = QPatch.assetBundle.LoadAsset<AudioClip>("ClownPincherEating");
+			eatingSound.spatialBlend = 1f;
+			eatingSound.maxDistance = 5f;
+            eatingSound.rolloffMode = AudioRolloffMode.Custom;
         }
 
 		public bool TouchingFood
@@ -118,7 +93,7 @@ namespace DeExtinctionMod.Mono
 		public void StartNibbling()
 		{
 			nibbling = true;
-			eatingEmitter.Play();
+			eatingSound.Play();
 			clownPincher.swimBehaviour.LookAt(objectEating.transform);
 			Rigidbody otherRigidbody = objectEating.GetComponentInParent<Rigidbody>();
 			if(otherRigidbody != null)
@@ -131,7 +106,7 @@ namespace DeExtinctionMod.Mono
 			nibbling = false;
 			objectEating = null;
 			clownPincher.swimBehaviour.LookAt(null);
-			eatingEmitter.Stop();
+			eatingSound.Stop();
 		}
 
 		public void OnFreeze()
@@ -143,5 +118,30 @@ namespace DeExtinctionMod.Mono
 		{
 			frozen = false;
 		}
+
+		public Creature creature;
+
+		public ClownPincherBehaviour clownPincher;
+
+		public LiveMixin liveMixin;
+
+		public float nibbleHungerDecrement = 0.12f;
+
+		public float nibbleMassToRemove = 1f;
+
+		protected bool frozen;
+
+		private Rigidbody rb;
+
+		float timeNextNibble = 0f;
+		public const float kNibbleInterval = 1f;
+
+		public GameObject objectEating;
+
+		AudioSource eatingSound;
+
+		float timeStartNibbling;
+
+		bool nibbling;
 	}
 }
