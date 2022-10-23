@@ -51,7 +51,8 @@ namespace DeExtinctionMod.Prefabs.Eggs
             new SpawnLocation(new Vector3(-715.52f, -0.97f, -951.93f), new Vector3(0, 0, 250)),
             new SpawnLocation(new Vector3(-696.33f, -1f, -1069.41f), new Vector3(13, 0, 2)),
             new SpawnLocation(new Vector3(-727.81f, 0.10f, -1085.91f), new Vector3(278, 0, 354)),
-            new SpawnLocation(new Vector3(393.37f, -9.91f, 1187.26f), new Vector3(77, 60, 180))
+            new SpawnLocation(new Vector3(393.37f, -9.91f, 1187.26f), new Vector3(77, 60, 180)),
+            new SpawnLocation(new Vector3(-831.56f, -1.95f, -966.07f), new Vector3(77, 60, 180))
         };
     }
 }
