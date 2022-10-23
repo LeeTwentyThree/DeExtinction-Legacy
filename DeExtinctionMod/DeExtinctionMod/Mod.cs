@@ -41,6 +41,7 @@ namespace DeExtinctionMod
         public static FiltorbPrefab filtorb;
         public static JellySpinnerPrefab jellySpinner;
         public static TrianglefishPrefab triangleFish;
+        public static GulperBabyPrefab babyGulper;
 
         public static EatableAsset rcpCooked;
         public static EatableAsset rcpCured;
@@ -76,6 +77,7 @@ namespace DeExtinctionMod
         public static JasperThalassaceanEggPrefab jasperEgg;
         public static GrandGliderEggPrefab grandGliderEgg;
         public static TwisteelEggPrefab twisteelEgg;
+        public static GulperEggPrefab gulperEgg;
 
         public static EcoTargetType clownPincherSpecialEdible;
 
@@ -122,6 +124,9 @@ namespace DeExtinctionMod
             triangleFish = new TrianglefishPrefab("TriangleFish", "Trianglefish", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("Trianglefish_Prefab"), assetBundle.LoadAsset<Texture2D>("Trianglefish_Item"));
             triangleFish.Patch();
 
+            babyGulper = new GulperBabyPrefab("GulperLeviathanBaby", "Baby Gulper Leviathan", "Young leviathan specimen. Incapable of eating anything beyond small fish, might make a good pet.", assetBundle.LoadAsset<GameObject>("GulperBaby_Prefab"), assetBundle.LoadAsset<Texture2D>("GulperBaby_Sprite"));
+            babyGulper.Patch();
+
             #region ClownPinchers
             rubyClownPincher = new ClownPincherRuby("RubyClownPincher", "Ruby clown pincher", "Small, edible prey fish.", assetBundle.LoadAsset<GameObject>("RCP_Prefab"), assetBundle.LoadAsset<Texture2D>("RCP_Item"));
             rubyClownPincher.Patch();
@@ -152,8 +157,11 @@ namespace DeExtinctionMod
             grandGliderEgg = new GrandGliderEggPrefab("GrandGliderEgg", "Grand Glider Egg", "Grand Gliders hatch from these.", assetBundle.LoadAsset<GameObject>("GGEggPrefab"), grandGlider.TechType, assetBundle.LoadAsset<Texture2D>("GGEgg_Item"), 1f);
             grandGliderEgg.Patch();
 
-            twisteelEgg = new TwisteelEggPrefab("TwisteelEgg", "Twisteel Egg", "Twisteels hatch from these", assetBundle.LoadAsset<GameObject>("TwisteelEgg_Prefab"), twisteel.TechType, assetBundle.LoadAsset<Texture2D>("TwisteelEgg_Item"), 1.5f);
+            twisteelEgg = new TwisteelEggPrefab("TwisteelEgg", "Twisteel Egg", "Twisteels hatch from these.", assetBundle.LoadAsset<GameObject>("TwisteelEgg_Prefab"), twisteel.TechType, assetBundle.LoadAsset<Texture2D>("TwisteelEgg_Item"), 1.5f);
             twisteelEgg.Patch();
+
+            gulperEgg = new GulperEggPrefab("GulperEgg", "Gulper Leviathan Egg", "Gulper Leviathans hatch from these.", assetBundle.LoadAsset<GameObject>("GulperEgg_Prefab"), babyGulper.TechType, assetBundle.LoadAsset<Texture2D>("GulperEgg_Sprite"), 2f);
+            gulperEgg.Patch();
 
             #endregion
 
@@ -210,22 +218,35 @@ namespace DeExtinctionMod
             #endregion
 
             const float gulperSpawnDistance = 125f;
-            //Mountains
+            const float babyGulperSpawnDistance = 55f;
+            // Adult Gulper:
+            // Mountains
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(1169, -370, 903), "Mountains+KooshGulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(1400, -348, 1281), "Mountains+KooshGulper2", gulperSpawnDistance));
 
-            //Underwater islands
+            // Underwater islands
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-72, -300, 867), "UWIGulper1", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-174, -460, 1070), "UWIGulper2", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-49, -308, 1184), "Mountains+UWIGulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-265, -287, 1118), "BK+UWIGulper", gulperSpawnDistance));
 
-            //Shallow
+            // Shallow
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-717, -100, -1088), "FloatingIslandGulper", gulperSpawnDistance));
 
-            //Blood kelp
+            // Blood kelp
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-573, -448, 1311), "Lifepod2Gulper", gulperSpawnDistance));
             StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(gulper, new Vector3(-970, -216, -509), "BKTGulper", gulperSpawnDistance));
+
+            // Baby Gulper:
+            // Mountain island
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(babyGulper, new Vector3(364, -10, 1172), "MountainIslandGulperBaby", babyGulperSpawnDistance));
+
+            // Mountains
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(babyGulper, new Vector3(1135, -364, 900), "Mountains+KooshGulperBaby", babyGulperSpawnDistance));
+
+            // Floating Island
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(babyGulper, new Vector3(-711, -12, -1071), "FloatingIslandGulperBaby", babyGulperSpawnDistance));
+            StaticCreatureSpawns.RegisterStaticSpawn(new StaticSpawn(babyGulper, new Vector3(-690, -3, -948), "FloatingIslandGulperBaby2", babyGulperSpawnDistance));
 
             Harmony harmony = new Harmony("Lee23.DeExtinctionMod");
 
@@ -260,7 +281,7 @@ namespace DeExtinctionMod
             LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.DeepGrandReef_BlueCoral, 0.1f, 1);
             LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.SafeShallows_Plants, 0.3f, 1);
             LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.KooshZone_CaveFloor, 0.2f, 1);
-            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.UnderwaterIslands_IslandPlants, 0.5f, 1);
+            LootDistributionHandler.EditLootDistributionData(mohawkClassId, BiomeType.UnderwaterIslands_IslandPlants, 0.4f, 1);
             //Underwater islands
             LootDistributionHandler.EditLootDistributionData(reefbackCoral01ClassId, BiomeType.UnderwaterIslands_IslandPlants, 0.5f, 1);
             //Grand reef deco

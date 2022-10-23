@@ -2,10 +2,10 @@
   "Id": "DeExtinction",
   "DisplayName": "De-Extinction Mod",
   "Author": "Dinofuzz & Lee23",
-  "Version": "1.1.2",
+  "Version": "1.2.0",
   "VersionDependencies": {
     "SMLHelper": "2.9",
-    "ECCLibrary": "1.0.9"
+    "ECCLibrary": "1.2.0"
   },
   "Enable": true,
   "Game": "Subnautica",

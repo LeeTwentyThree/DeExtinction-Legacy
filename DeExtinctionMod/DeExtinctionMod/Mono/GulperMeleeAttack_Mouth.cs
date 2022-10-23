@@ -10,6 +10,7 @@ namespace DeExtinctionMod.Mono
 {
     public class GulperMeleeAttack_Mouth : MeleeAttack
     {
+        public bool isBaby; // implies GulperBehaviour DNE
         private AudioSource attackSource;
         private ECCAudio.AudioClipPool clipPool;
         private PlayerCinematicController playerDeathCinematic;
@@ -44,10 +45,10 @@ namespace DeExtinctionMod.Mono
 
                 GameObject target = GetTarget(collider);
                 GulperBehaviour gulperBehaviour = GetComponent<GulperBehaviour>();
-                if (!gulperBehaviour.IsHoldingVehicle() && !playerDeathCinematic.IsCinematicModeActive())
+                if ((isBaby ||!gulperBehaviour.IsHoldingVehicle()) && !playerDeathCinematic.IsCinematicModeActive())
                 {
                     Player player = target.GetComponent<Player>();
-                    if (player != null)
+                    if (player != null && !isBaby)
                     {
                         if (Time.time > timeCinematicAgain && player.CanBeAttacked() && player.liveMixin.IsAlive() && !player.cinematicModeActive)
                         {
@@ -60,7 +61,7 @@ namespace DeExtinctionMod.Mono
                             return;
                         }
                     }
-                    else if (gulperBehaviour.GetCanGrabVehicle() && component.Aggression.Value > 0.1f)
+                    else if (!isBaby && gulperBehaviour.GetCanGrabVehicle() && component.Aggression.Value > 0.1f)
                     {
                         SeaMoth seamoth = target.GetComponent<SeaMoth>();
                         if (seamoth && !seamoth.docked)
@@ -79,6 +80,10 @@ namespace DeExtinctionMod.Mono
                     }
                     LiveMixin liveMixin = target.GetComponent<LiveMixin>();
                     if (liveMixin == null) return;
+                    if (isBaby && liveMixin.maxHealth > 90f && UnityEngine.Random.value > 0.1f)
+                    {
+                        return;
+                    }
                     if (!liveMixin.IsAlive())
                     {
                         return;

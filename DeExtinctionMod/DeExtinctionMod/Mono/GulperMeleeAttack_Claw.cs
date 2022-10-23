@@ -12,6 +12,7 @@ namespace DeExtinctionMod.Mono
     {
         public string animationTriggerName;
         public string colliderName;
+        public bool isBaby;
 
         LiveMixin damagingTarget;
         AudioSource source;
@@ -42,7 +43,7 @@ namespace DeExtinctionMod.Mono
                         return;
                     }
                     Player player = collider.gameObject.GetComponent<Player>();
-                    if (player != null && !player.CanBeAttacked())
+                    if (player != null && (!player.CanBeAttacked() || isBaby))
                     {
                         return;
                     }

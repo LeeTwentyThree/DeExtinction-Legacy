@@ -125,6 +125,7 @@
     <Compile Include="Prefabs\Creatures\ClownPinchers\ClownPincherSapphire.cs" />
     <Compile Include="Prefabs\Creatures\FiltorbPrefab.cs" />
     <Compile Include="Prefabs\Creatures\GrandGliderPrefab.cs" />
+    <Compile Include="Prefabs\Creatures\GulperBabyPrefab.cs" />
     <Compile Include="Prefabs\Creatures\GulperPrefab.cs" />
     <Compile Include="Prefabs\Creatures\JellySpinnerPrefab.cs" />
     <Compile Include="Prefabs\Creatures\RibbonRayPrefab.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Prefabs\Creatures\JasperThalassaceanPrefab.cs" />
     <Compile Include="Prefabs\Creatures\StellarThalassaceanPrefab.cs" />
     <Compile Include="Prefabs\Creatures\ThalassaceanPrefab.cs" />
+    <Compile Include="Prefabs\Eggs\GulperEgg.cs" />
     <Compile Include="Prefabs\Eggs\TwisteelEggPrefab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

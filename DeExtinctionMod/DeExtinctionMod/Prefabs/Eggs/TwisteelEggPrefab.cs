@@ -21,7 +21,6 @@ namespace DeExtinctionMod.Prefabs.Eggs
         public override bool IsScannable => true;
         public override string GetEncyDesc => "Twisteels display a very simple life cycle from birth to death, and will often lay small quantities of eggs in secluded areas.";
 
-
         public override List<LootDistributionData.BiomeData> BiomesToSpawnIn => new List<LootDistributionData.BiomeData>()
         {
             new LootDistributionData.BiomeData()
