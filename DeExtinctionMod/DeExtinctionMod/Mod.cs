@@ -1,16 +1,23 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using QModManager.API.ModLoading;
 using UnityEngine;
+using System.IO;
 using System.Reflection;
+using DeExtinctionMod.Prefabs;
+using DeExtinctionMod.Mono;
 using SMLHelper.V2.Handlers;
 using HarmonyLib;
-using SMLHelper.V2.FMod;
 using SMLHelper.V2.Utility;
 using DeExtinctionMod.Prefabs.Eggs;
 using DeExtinctionMod.Prefabs.Creatures;
 using ECCLibrary;
+using SMLHelper.V2.Assets;
+using UWE;
 using ECCLibrary.Internal;
-using FMOD;
 
 namespace DeExtinctionMod
 {
@@ -71,9 +78,6 @@ namespace DeExtinctionMod
         public static TwisteelEggPrefab twisteelEgg;
 
         public static EcoTargetType clownPincherSpecialEdible;
-
-        private static MODE k3DSoundModes = MODE.DEFAULT | MODE._3D | MODE.ACCURATETIME | MODE._3D_LINEARSQUAREROLLOFF;
-        private const string kCreatureSFXBus = "bus:/master/all/SFX/creatures";
 
         [QModPatch]
         public static void Patch()
@@ -296,72 +300,9 @@ namespace DeExtinctionMod
             LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.Dunes_SandDune, 0.4f, 1);
             LootDistributionHandler.EditLootDistributionData(plantMiddle11ClassId, BiomeType.Dunes_Grass, 0.4f, 1);
 
-            PatchPlantPDAEntry(TechType.Mohawk, "Mohawk", "Mohawk plant", "A similar, albeit more resilient relative to the Scaly Maw Anemone found on other sections of the planet. Thrives off of abundances of microorganisms found in the water. Lives in both shallow waters and deep cave systems.");
-
-            PatchAudio();
+            PatchPlantPDAEntry(TechType.Mohawk, "Mohawk", "Mohawk plant", "A similar, albeit more resilient relative to the Scaly Maw Anemone found on other sections of the planet. Thrives off of abundances of microorganisms found in the water. Lives in both shallow waters and deep cave systems."); 
 
             harmony.PatchAll(Assembly.GetExecutingAssembly());
-        }
-
-        static void PatchAudio()
-        {
-            var thalassaceanRoarSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("ThalassaceanRoar").clips, k3DSoundModes).ToArray();
-            for (int i = 0; i < thalassaceanRoarSounds.Length; i++)
-            {
-                thalassaceanRoarSounds[i].set3DMinMaxDistance(5f, 60f);
-            }
-            var thalassaceanRoarEvent = new FModMultiSounds(thalassaceanRoarSounds, kCreatureSFXBus, true);
-            CustomSoundHandler.RegisterCustomSound("ThalassaceanRoar", thalassaceanRoarEvent);
-
-            var twisteelIdleSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("TwisteelIdle").clips, k3DSoundModes).ToArray();
-            for (int i = 0; i < twisteelIdleSounds.Length; i++)
-            {
-                twisteelIdleSounds[i].set3DMinMaxDistance(5f, 30f);
-            }
-            var twisteelIdleEvent = new FModMultiSounds(twisteelIdleSounds, kCreatureSFXBus, true);
-            CustomSoundHandler.RegisterCustomSound("TwisteelIdle", twisteelIdleEvent);
-
-            var twisteelBiteSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("TwisteelBite").clips, k3DSoundModes).ToArray();
-            for (int i = 0; i < twisteelBiteSounds.Length; i++)
-            {
-                twisteelBiteSounds[i].set3DMinMaxDistance(2f, 15f);
-            }
-            var twisteelBiteEvent = new FModMultiSounds(twisteelBiteSounds, kCreatureSFXBus, true);
-            CustomSoundHandler.RegisterCustomSound("TwisteelBite", twisteelBiteEvent);
-
-            var clownPincherIdleSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("ClownPincherIdle").clips, k3DSoundModes).ToArray();
-            for (int i = 0; i < clownPincherIdleSounds.Length; i++)
-            {
-                clownPincherIdleSounds[i].set3DMinMaxDistance(2f, 15f);
-            }
-            var clownPincherIdleEvent = new FModMultiSounds(clownPincherIdleSounds, kCreatureSFXBus, true);
-            CustomSoundHandler.RegisterCustomSound("ClownPincherIdle", clownPincherIdleEvent);
-
-            var gulperRoarSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("GulperRoar").clips, k3DSoundModes).ToArray();
-            for (int i = 0; i < gulperRoarSounds.Length; i++)
-            {
-                gulperRoarSounds[i].set3DMinMaxDistance(2f, 15f);
-            }
-            var gulperRoarEvent = new FModMultiSounds(gulperRoarSounds, kCreatureSFXBus, true);
-            CustomSoundHandler.RegisterCustomSound("GulperRoar", gulperRoarEvent);
-
-            var gulperAttackSounds = AudioUtils.CreateSounds(ECCAudio.CreateClipPool("GulperAttack").clips, k3DSoundModes).ToArray();
-            for (int i = 0; i < gulperAttackSounds.Length; i++)
-            {
-                gulperAttackSounds[i].set3DMinMaxDistance(2f, 15f);
-            }
-            var gulperAttackEvent = new FModMultiSounds(gulperAttackSounds, kCreatureSFXBus, true);
-            CustomSoundHandler.RegisterCustomSound("GulperAttack", gulperAttackEvent);
-
-            var clownPincherEatingSound = AudioUtils.CreateSound(assetBundle.LoadAsset<AudioClip>("ClownPincherEating"), k3DSoundModes);
-            clownPincherEatingSound.set3DMinMaxDistance(1f, 12f);
-            CustomSoundHandler.RegisterCustomSound("ClownPincherEating", clownPincherEatingSound, kCreatureSFXBus);
-
-            var gulperSeamothSound = AudioUtils.CreateSound(assetBundle.LoadAsset<AudioClip>("GulperSeamoth1"), k3DSoundModes);
-            CustomSoundHandler.RegisterCustomSound("GulperSeamoth", gulperSeamothSound, kCreatureSFXBus);
-
-            var gulperExosuitSound = AudioUtils.CreateSound(assetBundle.LoadAsset<AudioClip>("GulperExosuit"), k3DSoundModes);
-            CustomSoundHandler.RegisterCustomSound("GulperExosuit", gulperExosuitSound, kCreatureSFXBus);
         }
 
         static void PatchPlantPDAEntry(TechType techType, string key, string name, string desc, float scanTime = 3f)
@@ -407,13 +348,6 @@ namespace DeExtinctionMod
             TechType spikeTrapTechType = TechTypeHandler.AddTechType("SpikyTrap", "Spikey trap", "A very spikey trap.");
             obj.AddComponent<TechTag>().type = spikeTrapTechType;
             PatchPlantPDAEntry(spikeTrapTechType, "SpikyTrap", "Spikey Trap", "A very large plant with obvious carnivorous adapations.\n\nBehavior:\nUnusually docile. The carnivorous parts may be vestigial, or this individual may have just eaten a large meal.");
-        }
-
-        public static FMODAsset CreateFMODAsset(string path)
-        {
-            var asset = ScriptableObject.CreateInstance<FMODAsset>();
-            asset.path = path;
-            return asset;
         }
     }
 }
