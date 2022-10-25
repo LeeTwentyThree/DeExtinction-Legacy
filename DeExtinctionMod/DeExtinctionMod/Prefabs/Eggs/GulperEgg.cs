@@ -32,6 +32,7 @@ namespace DeExtinctionMod.Prefabs.Eggs
         public override void AddCustomBehaviours()
         {
             ECCHelpers.MakeObjectScannerRoomScannable(prefab, false);
+            prefab.EnsureComponent<ResourceTracker>().overrideTechType = TechType.GenericEgg;
             prefab.EnsureComponent<LiveMixin>().data = liveMixinData;
         }
 
