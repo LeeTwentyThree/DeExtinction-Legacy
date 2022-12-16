@@ -19,3 +19,49 @@
 - Twisteel - Found in the Blood Kelp, Bulb Zone, and Underwater Islands biomes; Eggs found in the Underwater Islands biome.
 
 - Gulper Leviathan - Leviathan class, often found in deeper biomes and around islands.
+
+# Spawn code list
+
+```
+StellarThalassacean
+JasperThalassacean
+GrandGlider
+Axetail
+AmberClownPincher
+CitrineClownPincher
+EmeraldClownPincher
+RubyClownPincher
+SapphireClownPincher
+GulperLeviathan
+RibbonRay
+Twisteel
+Filtorb
+JellySpinner
+Trianglefish
+
+StellarThalassaceanEgg
+JasperThalassaceanEgg
+GrandGliderEgg
+TwisteelEgg
+
+CookedAxetail
+CookedAmberClownPincher
+CookedCitrineClownPincher
+CookedEmeraldClownPincher
+CookedRubyClownPincher
+CookedSapphireClownPincher
+CuredAxetail
+CuredAmberClownPincher
+CuredCitrineClownPincher
+CuredEmeraldClownPincher
+CuredRubyClownPincher
+CuredSapphireClownPincher
+CookedRibbonRay
+CuredRibbonRay
+CookedFiltorb
+CuredFiltorb
+CookedJellySpinner
+CuredJellySpinner
+CookedTrianglefish
+CuredTrianglefish
+```
