@@ -1,5 +1,6 @@
 # Creature List
 
+### Small fish
 - Amber Clown Pincher - Edible, found in the Mushroom Forest, Sparse Reef, and Underwater Islands biomes.
 - Citrine Clown Pincher - Edible, found in the Dunes, Mountains, Safe Shallows, and Sparse Reef biomes.
 - Emerald Clown Pincher - Edible, found in the Kelp Forest and Sparse Reef biomes.
@@ -10,14 +11,14 @@
 - Jelly Spinner - Edible, found in the Blood Kelp, Lost River, and Underwater Islands biomes.
 - Ribbon Ray - Edible, found in the Mushroom Forest, Safe Shallows, and Sparse Reef biomes.
 - Trianglefish - Edible, found in the Bulb Zone, Crash Zone, and Safe Shallows biomes.
-
+### Large herbivores, sharks, and others
 - Bloom Plankton - Unused fauna. Found in the Tree Cove, Blood Kelp Zone, Kelp Forest Caves, Grassy Plateaus Caves, Deep Grand Reef, and Underwater Islands.
 - White Cave Crawler: Unused fauna. Found in the Deep Grand Reef and Sea Treader's Path caves.
 - Grand Glider - Found in the Crag Fields, Crash Zone Mesas, Grand Reef, and Mountains biomes; Eggs found in Crag Fields, Grand Reef Caves, and Mountains Caves biomes.
 - Jasper Thalassacean - Found in the Lost River biome; Eggs found in the Lost River Brine Pool and Lost River Bone Fields Caves biomes.
 - Stellar Thalassacean - Found in the Bulb Zone, Dunes, and Grand Reef biomes; Eggs found in the Bulb Zone Caves, Dunes Caves, and Grand Reef Caves biomes.
 - Twisteel - Found in the Blood Kelp, Bulb Zone, and Underwater Islands biomes; Eggs found in the Underwater Islands biome.
-
+### Large fish
 - Gulper Leviathan - Leviathan class, often found in deeper biomes and around islands.
 
 # Spawn code list
