@@ -18,7 +18,7 @@
 - Jasper Thalassacean - Found in the Lost River biome; Eggs found in the Lost River Brine Pool and Lost River Bone Fields Caves biomes.
 - Stellar Thalassacean - Found in the Bulb Zone, Dunes, and Grand Reef biomes; Eggs found in the Bulb Zone Caves, Dunes Caves, and Grand Reef Caves biomes.
 - Twisteel - Found in the Blood Kelp, Bulb Zone, and Underwater Islands biomes; Eggs found in the Underwater Islands biome.
-### Large fish
+### Leviathans
 - Gulper Leviathan - Leviathan class, often found in deeper biomes and around islands.
 
 # Spawn code list
